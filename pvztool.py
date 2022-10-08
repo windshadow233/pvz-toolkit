@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(531, 527)
+        MainWindow.resize(440, 448)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -518,7 +518,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addLayout(self.verticalLayout_6, 1, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 531, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 440, 23))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -535,13 +535,12 @@ class Ui_MainWindow(object):
         self.pushButton_3.clicked.connect(MainWindow.tree_height)
         self.pushButton_7.clicked.connect(MainWindow.tree_food)
         self.checkBox_4.clicked.connect(MainWindow.money_not_dec)
-        self.checkBox_5.clicked.connect(MainWindow.sun_shine_not_dec)
         self.checkBox_6.clicked.connect(MainWindow.chocolate_not_dec)
         self.checkBox_7.clicked.connect(MainWindow.fertilizer_not_dec)
         self.checkBox_8.clicked.connect(MainWindow.bug_spray_not_dec)
         self.checkBox_9.clicked.connect(MainWindow.tree_food_not_dec)
         self.checkBox.clicked.connect(MainWindow.auto_collect)
-        self.checkBox_2.clicked.connect(MainWindow.plant_instant_cool_down)
+        self.checkBox_2.clicked.connect(MainWindow.no_cool_down)
         self.checkBox_3.clicked.connect(MainWindow.vase_transparent)
         self.pushButton_8.clicked.connect(MainWindow.adventure)
         self.checkBox_10.clicked.connect(MainWindow.lock_shovel)
@@ -549,6 +548,7 @@ class Ui_MainWindow(object):
         self.checkBox_11.clicked.connect(MainWindow.unlock_limbo_page)
         self.checkBox_12.clicked.connect(MainWindow.background_running)
         self.pushButton_10.clicked.connect(MainWindow.open_download_url)
+        self.checkBox_5.clicked.connect(MainWindow.sun_not_dec)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

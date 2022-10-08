@@ -1,10 +1,13 @@
 import time
 
+from typing import List
 import win32gui
 import win32process
 import win32api
 import ctypes
 import threading
+
+from data import Address, Hack
 
 
 class PvzModifier:
@@ -12,7 +15,7 @@ class PvzModifier:
     def __init__(self):
         self.kernel32 = ctypes.windll.LoadLibrary('kernel32.dll')
         self.phand = None
-        self.lawn = 0x755e0c
+        self.data = Address.pvz_goty_1_1_0_1056_zh_2012_06
         self.game_base = 0x00400000
         self.hwnd = 0
         self.lock = threading.Lock()
@@ -34,6 +37,14 @@ class PvzModifier:
             return True
         self.hwnd = 0
         return False
+
+    def hack(self, hacks: List[Hack], status):
+        for hack in hacks:
+            address = hack.address
+            if status:
+                self.write_memory(address, hack.hack_value, hack.length)
+            else:
+                self.write_memory(address, hack.reset_value, hack.length)
 
     def read_memory(self, address, length):
         addr = ctypes.c_ulong()
@@ -65,147 +76,104 @@ class PvzModifier:
 
     def sun_shine(self, number=None):
         if isinstance(number, int):
-            self.write_offset((self.lawn, 0x868, 0x5578), number, 4)
+            self.write_offset((self.data.lawn, self.data.board, self.data.sun), number, 4)
         else:
-            return self.read_offset((self.lawn, 0x868, 0x5578), 4)
+            return self.read_offset((self.data.lawn, self.data.board, self.data.sun), 4)
 
     def money(self, number=None):
         if isinstance(number, int):
-            self.write_offset((self.lawn, 0x950, 0x50), number // 10, 4)
+            self.write_offset((self.data.lawn, self.data.user_data, self.data.money), number // 10, 4)
         else:
-            return self.read_offset((self.lawn, 0x950, 0x50), 4) * 10
+            return self.read_offset((self.data.lawn, self.data.user_data, self.data.money), 4) * 10
 
     def adventure(self, number=None):
         if isinstance(number, int):
-            self.write_offset((self.lawn, 0x950, 0x4c), number, 4)
-        return self.read_offset((self.lawn, 0x950, 0x4c), 4)
+            self.write_offset((self.data.lawn, self.data.user_data, self.data.level), number, 4)
+            self.write_offset((self.data.lawn, self.data.board, self.data.adventure_level), number, 4)
+        else:
+            return self.read_offset((self.data.lawn, self.data.user_data, self.data.level), 4)
 
     def tree_height(self, number=None):
         if isinstance(number, int):
-            self.write_offset((self.lawn, 0x950, 0x11c), number, 4)
+            self.write_offset((self.data.lawn, self.data.user_data, self.data.tree_height), number, 4)
         else:
-            return self.read_offset((self.lawn, 0x950, 0x11c), 4)
+            return self.read_offset((self.data.lawn, self.data.user_data, self.data.tree_height), 4)
 
     def fertilizer(self, number=None):
         if isinstance(number, int):
-            self.write_offset((self.lawn, 0x950, 0x220), number + 1000, 4)
+            self.write_offset((self.data.lawn, self.data.user_data, self.data.fertilizer), number + 1000, 4)
         else:
-            number = self.read_offset((self.lawn, 0x950, 0x220), 4)
+            number = self.read_offset((self.data.lawn, self.data.user_data, self.data.fertilizer), 4)
             if number == 0:
                 return 0
             return number - 1000
 
     def bug_spray(self, number=None):
         if isinstance(number, int):
-            self.write_offset((self.lawn, 0x950, 0x224), number + 1000, 4)
+            self.write_offset((self.data.lawn, self.data.user_data, self.data.bug_spray), number + 1000, 4)
         else:
-            number = self.read_offset((self.lawn, 0x950, 0x224), 4)
+            number = self.read_offset((self.data.lawn, self.data.user_data, self.data.bug_spray), 4)
             if number == 0:
                 return 0
             return number - 1000
 
     def chocolate(self, number=None):
         if isinstance(number, int):
-            self.write_offset((self.lawn, 0x950, 0x250), number + 1000, 4)
+            self.write_offset((self.data.lawn, self.data.user_data, self.data.chocolate), number + 1000, 4)
         else:
-            number = self.read_offset((self.lawn, 0x950, 0x250), 4)
+            number = self.read_offset((self.data.lawn, self.data.user_data, self.data.chocolate), 4)
             if number == 0:
                 return 0
             return number - 1000
 
     def tree_food(self, number=None):
         if isinstance(number, int):
-            self.write_offset((self.lawn, 0x950, 0x258), number + 1000, 4)
+            self.write_offset((self.data.lawn, self.data.user_data, self.data.tree_food), number + 1000, 4)
         else:
-            number = self.read_offset((self.lawn, 0x950, 0x258), 4)
+            number = self.read_offset((self.data.lawn, self.data.user_data, self.data.tree_food), 4)
             if number == 0:
                 return 0
             return number - 1000
 
     def vase_transparent(self, status=True):
-        if status:
-            self.write_memory(self.game_base + 0x59c1a, 0x0033b866, 4)
-        else:
-            self.write_memory(self.game_base + 0x59c1a, 0x047ec085, 4)
+        self.hack(self.data.vase_transparent, status)
 
-    def plant_instant_cool_down(self, status=True):
-        """
-        植物无需冷却
-        :param status: True 开启; False关闭
-        """
-        if status:
-            self.write_memory(self.game_base + 0x9ce02, 0x9090, 2)
-        else:
-            self.write_memory(self.game_base + 0x9ce02, 0x167e, 2)
+    def no_cool_down(self, status=True):
+        self.hack(self.data.no_cool_down, status)
 
     def auto_collect(self, status=True):
-        """
-        自动收集
-        :param status: True 开启; False关闭
-        """
-
-        if status:
-            self.write_memory(self.game_base + 0x3cc72, 0x09eb, 2)
-        else:
-            self.write_memory(self.game_base + 0x3cc72, 0x0975, 2)
+        self.hack(self.data.auto_collect, status)
 
     def money_not_dec(self, status=True):
-        if status:
-            self.write_memory(self.game_base + 0xa2451, 0x909090, 3)
-        else:
-            self.write_memory(self.game_base + 0xa2451, 0x504129, 3)
+        self.hack(self.data.money_not_dec, status)
 
-    def sun_shine_not_dec(self, status=True):
-        if status:
-            self.write_memory(self.game_base + 0x27694, 0x9090, 2)
-        else:
-            self.write_memory(self.game_base + 0x27694, 0xf32b, 2)
+    def sun_not_dec(self, status=True):
+        self.hack(self.data.sun_not_dec, status)
 
     def chocolate_not_dec(self, status=True):
-        if status:
-            self.write_memory(self.game_base + 0x134a17, 0x909090909090, 6)
-            self.write_memory(self.game_base + 0x134995, 0x909090909090, 6)
-        else:
-            self.write_memory(self.game_base + 0x134a17, 0x0000025088ff, 6)
-            self.write_memory(self.game_base + 0x134995, 0x0000025088ff, 6)
+        self.hack(self.data.chocolate_not_dec, status)
 
     def fertilizer_not_dec(self, status=True):
-        if status:
-            self.write_memory(self.game_base + 0x134d7b, 0x909090909090, 6)
-        else:
-            self.write_memory(self.game_base + 0x134d7b, 0x0000022088ff, 6)
+        self.hack(self.data.fertilizer_not_dec, status)
 
     def bug_spray_not_dec(self, status=True):
-        if status:
-            self.write_memory(self.game_base + 0x134e73, 0x909090909090, 6)
-        else:
-            self.write_memory(self.game_base + 0x134e73, 0x0000022488ff, 6)
+        self.hack(self.data.bug_spray_not_dec, status)
 
     def tree_food_not_dec(self, status=True):
-        if status:
-            self.write_memory(self.game_base + 0x3885d, 0x909090909090, 6)
-        else:
-            self.write_memory(self.game_base + 0x3885d, 0x0000025888ff, 6)
+        self.hack(self.data.tree_food_not_dec, status)
 
     def lock_shovel(self, status=True):
         if status:
-            self.write_offset((self.lawn, 0x868, 0x150, 0x30), 6, 4)
-            self.write_memory(self.game_base + 0x1e36e, 0x39, 1)
+            self.write_offset((self.data.lawn, self.data.board, self.data.cursor, self.data.cursor_grab), 6, 4)
         else:
-            self.write_offset((self.lawn, 0x868, 0x150, 0x30), 0, 4)
-            self.write_memory(self.game_base + 0x1e36e, 0x89, 1)
+            self.write_offset((self.data.lawn, self.data.board, self.data.cursor, self.data.cursor_grab), 0, 4)
+        self.hack(self.data.lock_shovel, status)
 
     def unlock_limbo_page(self, status=True):
-        if status:
-            self.write_memory(self.game_base + 0x3935a, 0x38, 1)
-        else:
-            self.write_memory(self.game_base + 0x3935a, 0x88, 1)
+        self.hack(self.data.unlock_limbo_page, status)
 
     def background_running(self, status=True):
-        if status:
-            self.write_memory(self.game_base + 0x224919, 0x00eb, 2)
-        else:
-            self.write_memory(self.game_base + 0x224919, 0x4074, 2)
+        self.hack(self.data.background_running, status)
 
 
 if __name__ == '__main__':

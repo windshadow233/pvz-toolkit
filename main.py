@@ -44,13 +44,13 @@ class PvzTool(QMainWindow, Ui_MainWindow):
 
     def set_status(self):
         self.money_not_dec()
-        self.sun_shine_not_dec()
+        self.sun_not_dec()
         self.chocolate_not_dec()
         self.fertilizer_not_dec()
         self.bug_spray_not_dec()
         self.tree_food_not_dec()
         self.auto_collect()
-        self.plant_instant_cool_down()
+        self.no_cool_down()
         self.vase_transparent()
         self.lock_shovel()
         self.unlock_limbo_page()
@@ -106,10 +106,10 @@ class PvzTool(QMainWindow, Ui_MainWindow):
             return
         self.game.auto_collect(self.checkBox.isChecked())
 
-    def plant_instant_cool_down(self):
+    def no_cool_down(self):
         if not self.game.is_open():
             return
-        self.game.plant_instant_cool_down(self.checkBox_2.isChecked())
+        self.game.no_cool_down(self.checkBox_2.isChecked())
 
     def vase_transparent(self):
         if not self.game.is_open():
@@ -121,10 +121,10 @@ class PvzTool(QMainWindow, Ui_MainWindow):
             return
         self.game.money_not_dec(self.checkBox_4.isChecked())
 
-    def sun_shine_not_dec(self):
+    def sun_not_dec(self):
         if not self.game.is_open():
             return
-        self.game.sun_shine_not_dec(self.checkBox_5.isChecked())
+        self.game.sun_not_dec(self.checkBox_5.isChecked())
 
     def chocolate_not_dec(self):
         if not self.game.is_open():

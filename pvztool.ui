@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>531</width>
-    <height>527</height>
+    <width>440</width>
+    <height>448</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -1151,8 +1151,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>531</width>
-     <height>26</height>
+     <width>440</width>
+     <height>23</height>
     </rect>
    </property>
   </widget>
@@ -1167,7 +1167,7 @@
    <slot>sun_shine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
+     <x>295</x>
      <y>98</y>
     </hint>
     <hint type="destinationlabel">
@@ -1183,8 +1183,8 @@
    <slot>money()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>130</y>
+     <x>295</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>273</x>
@@ -1199,8 +1199,8 @@
    <slot>fertilizer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>258</y>
+     <x>295</x>
+     <y>221</y>
     </hint>
     <hint type="destinationlabel">
      <x>242</x>
@@ -1215,8 +1215,8 @@
    <slot>chocolate()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>306</y>
+     <x>295</x>
+     <y>262</y>
     </hint>
     <hint type="destinationlabel">
      <x>103</x>
@@ -1231,8 +1231,8 @@
    <slot>bug_spray()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>354</y>
+     <x>295</x>
+     <y>303</y>
     </hint>
     <hint type="destinationlabel">
      <x>166</x>
@@ -1247,8 +1247,8 @@
    <slot>tree_height()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>210</y>
+     <x>295</x>
+     <y>180</y>
     </hint>
     <hint type="destinationlabel">
      <x>384</x>
@@ -1263,8 +1263,8 @@
    <slot>tree_food()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>356</x>
-     <y>402</y>
+     <x>295</x>
+     <y>344</y>
     </hint>
     <hint type="destinationlabel">
      <x>304</x>
@@ -1279,27 +1279,11 @@
    <slot>money_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>492</x>
+     <x>415</x>
      <y>102</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
-     <y>319</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_5</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>sun_shine_not_dec()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>502</x>
-     <y>172</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>346</x>
      <y>319</y>
     </hint>
    </hints>
@@ -1311,8 +1295,8 @@
    <slot>chocolate_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>502</x>
-     <y>225</y>
+     <x>415</x>
+     <y>192</y>
     </hint>
     <hint type="destinationlabel">
      <x>290</x>
@@ -1327,8 +1311,8 @@
    <slot>fertilizer_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>502</x>
-     <y>278</y>
+     <x>415</x>
+     <y>237</y>
     </hint>
     <hint type="destinationlabel">
      <x>160</x>
@@ -1343,8 +1327,8 @@
    <slot>bug_spray_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>502</x>
-     <y>331</y>
+     <x>415</x>
+     <y>282</y>
     </hint>
     <hint type="destinationlabel">
      <x>366</x>
@@ -1359,8 +1343,8 @@
    <slot>tree_food_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>502</x>
-     <y>384</y>
+     <x>415</x>
+     <y>327</y>
     </hint>
     <hint type="destinationlabel">
      <x>34</x>
@@ -1375,8 +1359,8 @@
    <slot>auto_collect()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>493</x>
-     <y>116</y>
+     <x>416</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
      <x>130</x>
@@ -1388,11 +1372,11 @@
    <sender>checkBox_2</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>plant_instant_cool_down()</slot>
+   <slot>no_cool_down()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>503</x>
-     <y>215</y>
+     <x>416</x>
+     <y>182</y>
     </hint>
     <hint type="destinationlabel">
      <x>37</x>
@@ -1407,8 +1391,8 @@
    <slot>vase_transparent()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>503</x>
-     <y>290</y>
+     <x>416</x>
+     <y>245</y>
     </hint>
     <hint type="destinationlabel">
      <x>311</x>
@@ -1423,8 +1407,8 @@
    <slot>adventure()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>323</x>
-     <y>100</y>
+     <x>263</x>
+     <y>97</y>
     </hint>
     <hint type="destinationlabel">
      <x>414</x>
@@ -1439,8 +1423,8 @@
    <slot>lock_shovel()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>503</x>
-     <y>365</y>
+     <x>416</x>
+     <y>308</y>
     </hint>
     <hint type="destinationlabel">
      <x>33</x>
@@ -1455,8 +1439,8 @@
    <slot>open_user_file_folder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>503</x>
-     <y>107</y>
+     <x>416</x>
+     <y>97</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1471,8 +1455,8 @@
    <slot>unlock_limbo_page()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>57</x>
-     <y>152</y>
+     <x>69</x>
+     <y>136</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -1503,12 +1487,28 @@
    <slot>open_download_url()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>452</x>
-     <y>447</y>
+     <x>428</x>
+     <y>391</y>
     </hint>
     <hint type="destinationlabel">
      <x>233</x>
-     <y>494</y>
+     <y>447</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_5</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>sun_not_dec()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>322</x>
+     <y>138</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>268</x>
+     <y>389</y>
     </hint>
    </hints>
   </connection>
@@ -1522,10 +1522,10 @@
   <slot>tree_height()</slot>
   <slot>tree_food()</slot>
   <slot>auto_collect()</slot>
-  <slot>plant_instant_cool_down()</slot>
+  <slot>no_cool_down()</slot>
   <slot>vase_transparent()</slot>
   <slot>money_not_dec()</slot>
-  <slot>sun_shine_not_dec()</slot>
+  <slot>sun_not_dec()</slot>
   <slot>chocolate_not_dec()</slot>
   <slot>fertilizer_not_dec()</slot>
   <slot>tree_food_not_dec()</slot>
