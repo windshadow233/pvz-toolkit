@@ -10,15 +10,16 @@ import threading
 from data import Data, Hack
 from run_asm import RunAsm, Reg, wt
 
-kernel = ctypes.windll.kernel32
-
 
 class PvzModifier:
 
     def __init__(self):
-        self.OpenProcess = kernel.OpenProcess
+        self.OpenProcess = ctypes.windll.kernel32.OpenProcess
         self.OpenProcess.argtypes = [wt.DWORD, wt.BOOL, wt.DWORD]
         self.OpenProcess.restype = wt.HANDLE
+
+        self.ReadProcessMemory = ctypes.windll.kernel32.ReadProcessMemory
+        self.WriteProcessMemory = ctypes.windll.kernel32.WriteProcessMemory
 
         self.phand = None
         self.data = Data.pvz_goty_1_1_0_1056_zh_2012_06
@@ -61,13 +62,13 @@ class PvzModifier:
 
     def read_memory(self, address, length):
         addr = ctypes.c_ulong()
-        kernel.ReadProcessMemory(self.phand, address, ctypes.byref(addr), length, None)
+        self.ReadProcessMemory(self.phand, address, ctypes.byref(addr), length, None)
         return addr.value
 
     def write_memory(self, address, data, length=4):
         self.lock.acquire()
         data = ctypes.c_ulong(data)
-        kernel.WriteProcessMemory(self.phand, address, ctypes.byref(data), length, None)
+        self.WriteProcessMemory(self.phand, address, ctypes.byref(data), length, None)
         self.lock.release()
 
     def read_offset(self, offsets, length=4):
