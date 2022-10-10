@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>468</width>
-    <height>454</height>
+    <width>479</width>
+    <height>455</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -901,7 +901,7 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
+        <item row="2" column="0" colspan="2">
          <layout class="QHBoxLayout" name="horizontalLayout_2">
           <item>
            <widget class="QPushButton" name="pushButton_12">
@@ -918,7 +918,7 @@
              </size>
             </property>
             <property name="text">
-             <string>解锁全部游戏</string>
+             <string>🌻解锁全部游戏</string>
             </property>
            </widget>
           </item>
@@ -937,7 +937,7 @@
              </size>
             </property>
             <property name="text">
-             <string>解锁全部成就</string>
+             <string>🏆解锁全部成就</string>
             </property>
            </widget>
           </item>
@@ -2165,7 +2165,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>468</width>
+     <width>479</width>
      <height>26</height>
     </rect>
    </property>
