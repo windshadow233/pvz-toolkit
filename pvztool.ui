@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>394</width>
-    <height>418</height>
+    <width>468</width>
+    <height>454</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -486,7 +486,7 @@
                <string>0~999</string>
               </property>
               <property name="text">
-               <string>999</string>
+               <string>9999</string>
               </property>
               <property name="placeholderText">
                <string/>
@@ -519,7 +519,7 @@
                <string>0~999</string>
               </property>
               <property name="text">
-               <string>999</string>
+               <string>9999</string>
               </property>
               <property name="placeholderText">
                <string/>
@@ -552,7 +552,7 @@
                <string>0~999</string>
               </property>
               <property name="text">
-               <string>999</string>
+               <string>9999</string>
               </property>
               <property name="placeholderText">
                <string/>
@@ -585,7 +585,7 @@
                <string>0~999</string>
               </property>
               <property name="text">
-               <string>999</string>
+               <string>9999</string>
               </property>
               <property name="placeholderText">
                <string/>
@@ -1068,6 +1068,12 @@
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_8">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -1078,6 +1084,19 @@
              <string>跳关</string>
             </property>
            </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
           </item>
          </layout>
         </item>
@@ -1212,7 +1231,7 @@
              </font>
             </property>
             <property name="text">
-             <string>取消冷却时间</string>
+             <string>取消冷却</string>
             </property>
            </widget>
           </item>
@@ -1348,6 +1367,499 @@
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
+        <string>布阵</string>
+       </attribute>
+       <widget class="QWidget" name="">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>414</width>
+          <height>88</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_6">
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_7">
+           <item>
+            <widget class="QComboBox" name="comboBox_2">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="currentIndex">
+              <number>1</number>
+             </property>
+             <item>
+              <property name="text">
+               <string>所有行</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第1行</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第2行</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第3行</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第4行</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第5行</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第6行</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="comboBox_4">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>35</height>
+              </size>
+             </property>
+             <item>
+              <property name="text">
+               <string>0 - 豌豆射手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>1 - 向日葵</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>2 - 樱桃炸弹</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>3 - 坚果</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>4 - 土豆雷</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>5 - 寒冰射手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>6 - 大嘴花</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>7 - 双发射手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>8 - 小喷菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>9 - 阳光菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>10 - 大喷菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>11 - 墓碑吞噬者</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>12 - 魅惑菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>13 - 胆小菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>14 - 寒冰菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>15 - 毁灭菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>16 - 睡莲</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>17 - 窝瓜</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>18 - 三线射手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>19 - 缠绕水草</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>20 - 火爆辣椒</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>21 - 地刺</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>22 - 火炬树桩</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>23 - 高坚果</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>24 - 水兵菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>25 - 路灯花</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>26 - 仙人掌</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>27 - 三叶草</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>28 - 裂荚射手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>29 - 杨桃</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>30 - 南瓜头</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>31 - 磁力菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>32 - 卷心菜投手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>33 - 花盆</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>34 - 玉米投手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>35 - 咖啡豆</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>36 - 大蒜</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>37 - 莴苣</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>38 - 金盏花</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>39 - 西瓜投手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>40 - 机枪射手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>41 - 双生向日葵</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>42 - 忧郁菇</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>43 - 香蒲</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>44 - 冰瓜投手</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>45 - 吸金磁</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>46 - 地刺王</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>47 - 玉米加农炮</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="pushButton_14">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>放置植物</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_21">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="font">
+              <font>
+               <family>Arial</family>
+               <pointsize>12</pointsize>
+               <weight>50</weight>
+               <bold>false</bold>
+              </font>
+             </property>
+             <property name="text">
+              <string>模仿者</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_8">
+           <item>
+            <widget class="QComboBox" name="comboBox_3">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>35</height>
+              </size>
+             </property>
+             <property name="currentIndex">
+              <number>1</number>
+             </property>
+             <item>
+              <property name="text">
+               <string>所有列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第1列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第2列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第3列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第4列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第5列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第6列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第7列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第8列</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>第9列</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+           <item>
+            <spacer name="horizontalSpacer_5">
+             <property name="orientation">
+              <enum>Qt::Horizontal</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>40</width>
+               <height>20</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
         <string>杂项</string>
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
@@ -1361,9 +1873,15 @@
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
             <property name="maximumSize">
              <size>
-              <width>65</width>
+              <width>16777215</width>
               <height>16777215</height>
              </size>
             </property>
@@ -1421,7 +1939,7 @@
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>25</height>
+              <height>35</height>
              </size>
             </property>
             <property name="font">
@@ -1634,7 +2152,7 @@
          </size>
         </property>
         <property name="text">
-         <string>年度加强版下载地址</string>
+         <string>下载地址</string>
         </property>
        </widget>
       </item>
@@ -1647,8 +2165,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>394</width>
-     <height>23</height>
+     <width>468</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
@@ -1663,8 +2181,8 @@
    <slot>sun_shine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>295</x>
-     <y>98</y>
+     <x>293</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
      <x>354</x>
@@ -1679,8 +2197,8 @@
    <slot>money()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>295</x>
-     <y>139</y>
+     <x>293</x>
+     <y>132</y>
     </hint>
     <hint type="destinationlabel">
      <x>273</x>
@@ -1695,8 +2213,8 @@
    <slot>fertilizer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>295</x>
-     <y>221</y>
+     <x>293</x>
+     <y>196</y>
     </hint>
     <hint type="destinationlabel">
      <x>242</x>
@@ -1711,8 +2229,8 @@
    <slot>chocolate()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>381</x>
-     <y>297</y>
+     <x>293</x>
+     <y>228</y>
     </hint>
     <hint type="destinationlabel">
      <x>103</x>
@@ -1727,8 +2245,8 @@
    <slot>bug_spray()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>381</x>
-     <y>343</y>
+     <x>293</x>
+     <y>260</y>
     </hint>
     <hint type="destinationlabel">
      <x>166</x>
@@ -1743,8 +2261,8 @@
    <slot>tree_height()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>295</x>
-     <y>180</y>
+     <x>293</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>384</x>
@@ -1759,8 +2277,8 @@
    <slot>tree_food()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>381</x>
-     <y>389</y>
+     <x>293</x>
+     <y>292</y>
     </hint>
     <hint type="destinationlabel">
      <x>304</x>
@@ -1791,8 +2309,8 @@
    <slot>chocolate_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
-     <y>223</y>
+     <x>440</x>
+     <y>215</y>
     </hint>
     <hint type="destinationlabel">
      <x>290</x>
@@ -1807,8 +2325,8 @@
    <slot>fertilizer_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
-     <y>275</y>
+     <x>440</x>
+     <y>178</y>
     </hint>
     <hint type="destinationlabel">
      <x>160</x>
@@ -1823,8 +2341,8 @@
    <slot>bug_spray_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
-     <y>327</y>
+     <x>440</x>
+     <y>252</y>
     </hint>
     <hint type="destinationlabel">
      <x>366</x>
@@ -1839,8 +2357,8 @@
    <slot>tree_food_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
-     <y>379</y>
+     <x>440</x>
+     <y>289</y>
     </hint>
     <hint type="destinationlabel">
      <x>34</x>
@@ -1855,8 +2373,8 @@
    <slot>auto_collect()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
-     <y>103</y>
+     <x>440</x>
+     <y>187</y>
     </hint>
     <hint type="destinationlabel">
      <x>130</x>
@@ -1871,8 +2389,8 @@
    <slot>no_cool_down()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
-     <y>139</y>
+     <x>440</x>
+     <y>238</y>
     </hint>
     <hint type="destinationlabel">
      <x>37</x>
@@ -1887,8 +2405,8 @@
    <slot>vase_transparent()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
-     <y>175</y>
+     <x>440</x>
+     <y>290</y>
     </hint>
     <hint type="destinationlabel">
      <x>311</x>
@@ -1919,8 +2437,8 @@
    <slot>lock_shovel()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>527</x>
-     <y>211</y>
+     <x>440</x>
+     <y>341</y>
     </hint>
     <hint type="destinationlabel">
      <x>33</x>
@@ -1935,8 +2453,8 @@
    <slot>open_user_file_folder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>468</x>
-     <y>97</y>
+     <x>440</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -1983,8 +2501,8 @@
    <slot>open_download_url()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>542</x>
-     <y>527</y>
+     <x>455</x>
+     <y>405</y>
     </hint>
     <hint type="destinationlabel">
      <x>233</x>
@@ -1999,8 +2517,8 @@
    <slot>sun_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>473</x>
-     <y>159</y>
+     <x>440</x>
+     <y>141</y>
     </hint>
     <hint type="destinationlabel">
      <x>268</x>
@@ -2031,12 +2549,12 @@
    <slot>unlock_game()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>77</x>
-     <y>458</y>
+     <x>91</x>
+     <y>341</y>
     </hint>
     <hint type="destinationlabel">
      <x>70</x>
-     <y>464</y>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
@@ -2047,12 +2565,12 @@
    <slot>unlock_achievements()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>289</x>
-     <y>458</y>
+     <x>229</x>
+     <y>341</y>
     </hint>
     <hint type="destinationlabel">
      <x>245</x>
-     <y>495</y>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
@@ -2063,12 +2581,12 @@
    <slot>plant_invincible()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>38</x>
-     <y>139</y>
+     <x>52</x>
+     <y>187</y>
     </hint>
     <hint type="destinationlabel">
      <x>44</x>
-     <y>498</y>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
@@ -2079,12 +2597,12 @@
    <slot>no_crater()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>162</x>
-     <y>213</y>
+     <x>158</x>
+     <y>290</y>
     </hint>
     <hint type="destinationlabel">
      <x>311</x>
-     <y>504</y>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
@@ -2095,11 +2613,11 @@
    <slot>no_ice_trail()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>307</x>
-     <y>213</y>
+     <x>299</x>
+     <y>290</y>
     </hint>
     <hint type="destinationlabel">
-     <x>484</x>
+     <x>467</x>
      <y>31</y>
     </hint>
    </hints>
@@ -2111,12 +2629,12 @@
    <slot>plant_weak()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>200</x>
-     <y>135</y>
+     <x>299</x>
+     <y>187</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
-     <y>479</y>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
@@ -2127,12 +2645,12 @@
    <slot>overlapping_plant()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>70</x>
-     <y>241</y>
+     <x>84</x>
+     <y>341</y>
     </hint>
     <hint type="destinationlabel">
      <x>207</x>
-     <y>515</y>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
@@ -2143,12 +2661,12 @@
    <slot>mushroom_awake()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>172</x>
-     <y>232</y>
+     <x>299</x>
+     <y>341</y>
     </hint>
     <hint type="destinationlabel">
      <x>117</x>
-     <y>536</y>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
@@ -2159,8 +2677,8 @@
    <slot>zombie_invincible()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>71</x>
-     <y>164</y>
+     <x>85</x>
+     <y>238</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -2175,12 +2693,28 @@
    <slot>zombie_weak()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>173</y>
+     <x>299</x>
+     <y>238</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
      <y>371</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_14</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>put_plant()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>294</x>
+     <y>100</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>459</x>
+     <y>91</y>
     </hint>
    </hints>
   </connection>
@@ -2219,5 +2753,6 @@
   <slot>mushroom_awake()</slot>
   <slot>zombie_invincible()</slot>
   <slot>zombie_weak()</slot>
+  <slot>put_plant()</slot>
  </slots>
 </ui>
