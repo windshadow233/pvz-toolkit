@@ -125,7 +125,7 @@ class RunAsm:
 
     def asm_code_inject(self, phand):
         addr = self.VirtualAllocEx(phand, 0, self.length, 0x00001000, 0x40)
-        if addr is None:
+        if not addr:
             return
         for pos in self.calls_pos:
             call_addr = int.from_bytes(self.code[pos: pos + 4], 'little')
@@ -137,10 +137,8 @@ class RunAsm:
         if ret == 0 or write_size.value != self.length:
             self.VirtualFreeEx(phand, addr, 0, 0x00008000)
             return
-        thread = self.CreateRemoteThread(
-            phand, None, 0, addr, None, 0, None
-        )
-        if thread is None:
+        thread = self.CreateRemoteThread(phand, None, 0, addr, None, 0, None)
+        if not thread:
             self.VirtualFreeEx(phand, addr, 0, 0x00008000)
             return
         self.WaitForSingleObject(thread, -1)
