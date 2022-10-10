@@ -84,7 +84,9 @@ Fields = namedtuple("Fields", field_names=[
     "overlapping_plant_preview",  # 重叠种植预览
     "overlapping_plant_iz",
 
-    "mushrooms_awake",  # 蘑菇不睡觉
+    "mushrooms_awake",  # 蘑菇不睡觉,
+
+    "call_main_menu"
 ])
 
 
@@ -170,5 +172,7 @@ class Data:
         overlapping_plant_preview=[Hack(0x444790, 0x74, 0xeb, 1)],
         overlapping_plant_iz=[Hack(0x435579, 0x84, 0x8d, 1)],
 
-        mushrooms_awake=[Hack(0x0046c1c2, 0x74, 0xeb, 1)]
+        mushrooms_awake=[Hack(0x0046c1c2, 0x74, 0xeb, 1)],
+
+        call_main_menu=0x00455420
     )

@@ -239,7 +239,13 @@ class PvzModifier:
         self.chocolate(999)
 
         if playthrough == 0 and self.game_ui() == 1:
-            pass
+            self.asm.asm_init()
+            self.asm.asm_push_byte(1)
+            self.asm.asm_mov_exx_dword_ptr(Reg.ECX, self.data.lawn)
+            self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ECX, self.data.game_selector)
+            self.asm.asm_call(self.data.call_main_menu)
+            self.asm.asm_ret()
+            self.asm.asm_code_inject(self.phand)
 
     def unlock_achievements(self):
         if not self.has_user():
@@ -296,15 +302,6 @@ class PvzModifier:
         self.hack(self.data.zombie_helm_weak, status)
         self.hack(self.data.zombie_shield_weak, status)
         self.hack(self.data.zombie_can_burn_crumble, status)
-
-    def test(self):
-        self.asm.asm_init()
-        self.asm.asm_push_byte(1)
-        self.asm.asm_mov_exx_dword_ptr(Reg.ESI, self.data.lawn)
-        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ECX, self.data.game_selector)
-        self.asm.asm_call(0x00455420)
-        self.asm.asm_ret()
-        self.asm.asm_code_inject(self.phand)
 
 
 if __name__ == '__main__':

@@ -29,17 +29,8 @@ class RunAsm:
         self.VirtualAllocEx.restype = wt.LPVOID
 
         self.VirtualFreeEx = ctypes.windll.kernel32.VirtualFreeEx
-        self.VirtualFreeEx.argtypes = [
-            wt.HANDLE, wt.LPVOID, ctypes.c_size_t, wt.DWORD
-        ]
-        self.VirtualFreeEx.restype = wt.BOOL
 
         self.WriteProcessMemory = ctypes.windll.kernel32.WriteProcessMemory
-        self.WriteProcessMemory.argtypes = [
-            wt.HANDLE, wt.LPVOID, wt.LPCVOID,
-            ctypes.c_size_t, wt.LPVOID
-        ]
-        self.WriteProcessMemory.restype = wt.BOOL
 
         self.CreateRemoteThread = ctypes.windll.kernel32.CreateRemoteThread
         self.CreateRemoteThread.argtypes = [
@@ -57,23 +48,27 @@ class RunAsm:
         self.CloseHandle.restype = wt.BOOL
 
     def __len__(self):
-        return len(self.code)
+        return self.length
 
     def asm_init(self):
         self.code.clear()
         self.calls_pos.clear()
+        self.length = 0
 
     def asm_add_byte(self, hex_byte: int):
         assert 0 <= hex_byte < 0xff
         self.code.append(hex_byte)
+        self.length += 1
 
     def asm_add_word(self, hex_word: int):
         assert 0 <= hex_word < 0xffff
         self.code.extend(hex_word.to_bytes(2, 'little'))
+        self.length += 2
 
     def asm_add_dword(self, hex_dword: int):
         assert 0 <= hex_dword <= 0xffffffff
         self.code.extend(hex_dword.to_bytes(4, 'little'))
+        self.length += 4
 
     def asm_add_list(self, hex_list):
         self.code.extend(hex_list)
@@ -81,12 +76,12 @@ class RunAsm:
 
     def asm_push_byte(self, hex_byte):
         """push xx"""
-        self.asm_add_byte(0x6a)  # push 1字节立即数 6a xx
+        self.asm_add_byte(0x6a)
         self.asm_add_byte(hex_byte)
 
     def asm_push_dword(self):
         """push xxxxxxxx"""
-        self.asm_add_byte(0x68)  # push 4字节立即数  68 xxxxxxxx
+        self.asm_add_byte(0x68)
 
     def asm_mov_exx(self, reg: Reg, value: int):
         """mov exx, xxxxxxxx"""
@@ -129,27 +124,25 @@ class RunAsm:
         self.asm_add_byte(0xc3)
 
     def asm_code_inject(self, phand):
-        addr = self.VirtualAllocEx(phand, 0, len(self.code), 0x00001000, 0x40)
-        print('[*] VirtualAllocEx() memory at: 0x{:08X}'.format(addr))
+        addr = self.VirtualAllocEx(phand, 0, self.length, 0x00001000, 0x40)
         if addr is None:
             return
         for pos in self.calls_pos:
             call_addr = int.from_bytes(self.code[pos: pos + 4], 'little')
             call_addr -= (addr + pos + 4)
-            self.code[pos: pos + 4] = call_addr.to_bytes(4, 'little')
-        write_size = addr = ctypes.c_int(0)
-        data = self.code.decode("ISO-8859-1")
-        ret = self.WriteProcessMemory(phand, addr, data, len(data), ctypes.byref(write_size))
+            self.code[pos: pos + 4] = call_addr.to_bytes(4, 'little', signed=True)
+        write_size = ctypes.c_int(0)
+        data = ctypes.create_string_buffer(bytes(self.code))
+        ret = self.WriteProcessMemory(phand, addr, ctypes.byref(data), self.length, ctypes.byref(write_size))
         if ret == 0 or write_size.value != self.length:
             self.VirtualFreeEx(phand, addr, 0, 0x00008000)
             return
-        LPTHREAD_START_ROUTINE = ctypes.WINFUNCTYPE(wt.DWORD, wt.LPVOID)
         thread = self.CreateRemoteThread(
-            phand, None, 0, LPTHREAD_START_ROUTINE(addr), None, 0, None
+            phand, None, 0, addr, None, 0, None
         )
         if thread is None:
             self.VirtualFreeEx(phand, addr, 0, 0x00008000)
             return
-        self.WaitForSingleObject(ctypes.c_int(thread), ctypes.c_int(-1))
+        self.WaitForSingleObject(thread, -1)
         self.CloseHandle(thread)
         self.VirtualFreeEx(phand, addr, 0, 0x00008000)
