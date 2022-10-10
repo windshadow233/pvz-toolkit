@@ -79,9 +79,10 @@ class RunAsm:
         self.asm_add_byte(0x6a)
         self.asm_add_byte(hex_byte)
 
-    def asm_push_dword(self):
+    def asm_push_dword(self, hex_dword):
         """push xxxxxxxx"""
         self.asm_add_byte(0x68)
+        self.asm_add_dword(hex_dword)
 
     def asm_mov_exx(self, reg: Reg, value: int):
         """mov exx, xxxxxxxx"""
@@ -122,6 +123,10 @@ class RunAsm:
 
     def asm_ret(self):
         self.asm_add_byte(0xc3)
+
+    def write_memory(self, phand, address, data, length=4):
+        data = ctypes.c_ulong(data)
+        self.WriteProcessMemory(phand, address, ctypes.byref(data), length, None)
 
     def asm_code_inject(self, phand):
         addr = self.VirtualAllocEx(phand, 0, self.length, 0x00001000, 0x40)
