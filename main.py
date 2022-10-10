@@ -55,6 +55,14 @@ class PvzTool(QMainWindow, Ui_MainWindow):
         self.lock_shovel()
         self.unlock_limbo_page()
         self.background_running()
+        self.plant_invincible()
+        self.plant_weak()
+        self.no_crater()
+        self.no_ice_trail()
+        self.overlapping_plant()
+        self.mushroom_awake()
+        self.zombie_invincible()
+        self.zombie_weak()
 
     def open_download_url(self):
         QDesktopServices.openUrl(QUrl("https://pan.baidu.com/s/14OCAGDsNGcgynJXGK4NPfQ?pwd=fnpq"))
@@ -170,6 +178,74 @@ class PvzTool(QMainWindow, Ui_MainWindow):
 
     def open_user_file_folder(self):
         os.startfile("C:\\ProgramData\\PopCap Games\\PlantsVsZombies\\userdata")
+
+    def set_speed_rate(self):
+        if not self.game.is_open():
+            return
+        rate = float(self.comboBox.currentText()[:-1])
+        self.game.set_speed_rate(rate)
+
+    def unlock_game(self):
+        if not self.game.is_open():
+            return
+        self.game.unlock_game()
+
+    def unlock_achievements(self):
+        if not self.game.is_open():
+            return
+        self.game.unlock_achievements()
+
+    def plant_invincible(self):
+        if not self.game.is_open():
+            return
+        if self.checkBox_16.isChecked():
+            self.checkBox_16.setChecked(False)
+            self.game.plant_weak(False)
+        self.game.plant_invincible(self.checkBox_13.isChecked())
+
+    def no_crater(self):
+        if not self.game.is_open():
+            return
+        self.game.no_crater(self.checkBox_14.isChecked())
+
+    def no_ice_trail(self):
+        if not self.game.is_open():
+            return
+        self.game.no_ice_trail(self.checkBox_15.isChecked())
+
+    def plant_weak(self):
+        if not self.game.is_open():
+            return
+        if self.checkBox_13.isChecked():
+            self.checkBox_13.setChecked(False)
+            self.game.plant_invincible(False)
+        self.game.plant_weak(self.checkBox_16.isChecked())
+
+    def overlapping_plant(self):
+        if not self.game.is_open():
+            return
+        self.game.overlapping_plant(self.checkBox_17.isChecked())
+
+    def mushroom_awake(self):
+        if not self.game.is_open():
+            return
+        self.game.mushroom_awake(self.checkBox_18.isChecked())
+
+    def zombie_invincible(self):
+        if not self.game.is_open():
+            return
+        if self.checkBox_20.isChecked():
+            self.checkBox_20.setChecked(False)
+            self.game.zombie_weak(False)
+        self.game.zombie_invincible(self.checkBox_19.isChecked())
+
+    def zombie_weak(self):
+        if not self.game.is_open():
+            return
+        if self.checkBox_19.isChecked():
+            self.checkBox_19.setChecked(False)
+            self.game.zombie_invincible(False)
+        self.game.zombie_weak(self.checkBox_20.isChecked())
 
 
 if __name__ == '__main__':
