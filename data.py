@@ -123,7 +123,7 @@ class Data:
 
         vase_transparent=[Hack(0x459c1a, 0x047ec085, 0x0033b866, 4)],
         no_cool_down=[Hack(0x49ce02, 0x167e, 0x9090, 2)],
-        auto_collect=[Hack(0x43cc72, 0x0975, 0x09eb, 2)],
+        auto_collect=[Hack(0x43cc72, 0x75, 0xeb, 1)],
         money_not_dec=[Hack(0x4a2451, 0x504129, 0x909090, 3)],
         sun_not_dec=[Hack(0x427694, 0xf32b, 0x9090, 2)],
         chocolate_not_dec=[Hack(0x534a17, 0x0000025088ff, 0x909090909090, 6), Hack(0x534995, 0x0000025088ff, 0x909090909090, 6)],
