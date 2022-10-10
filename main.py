@@ -247,6 +247,15 @@ class PvzTool(QMainWindow, Ui_MainWindow):
             self.game.zombie_invincible(False)
         self.game.zombie_weak(self.checkBox_20.isChecked())
 
+    def put_plant(self):
+        if not self.game.is_open():
+            return
+        row = self.comboBox_2.currentIndex() - 1
+        col = self.comboBox_3.currentIndex() - 1
+        plant_type = self.comboBox_4.currentIndex()
+        imitator = self.checkBox_21.isChecked()
+        self.game.put_plant(plant_type, row, col, imitator)
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
