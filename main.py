@@ -258,7 +258,13 @@ class PvzTool(QMainWindow, Ui_MainWindow):
 
     def set_lawn_mower(self):
         if not self.game.is_open():
+            self.comboBox_5.setCurrentIndex(0)
             return
+        index = self.comboBox_5.currentIndex()
+        if index == 0:
+            return
+        self.game.set_lawn_mower(self.comboBox_5.currentIndex() - 1)
+        self.comboBox_5.setCurrentIndex(0)
 
 
 if __name__ == '__main__':
