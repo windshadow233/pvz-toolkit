@@ -256,6 +256,10 @@ class PvzTool(QMainWindow, Ui_MainWindow):
         imitator = self.checkBox_21.isChecked()
         self.game.put_plant(plant_type, row, col, imitator)
 
+    def set_lawn_mower(self):
+        if not self.game.is_open():
+            return
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

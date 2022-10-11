@@ -403,6 +403,42 @@ class PvzModifier:
         self.asm.asm_code_inject(self.phand)
         self.lock.release()
 
+    def set_lawn_mower(self, status):
+        ui = self.game_ui()
+        if ui != 3:
+            return
+        lawn, board, lawn_mower_count_max = self.data.recursively_get_attrs(['lawn', 'board', 'lawn_mower_count_max'])
+        lawn_mower = board.lawn_mowers
+        lawn_mower_dead = lawn_mower.dead
+        lawn_mower_count_max = self.read_offset((lawn, board, lawn_mower_count_max))
+        lawn_mowers_addr = self.read_offset((lawn, board, lawn_mower))
+        lawn_mower_size = 0x48
+        if status == 2:
+            self.hack(self.data.init_lawn_mowers, True)
+        self.asm.asm_init()
+        for i in range(lawn_mower_count_max):
+            addr = lawn_mowers_addr + i * lawn_mower_size
+            is_dead = self.read_memory(addr + lawn_mower_dead, 1)
+            if is_dead:
+                continue
+            if status == 0:
+                self.asm.asm_mov_exx(Reg.ESI, addr)
+                self.asm.asm_call(self.data.call_start_lawn_mower)
+            else:
+                self.asm.asm_mov_exx(Reg.EAX, addr)
+                self.asm.asm_call(self.data.call_delete_lawn_mower)
+        if status == 2:
+            self.asm.asm_mov_exx_dword_ptr(Reg.EAX, lawn)
+            self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, board)
+            self.asm.asm_push_exx(Reg.EAX)
+            self.asm.asm_call(self.data.call_restore_lawn_mower)
+        self.asm.asm_ret()
+        self.lock.acquire()
+        self.asm.asm_code_inject(self.phand)
+        self.lock.release()
+        if status == 2:
+            self.hack(self.data.init_lawn_mowers, False)
+
 
 if __name__ == '__main__':
     game = PvzModifier()

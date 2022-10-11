@@ -34,8 +34,15 @@ class Data:
                 sun=Offset(0x5578),
                 adventure_level=Offset(0x5568),
                 cursor=Offset(0x150, cursor_grab=0x30),
-                plant_count_max=Offset(0xc8),
-                plant_count=Offset(0xd4),
+                zombies=Offset(
+                    0xa8,
+                    row=0x1c,
+                    type=0x24,
+                    status=Offset(0x28),
+                    speed=Offset(0x34)
+                ),
+                zombie_count_max=Offset(0xac),
+                zombie_count=Offset(0xb8),
                 plants=Offset(
                     0xc4,
                     row=0x1c,
@@ -47,8 +54,16 @@ class Data:
                     asleep=0x143,
                     count_max=0xc8
                 ),
-                zombie_count=Offset(0xb8),
-                zombies=Offset(0xa8)
+                plant_count_max=Offset(0xc8),
+                plant_count=Offset(0xd4),
+                lawn_mowers=Offset(
+                    0x118,
+                    row=0x14,
+                    status=0x2c,
+                    dead=0x30
+                ),
+                lawn_mower_count_max=0x11c,
+                lawn_mower_count=0x128
             ),
             user_data=Offset(
                 0x950,
@@ -120,7 +135,12 @@ class Data:
         overlapping_plant_iz=[Hack(0x435579, 0x84, 0x8d, 1)],
 
         mushrooms_awake=[Hack(0x0046c1c2, 0x74, 0xeb, 1)],
+        init_lawn_mowers=[Hack(0x417a57, 0x00, 0x01, 1),
+                          Hack(0x465f62, 0x7a78, 0x7894, 2)],
 
         call_main_menu=0x00455420,
-        call_set_plant_sleeping=0x46cb90
+        call_set_plant_sleeping=0x46cb90,
+        call_start_lawn_mower=0x466cf0,
+        call_restore_lawn_mower=0x4179b0,
+        call_delete_lawn_mower=0x466c60
     )
