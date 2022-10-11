@@ -962,404 +962,408 @@
        <attribute name="title">
         <string>辅助功能</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QGridLayout" name="gridLayout_6">
+        <item row="0" column="0">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QLabel" name="label_11">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>冒险模式</string>
-            </property>
-           </widget>
+           <layout class="QHBoxLayout" name="horizontalLayout">
+            <item>
+             <widget class="QLabel" name="label_11">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>11</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>冒险模式</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>5</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label_10">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>26</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>-</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="margin">
+               <number>0</number>
+              </property>
+              <property name="indent">
+               <number>-1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="spinBox_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="minimum">
+               <number>1</number>
+              </property>
+              <property name="maximum">
+               <number>10</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_8">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>25</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>跳关</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_4">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
           </item>
           <item>
-           <widget class="QSpinBox" name="spinBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>5</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="label_10">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>26</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>-</string>
-            </property>
-            <property name="alignment">
-             <set>Qt::AlignCenter</set>
-            </property>
-            <property name="margin">
-             <number>0</number>
-            </property>
-            <property name="indent">
-             <number>-1</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSpinBox" name="spinBox_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="minimum">
-             <number>1</number>
-            </property>
-            <property name="maximum">
-             <number>10</number>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_8">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>25</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>跳关</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_4">
+           <widget class="Line" name="line_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <widget class="Line" name="line_2">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <layout class="QGridLayout" name="gridLayout">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="checkBox_13">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>植物不死</string>
-            </property>
            </widget>
           </item>
-          <item row="0" column="1">
-           <widget class="QCheckBox" name="checkBox_16">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>植物虚弱</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QCheckBox" name="checkBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>自动收集</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="checkBox_19">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>僵尸不死</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="checkBox_20">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>僵尸虚弱</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QCheckBox" name="checkBox_2">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>取消冷却</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="checkBox_14">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>核弹无坑</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QCheckBox" name="checkBox_15">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>冰车无痕</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QCheckBox" name="checkBox_3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>花瓶透视</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="checkBox_17">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>重叠种植</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="1">
-           <widget class="QCheckBox" name="checkBox_18">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>蘑菇不睡</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <widget class="QCheckBox" name="checkBox_10">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>连续铁铲</string>
-            </property>
-           </widget>
+          <item>
+           <layout class="QGridLayout" name="gridLayout">
+            <item row="0" column="0">
+             <widget class="QCheckBox" name="checkBox_13">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>植物不死</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="1">
+             <widget class="QCheckBox" name="checkBox_16">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>植物虚弱</string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QCheckBox" name="checkBox">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>自动收集</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QCheckBox" name="checkBox_19">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>僵尸不死</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QCheckBox" name="checkBox_20">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>僵尸虚弱</string>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="2">
+             <widget class="QCheckBox" name="checkBox_2">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>取消冷却</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QCheckBox" name="checkBox_14">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>核弹无坑</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QCheckBox" name="checkBox_15">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>冰车无痕</string>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="2">
+             <widget class="QCheckBox" name="checkBox_3">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>花瓶透视</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QCheckBox" name="checkBox_17">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>重叠种植</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="1">
+             <widget class="QCheckBox" name="checkBox_18">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>蘑菇不睡</string>
+              </property>
+             </widget>
+            </item>
+            <item row="3" column="2">
+             <widget class="QCheckBox" name="checkBox_10">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>12</pointsize>
+                <weight>50</weight>
+                <bold>false</bold>
+               </font>
+              </property>
+              <property name="text">
+               <string>连续铁铲</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </item>
          </layout>
         </item>
@@ -1385,7 +1389,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>35</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -1445,7 +1449,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>35</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -1453,6 +1457,9 @@
                 <width>16777215</width>
                 <height>35</height>
                </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true"/>
               </property>
               <item>
                <property name="text">
@@ -1707,7 +1714,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>35</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -1732,7 +1739,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>35</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -1769,7 +1776,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>35</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -1846,6 +1853,44 @@
               </property>
              </spacer>
             </item>
+            <item>
+             <widget class="QComboBox" name="comboBox_5">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="font">
+               <font>
+                <family>Arial</family>
+                <pointsize>9</pointsize>
+                <weight>75</weight>
+                <bold>true</bold>
+               </font>
+              </property>
+              <item>
+               <property name="text">
+                <string>小推车</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>🏁启动</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>🆑移除</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>🔃重置</string>
+               </property>
+              </item>
+             </widget>
+            </item>
            </layout>
           </item>
           <item>
@@ -1885,7 +1930,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>35</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -1948,7 +1993,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>35</height>
+                <height>30</height>
                </size>
               </property>
               <property name="font">
@@ -1982,7 +2027,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>35</height>
+                <height>30</height>
                </size>
               </property>
               <property name="text">
@@ -2192,8 +2237,8 @@
    <slot>sun_shine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>100</y>
+     <x>253</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>354</x>
@@ -2208,8 +2253,8 @@
    <slot>money()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>132</y>
+     <x>253</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>273</x>
@@ -2224,8 +2269,8 @@
    <slot>fertilizer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>196</y>
+     <x>253</x>
+     <y>184</y>
     </hint>
     <hint type="destinationlabel">
      <x>242</x>
@@ -2240,8 +2285,8 @@
    <slot>chocolate()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>228</y>
+     <x>253</x>
+     <y>215</y>
     </hint>
     <hint type="destinationlabel">
      <x>103</x>
@@ -2256,8 +2301,8 @@
    <slot>bug_spray()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>260</y>
+     <x>253</x>
+     <y>246</y>
     </hint>
     <hint type="destinationlabel">
      <x>166</x>
@@ -2272,8 +2317,8 @@
    <slot>tree_height()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>164</y>
+     <x>253</x>
+     <y>153</y>
     </hint>
     <hint type="destinationlabel">
      <x>384</x>
@@ -2288,8 +2333,8 @@
    <slot>tree_food()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>293</x>
-     <y>292</y>
+     <x>253</x>
+     <y>277</y>
     </hint>
     <hint type="destinationlabel">
      <x>304</x>
@@ -2304,8 +2349,8 @@
    <slot>money_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>415</x>
-     <y>102</y>
+     <x>374</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>399</x>
@@ -2320,8 +2365,8 @@
    <slot>chocolate_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>215</y>
+     <x>374</x>
+     <y>199</y>
     </hint>
     <hint type="destinationlabel">
      <x>290</x>
@@ -2336,8 +2381,8 @@
    <slot>fertilizer_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>178</y>
+     <x>374</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>160</x>
@@ -2352,8 +2397,8 @@
    <slot>bug_spray_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>252</y>
+     <x>374</x>
+     <y>234</y>
     </hint>
     <hint type="destinationlabel">
      <x>366</x>
@@ -2368,8 +2413,8 @@
    <slot>tree_food_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>289</y>
+     <x>374</x>
+     <y>269</y>
     </hint>
     <hint type="destinationlabel">
      <x>34</x>
@@ -2384,8 +2429,8 @@
    <slot>auto_collect()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>187</y>
+     <x>373</x>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
      <x>130</x>
@@ -2400,8 +2445,8 @@
    <slot>no_cool_down()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>238</y>
+     <x>373</x>
+     <y>219</y>
     </hint>
     <hint type="destinationlabel">
      <x>37</x>
@@ -2416,8 +2461,8 @@
    <slot>vase_transparent()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>290</y>
+     <x>373</x>
+     <y>269</y>
     </hint>
     <hint type="destinationlabel">
      <x>311</x>
@@ -2432,8 +2477,8 @@
    <slot>adventure()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>263</x>
-     <y>97</y>
+     <x>255</x>
+     <y>98</y>
     </hint>
     <hint type="destinationlabel">
      <x>414</x>
@@ -2448,8 +2493,8 @@
    <slot>lock_shovel()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>341</y>
+     <x>373</x>
+     <y>320</y>
     </hint>
     <hint type="destinationlabel">
      <x>33</x>
@@ -2464,8 +2509,8 @@
    <slot>open_user_file_folder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>109</y>
+     <x>373</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -2480,8 +2525,8 @@
    <slot>unlock_limbo_page()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>267</x>
-     <y>142</y>
+     <x>248</x>
+     <y>144</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -2496,7 +2541,7 @@
    <slot>background_running()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>388</x>
+     <x>373</x>
      <y>144</y>
     </hint>
     <hint type="destinationlabel">
@@ -2512,8 +2557,8 @@
    <slot>open_download_url()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>455</x>
-     <y>405</y>
+     <x>387</x>
+     <y>378</y>
     </hint>
     <hint type="destinationlabel">
      <x>233</x>
@@ -2528,8 +2573,8 @@
    <slot>sun_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>440</x>
-     <y>141</y>
+     <x>374</x>
+     <y>129</y>
     </hint>
     <hint type="destinationlabel">
      <x>268</x>
@@ -2560,8 +2605,8 @@
    <slot>unlock_game()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>91</x>
-     <y>341</y>
+     <x>103</x>
+     <y>321</y>
     </hint>
     <hint type="destinationlabel">
      <x>70</x>
@@ -2576,8 +2621,8 @@
    <slot>unlock_achievements()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>229</x>
-     <y>341</y>
+     <x>217</x>
+     <y>321</y>
     </hint>
     <hint type="destinationlabel">
      <x>245</x>
@@ -2592,8 +2637,8 @@
    <slot>plant_invincible()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>52</x>
-     <y>187</y>
+     <x>65</x>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
      <x>44</x>
@@ -2608,8 +2653,8 @@
    <slot>no_crater()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>290</y>
+     <x>134</x>
+     <y>269</y>
     </hint>
     <hint type="destinationlabel">
      <x>311</x>
@@ -2624,8 +2669,8 @@
    <slot>no_ice_trail()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>299</x>
-     <y>290</y>
+     <x>254</x>
+     <y>269</y>
     </hint>
     <hint type="destinationlabel">
      <x>467</x>
@@ -2640,8 +2685,8 @@
    <slot>plant_weak()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>299</x>
-     <y>187</y>
+     <x>254</x>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -2656,8 +2701,8 @@
    <slot>overlapping_plant()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>341</y>
+     <x>97</x>
+     <y>320</y>
     </hint>
     <hint type="destinationlabel">
      <x>207</x>
@@ -2672,8 +2717,8 @@
    <slot>mushroom_awake()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>299</x>
-     <y>341</y>
+     <x>254</x>
+     <y>320</y>
     </hint>
     <hint type="destinationlabel">
      <x>117</x>
@@ -2688,8 +2733,8 @@
    <slot>zombie_invincible()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>85</x>
-     <y>238</y>
+     <x>98</x>
+     <y>219</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -2704,8 +2749,8 @@
    <slot>zombie_weak()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>299</x>
-     <y>238</y>
+     <x>254</x>
+     <y>219</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -2720,12 +2765,28 @@
    <slot>put_plant()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>294</x>
-     <y>100</y>
+     <x>286</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
      <x>459</x>
      <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_5</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_lawn_mower()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>39</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>15</x>
+     <y>366</y>
     </hint>
    </hints>
   </connection>
@@ -2765,5 +2826,6 @@
   <slot>zombie_invincible()</slot>
   <slot>zombie_weak()</slot>
   <slot>put_plant()</slot>
+  <slot>set_lawn_mower()</slot>
  </slots>
 </ui>
