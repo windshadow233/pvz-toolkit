@@ -25,24 +25,24 @@ class Data:
         0,
         lawn=Offset(
             0x755e0c,
-            frame_duration=Offset(0x4b4),
-            game_selector=Offset(0x870),
-            game_ui=Offset(0x920),
+            frame_duration=0x4b4,
+            game_selector=0x870,
+            game_ui=0x920,
             board=Offset(
                 0x868,
-                scene=Offset(0x5564),
-                sun=Offset(0x5578),
-                adventure_level=Offset(0x5568),
+                scene=0x5564,
+                sun=0x5578,
+                adventure_level=0x5568,
                 cursor=Offset(0x150, cursor_grab=0x30),
                 zombies=Offset(
                     0xa8,
                     row=0x1c,
                     type=0x24,
-                    status=Offset(0x28),
-                    speed=Offset(0x34)
+                    status=0x28,
+                    speed=0x34
                 ),
-                zombie_count_max=Offset(0xac),
-                zombie_count=Offset(0xb8),
+                zombie_count_max=0xac,
+                zombie_count=0xb8,
                 plants=Offset(
                     0xc4,
                     row=0x1c,
@@ -51,11 +51,10 @@ class Data:
                     imitator=0x138,
                     dead=0x141,
                     squished=0x142,
-                    asleep=0x143,
-                    count_max=0xc8
+                    asleep=0x143
                 ),
-                plant_count_max=Offset(0xc8),
-                plant_count=Offset(0xd4),
+                plant_count_max=0xc8,
+                plant_count=0xd4,
                 lawn_mowers=Offset(
                     0x118,
                     row=0x14,
@@ -67,19 +66,19 @@ class Data:
             ),
             user_data=Offset(
                 0x950,
-                achievement=Offset(0x24),
-                level=Offset(0x4c),
-                money=Offset(0x50),
-                playthrough=Offset(0x54),
-                survival=Offset(0x58),
-                mini_game=Offset(0x94),
-                tree_height=Offset(0x11c),
-                puzzle=Offset(0x120),
-                twiddydinky=Offset(0x1e8),
-                fertilizer=Offset(0x220),
-                bug_spray=Offset(0x224),
-                chocolate=Offset(0x250),
-                tree_food=Offset(0x258)
+                achievement=0x24,
+                level=0x4c,
+                money=0x50,
+                playthrough=0x54,
+                survival=0x58,
+                mini_game=0x94,
+                tree_height=0x11c,
+                puzzle=0x120,
+                twiddydinky=0x1e8,
+                fertilizer=0x220,
+                bug_spray=0x224,
+                chocolate=0x250,
+                tree_food=0x258
             )
         ),
         vase_transparent=[Hack(0x459c1a, 0x047ec085, 0x0033b866, 4)],
@@ -138,9 +137,10 @@ class Data:
         init_lawn_mowers=[Hack(0x417a57, 0x00, 0x01, 1),
                           Hack(0x465f62, 0x7a78, 0x7894, 2)],
 
-        call_main_menu=0x00455420,
+        call_sync_profile=0x455420,
         call_set_plant_sleeping=0x46cb90,
         call_start_lawn_mower=0x466cf0,
         call_restore_lawn_mower=0x4179b0,
-        call_delete_lawn_mower=0x466c60
+        call_delete_lawn_mower=0x466c60,
+        call_put_zombie_in_row=0x419a60
     )
