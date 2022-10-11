@@ -21,6 +21,10 @@ class PvzTool(QMainWindow, Ui_MainWindow):
         self.lineEdit_6.setValidator(QIntValidator(0, 9999))
         self.lineEdit_7.setValidator(QIntValidator(0, 9999))
         self.setFixedSize(self.width(), self.height())
+        comboboxes = filter(lambda x: 'comboBox' in x[0], self.__dict__.items())
+        for _, box in comboboxes:
+            box.setStyleSheet("QAbstractItemView::item {height: 40px;}")
+            box.setView(QListView())
         self.game = PvzModifier()
 
         def check_game_status():
@@ -257,14 +261,22 @@ class PvzTool(QMainWindow, Ui_MainWindow):
         self.game.put_plant(plant_type, row, col, imitator)
 
     def set_lawn_mower(self):
-        if not self.game.is_open():
-            self.comboBox_5.setCurrentIndex(0)
-            return
         index = self.comboBox_5.currentIndex()
         if index == 0:
             return
+        if not self.game.is_open():
+            self.comboBox_5.setCurrentIndex(0)
+            return
         self.game.set_lawn_mower(self.comboBox_5.currentIndex() - 1)
         self.comboBox_5.setCurrentIndex(0)
+
+    def put_zombie(self):
+        if not self.game.is_open():
+            return
+        row = self.comboBox_2.currentIndex() - 1
+        col = self.comboBox_3.currentIndex() - 1
+        zombie_type = self.comboBox_6.currentIndex()
+        self.game.put_zombie(zombie_type, row, col)
 
 
 if __name__ == '__main__':

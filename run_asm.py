@@ -15,11 +15,12 @@ class Reg(Enum):
 
 
 class RunAsm:
-    def __init__(self):
+    def __init__(self, lock):
         self.page = 256
         self.code = bytearray()
         self.calls_pos = []
         self.length = 0
+        self.lock = lock
 
         self.VirtualAllocEx = ctypes.windll.kernel32.VirtualAllocEx
         self.VirtualAllocEx.argtypes = [
@@ -90,7 +91,7 @@ class RunAsm:
         self.asm_add_dword(value)
 
     def asm_mov_exx_dword_ptr(self, reg: Reg, value: int):
-        """mov exx, dword ptr ds:[xxxxxxxx]"""
+        """mov exx, dword ptr [xxxxxxxx]"""
         self.asm_add_byte(0x8b)
         self.asm_add_byte(0x05 + reg.value * 8)
         self.asm_add_dword(value)
@@ -138,7 +139,9 @@ class RunAsm:
             self.code[pos: pos + 4] = call_addr.to_bytes(4, 'little', signed=True)
         write_size = ctypes.c_int(0)
         data = ctypes.create_string_buffer(bytes(self.code))
+        self.lock.acquire()
         ret = self.WriteProcessMemory(phand, addr, ctypes.byref(data), self.length, ctypes.byref(write_size))
+        self.lock.release()
         if ret == 0 or write_size.value != self.length:
             self.VirtualFreeEx(phand, addr, 0, 0x00008000)
             return

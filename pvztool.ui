@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>398</width>
-    <height>418</height>
+    <width>495</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -64,7 +64,7 @@
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="iconSize">
        <size>
@@ -110,7 +110,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -149,7 +149,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -185,7 +185,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -221,7 +221,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -260,7 +260,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -296,7 +296,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -332,7 +332,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -366,12 +366,12 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -399,12 +399,12 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -432,12 +432,12 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -465,12 +465,12 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -498,12 +498,12 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -531,12 +531,12 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -564,12 +564,12 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>100</width>
+                <width>16777215</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -607,7 +607,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -635,7 +635,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -663,7 +663,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -691,7 +691,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -719,7 +719,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -747,7 +747,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -775,7 +775,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>0</height>
+                <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
@@ -999,7 +999,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="minimum">
@@ -1057,7 +1057,7 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="minimum">
@@ -1079,11 +1079,11 @@
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>25</height>
+                <height>30</height>
                </size>
               </property>
               <property name="text">
-               <string>跳关</string>
+               <string>🎏跳关</string>
               </property>
              </widget>
             </item>
@@ -1448,7 +1448,7 @@
               </property>
               <property name="minimumSize">
                <size>
-                <width>0</width>
+                <width>165</width>
                 <height>30</height>
                </size>
               </property>
@@ -1841,17 +1841,198 @@
              </widget>
             </item>
             <item>
-             <spacer name="horizontalSpacer_5">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+             <widget class="QComboBox" name="comboBox_6">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
               </property>
-              <property name="sizeHint" stdset="0">
+              <property name="minimumSize">
                <size>
-                <width>40</width>
-                <height>20</height>
+                <width>165</width>
+                <height>30</height>
                </size>
               </property>
-             </spacer>
+              <item>
+               <property name="text">
+                <string>0 - 普通僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>1 - 旗帜僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>2 - 路障僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>3 - 撑杆跳僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>4 - 铁桶僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>5 - 读报僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>6 - 铁栅门僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>7 - 橄榄球僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>8 - 舞王僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>9 - 伴舞僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>10 - 鸭子救生圈僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>11 - 潜水僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>12 - 冰车僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>13 - 雪橇小队僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>14 - 海豚僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>15 - 小丑僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>16 - 气球僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>17 - 矿工僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>18 - 跳跳僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>19 - 雪人僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>20 - 蹦极僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>21 - 梯子僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>22 - 投石车僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>23 - 巨人僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>24 - 小鬼僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>25 - 僵王博士</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>26 - 豌豆射手僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>27 - 坚果僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>28 - 火爆辣椒僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>29 - 机枪射手僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>30 - 窝瓜僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>31 - 高坚果僵尸</string>
+               </property>
+              </item>
+              <item>
+               <property name="text">
+                <string>32 - 红眼巨人僵尸</string>
+               </property>
+              </item>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="pushButton_15">
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>放置僵尸</string>
+              </property>
+             </widget>
             </item>
             <item>
              <widget class="QComboBox" name="comboBox_5">
@@ -1886,7 +2067,7 @@
               </item>
               <item>
                <property name="text">
-                <string>🔃重置</string>
+                <string>🔄重置</string>
                </property>
               </item>
              </widget>
@@ -2005,7 +2186,7 @@
                </font>
               </property>
               <property name="text">
-               <string>变速</string>
+               <string>🚀变速</string>
               </property>
              </widget>
             </item>
@@ -2221,8 +2402,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>398</width>
-     <height>23</height>
+     <width>495</width>
+     <height>26</height>
     </rect>
    </property>
   </widget>
@@ -2237,8 +2418,8 @@
    <slot>sun_shine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>91</y>
+     <x>352</x>
+     <y>107</y>
     </hint>
     <hint type="destinationlabel">
      <x>354</x>
@@ -2253,8 +2434,8 @@
    <slot>money()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>122</y>
+     <x>352</x>
+     <y>144</y>
     </hint>
     <hint type="destinationlabel">
      <x>273</x>
@@ -2269,8 +2450,8 @@
    <slot>fertilizer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>184</y>
+     <x>352</x>
+     <y>218</y>
     </hint>
     <hint type="destinationlabel">
      <x>242</x>
@@ -2285,8 +2466,8 @@
    <slot>chocolate()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>215</y>
+     <x>352</x>
+     <y>255</y>
     </hint>
     <hint type="destinationlabel">
      <x>103</x>
@@ -2301,8 +2482,8 @@
    <slot>bug_spray()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>246</y>
+     <x>352</x>
+     <y>292</y>
     </hint>
     <hint type="destinationlabel">
      <x>166</x>
@@ -2317,8 +2498,8 @@
    <slot>tree_height()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>153</y>
+     <x>352</x>
+     <y>181</y>
     </hint>
     <hint type="destinationlabel">
      <x>384</x>
@@ -2333,8 +2514,8 @@
    <slot>tree_food()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>253</x>
-     <y>277</y>
+     <x>352</x>
+     <y>329</y>
     </hint>
     <hint type="destinationlabel">
      <x>304</x>
@@ -2365,8 +2546,8 @@
    <slot>chocolate_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>199</y>
+     <x>499</x>
+     <y>235</y>
     </hint>
     <hint type="destinationlabel">
      <x>290</x>
@@ -2381,8 +2562,8 @@
    <slot>fertilizer_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>164</y>
+     <x>499</x>
+     <y>193</y>
     </hint>
     <hint type="destinationlabel">
      <x>160</x>
@@ -2397,8 +2578,8 @@
    <slot>bug_spray_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>234</y>
+     <x>499</x>
+     <y>277</y>
     </hint>
     <hint type="destinationlabel">
      <x>366</x>
@@ -2413,8 +2594,8 @@
    <slot>tree_food_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>374</x>
-     <y>269</y>
+     <x>499</x>
+     <y>319</y>
     </hint>
     <hint type="destinationlabel">
      <x>34</x>
@@ -2493,8 +2674,8 @@
    <slot>lock_shovel()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>373</x>
-     <y>320</y>
+     <x>498</x>
+     <y>376</y>
     </hint>
     <hint type="destinationlabel">
      <x>33</x>
@@ -2509,8 +2690,8 @@
    <slot>open_user_file_folder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>373</x>
-     <y>96</y>
+     <x>498</x>
+     <y>105</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -2557,8 +2738,8 @@
    <slot>open_download_url()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>387</x>
-     <y>378</y>
+     <x>514</x>
+     <y>441</y>
     </hint>
     <hint type="destinationlabel">
      <x>233</x>
@@ -2605,8 +2786,8 @@
    <slot>unlock_game()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>321</y>
+     <x>117</x>
+     <y>377</y>
     </hint>
     <hint type="destinationlabel">
      <x>70</x>
@@ -2621,8 +2802,8 @@
    <slot>unlock_achievements()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>217</x>
-     <y>321</y>
+     <x>268</x>
+     <y>377</y>
     </hint>
     <hint type="destinationlabel">
      <x>245</x>
@@ -2701,8 +2882,8 @@
    <slot>overlapping_plant()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>97</x>
-     <y>320</y>
+     <x>112</x>
+     <y>376</y>
     </hint>
     <hint type="destinationlabel">
      <x>207</x>
@@ -2717,8 +2898,8 @@
    <slot>mushroom_awake()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>254</x>
-     <y>320</y>
+     <x>338</x>
+     <y>376</y>
     </hint>
     <hint type="destinationlabel">
      <x>117</x>
@@ -2781,12 +2962,28 @@
    <slot>set_lawn_mower()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>39</x>
-     <y>153</y>
+     <x>444</x>
+     <y>144</y>
     </hint>
     <hint type="destinationlabel">
      <x>15</x>
      <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_15</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>put_zombie()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>281</x>
+     <y>128</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>192</y>
     </hint>
    </hints>
   </connection>
@@ -2827,5 +3024,6 @@
   <slot>zombie_weak()</slot>
   <slot>put_plant()</slot>
   <slot>set_lawn_mower()</slot>
+  <slot>put_zombie()</slot>
  </slots>
 </ui>

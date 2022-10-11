@@ -27,9 +27,11 @@ class Data:
             0x755e0c,
             frame_duration=0x4b4,
             game_selector=0x870,
+            game_mode=0x91c,
             game_ui=0x920,
             board=Offset(
                 0x868,
+                challenge=0x178,
                 scene=0x5564,
                 sun=0x5578,
                 adventure_level=0x5568,
@@ -139,8 +141,10 @@ class Data:
 
         call_sync_profile=0x455420,
         call_set_plant_sleeping=0x46cb90,
+        call_put_plant=0x418d70,
         call_start_lawn_mower=0x466cf0,
         call_restore_lawn_mower=0x4179b0,
         call_delete_lawn_mower=0x466c60,
-        call_put_zombie_in_row=0x419a60
+        call_put_zombie_in_row=0x419a60,
+        call_put_zombie=0x435390
     )

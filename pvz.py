@@ -25,7 +25,7 @@ class PvzModifier:
         self.data = Data.pvz_goty_1_1_0_1056_zh_2012_06
         self.hwnd = 0
         self.lock = threading.Lock()
-        self.asm = RunAsm()
+        self.asm = RunAsm(self.lock)
 
     def wait_for_game(self):
         while 1:
@@ -49,6 +49,10 @@ class PvzModifier:
         lawn_offset, user_data_offset = self.data.recursively_get_attrs(['lawn', 'user_data'])
         userdata = self.read_offset((lawn_offset, user_data_offset))
         return userdata != 0
+
+    def game_mode(self):
+        lawn_offset, game_mode_offset = self.data.recursively_get_attrs(['lawn', 'game_mode'])
+        return self.read_offset((lawn_offset, game_mode_offset))
 
     def game_ui(self):
         lawn_offset, game_ui_offset = self.data.recursively_get_attrs(['lawn', 'game_ui'])
@@ -270,9 +274,7 @@ class PvzModifier:
             self.asm.asm_mov_exx_exx(Reg.ESI, Reg.ECX)
             self.asm.asm_call(self.data.call_sync_profile)
             self.asm.asm_ret()
-            self.lock.acquire()
             self.asm.asm_code_inject(self.phand)
-            self.lock.release()
 
     def unlock_achievements(self):
         if not self.has_user():
@@ -345,7 +347,7 @@ class PvzModifier:
         self.asm.asm_mov_exx_dword_ptr(Reg.EDI, lawn_offset)
         self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EDI, board_offset)
         self.asm.asm_push_exx(Reg.EDI)
-        self.asm.asm_call(0x418d70)
+        self.asm.asm_call(self.data.call_put_plant)
 
     def put_plant(self, plant_type, row, col, imitator):
         ui = self.game_ui()
@@ -370,9 +372,7 @@ class PvzModifier:
         else:
             self._asm_put_plant(plant_type, row, col, imitator)
         self.asm.asm_ret()
-        self.lock.acquire()
         self.asm.asm_code_inject(self.phand)
-        self.lock.release()
 
     def set_mushroom_awake(self):
         ui = self.game_ui()
@@ -398,9 +398,7 @@ class PvzModifier:
             self.asm.asm_push_byte(0)
             self.asm.asm_call(self.data.call_set_plant_sleeping)
         self.asm.asm_ret()
-        self.lock.acquire()
         self.asm.asm_code_inject(self.phand)
-        self.lock.release()
 
     def set_lawn_mower(self, status):
         ui = self.game_ui()
@@ -432,15 +430,26 @@ class PvzModifier:
             self.asm.asm_push_exx(Reg.EAX)
             self.asm.asm_call(self.data.call_restore_lawn_mower)
         self.asm.asm_ret()
-        self.lock.acquire()
         self.asm.asm_code_inject(self.phand)
-        self.lock.release()
         if status == 2:
             self.hack(self.data.init_lawn_mowers, False)
 
     def _asm_put_zombie(self, zombie_type, row, col):
-        lawn_offset, board_offset = self.data.recursively_get_attrs(['lawn', 'board'])
+        lawn_offset, board_offset, challenge_offset = self.data.recursively_get_attrs(['lawn', 'board', 'challenge'])
+        self.asm.asm_push_dword(col)
+        self.asm.asm_push_dword(zombie_type)
+        self.asm.asm_mov_exx(Reg.EAX, row)
+        self.asm.asm_mov_exx_dword_ptr(Reg.ECX, lawn_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ECX, board_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ECX, challenge_offset)
+        self.asm.asm_call(self.data.call_put_zombie)
+
+    def put_zombie(self, zombie_type, row, col):
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
         if zombie_type == 25:
+            lawn_offset, board_offset = self.data.recursively_get_attrs(['lawn', 'board'])
             zombie_count_max = board_offset.zombie_count_max
             board = self.read_offset((lawn_offset, board_offset), 4)
             zombie_count_max = self.read_memory(board + zombie_count_max, 4)
@@ -451,22 +460,34 @@ class PvzModifier:
                 type_ = self.read_memory(zombies_addr + i * zombie_struct_size + type_offset, 4)
                 if type_ == 25:  # 多个僵王会出bug
                     return
+            self.asm.asm_init()
             self.asm.asm_mov_exx_dword_ptr(Reg.EAX, lawn_offset)
             self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, board_offset)
             self.asm.asm_push_dword(0)
             self.asm.asm_push_dword(25)
             self.asm.asm_call(self.data.call_put_zombie_in_row)
-
-    def put_zombie(self, zombie_type, row, col):
-        ui = self.game_ui()
-        if ui != 2 and ui != 3:
+            self.asm.asm_ret()
+            self.asm.asm_code_inject(self.phand)
             return
+        row_count = self.get_row_count()
+        if row >= row_count:
+            return
+        col_count = 9
         self.asm.asm_init()
-        self._asm_put_zombie(zombie_type, row, col)
+        if row == -1 and col == -1:
+            for r in range(row_count):
+                for c in range(col_count):
+                    self._asm_put_zombie(zombie_type, r, c)
+        elif row == -1 and col != -1:
+            for r in range(row_count):
+                self._asm_put_zombie(zombie_type, r, col)
+        elif row != -1 and col == -1:
+            for c in range(col_count):
+                self._asm_put_zombie(zombie_type, row, c)
+        else:
+            self._asm_put_zombie(zombie_type, row, col)
         self.asm.asm_ret()
-        self.lock.acquire()
         self.asm.asm_code_inject(self.phand)
-        self.lock.release()
 
 
 if __name__ == '__main__':
