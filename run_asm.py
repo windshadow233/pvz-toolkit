@@ -1,6 +1,7 @@
 import ctypes
 from ctypes import wintypes as wt
 from enum import Enum
+import binascii
 
 
 class Reg(Enum):
@@ -16,7 +17,6 @@ class Reg(Enum):
 
 class RunAsm:
     def __init__(self, lock):
-        self.page = 256
         self.code = bytearray()
         self.calls_pos = []
         self.length = 0
@@ -47,6 +47,9 @@ class RunAsm:
         self.CloseHandle = ctypes.windll.kernel32.CloseHandle
         self.CloseHandle.argtypes = [wt.HANDLE]
         self.CloseHandle.restype = wt.BOOL
+
+    def hex(self):
+        return binascii.hexlify(self.code).decode()
 
     def __len__(self):
         return self.length
