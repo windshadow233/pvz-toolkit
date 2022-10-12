@@ -35,7 +35,7 @@ class PvzTool(QMainWindow, Ui_MainWindow):
                     self.label_9.setText("未检测到游戏进程")
                     self.game.wait_for_game()
                     status = True
-                    self.set_status()
+                    # self.set_status()
                 else:
                     if status:
                         self.label_9.setStyleSheet("color:green")
