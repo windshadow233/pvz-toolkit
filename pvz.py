@@ -3,7 +3,6 @@ import time
 from typing import List
 import win32gui
 import win32process
-import win32api
 import ctypes
 import threading
 
