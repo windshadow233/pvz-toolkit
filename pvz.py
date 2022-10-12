@@ -584,6 +584,11 @@ class PvzModifier:
         self.asm.asm_ret()
         self.asm_code_inject()
 
+    def no_fog(self, status):
+        if not self.is_open():
+            return
+        self.hack(self.data.no_fog, status)
+
 
 if __name__ == '__main__':
     game = PvzModifier()

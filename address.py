@@ -139,6 +139,7 @@ class Data:
         mushrooms_awake=[Hack(0x0046c1c2, 0x74, 0xeb, 1)],
         init_lawn_mowers=[Hack(0x417a57, 0x00, 0x01, 1),
                           Hack(0x465f62, 0x7a78, 0x7894, 2)],
+        no_fog=[Hack(0x0042616d, 0xf23b, 0xd231, 2)],
 
         call_sync_profile=0x455420,
         call_set_plant_sleeping=0x46cb90,
