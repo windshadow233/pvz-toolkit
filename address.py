@@ -83,6 +83,7 @@ class Data:
                 tree_food=0x258
             )
         ),
+        block_main_loop=[Hack(0x62941e, 0xc8, 0xfe, 1)],
         vase_transparent=[Hack(0x459c1a, 0x047ec085, 0x0033b866, 4)],
         no_cool_down=[Hack(0x49ce02, 0x167e, 0x9090, 2)],
         auto_collect=[Hack(0x43cc72, 0x75, 0xeb, 1)],

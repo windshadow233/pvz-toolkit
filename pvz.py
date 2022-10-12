@@ -36,52 +36,6 @@ class PvzModifier:
         self.phand = self.OpenProcess(0x000f0000 | 0x00100000 | 0xfff, False, pid)
         return 1
 
-    def is_open(self):
-        if self.hwnd == 0:
-            return False
-        if win32gui.IsWindow(self.hwnd):
-            return True
-        self.hwnd = 0
-        return False
-
-    def has_user(self):
-        lawn_offset, user_data_offset = self.data.recursively_get_attrs(['lawn', 'user_data'])
-        userdata = self.read_offset((lawn_offset, user_data_offset))
-        return userdata != 0
-
-    def game_mode(self):
-        lawn_offset, game_mode_offset = self.data.recursively_get_attrs(['lawn', 'game_mode'])
-        return self.read_offset((lawn_offset, game_mode_offset))
-
-    def game_ui(self):
-        lawn_offset, game_ui_offset = self.data.recursively_get_attrs(['lawn', 'game_ui'])
-        return self.read_offset((lawn_offset, game_ui_offset))
-
-    def scene(self):
-        ui = self.game_ui()
-        if ui == 2 or ui == 3:
-            lawn_offset, board_offset, scene_offset = self.data.recursively_get_attrs(['lawn', 'board', 'scene'])
-            scene = self.read_offset((lawn_offset, board_offset, scene_offset), 4)
-        else:
-            scene = -1
-        return scene
-
-    def get_row_count(self):
-        scene = self.scene()
-        if scene == 2 or scene == 3:
-            return 6
-        elif scene == 0 or scene == 1 or scene == 4 or scene == 5:
-            return 5
-        return -1
-
-    def hack(self, hacks: List[Hack], status):
-        for hack in hacks:
-            address = hack.address
-            if status:
-                self.write_memory(address, hack.hack_value, hack.length)
-            else:
-                self.write_memory(address, hack.reset_value, hack.length)
-
     def read_memory(self, address, length):
         addr = ctypes.c_ulong()
         self.ReadProcessMemory(self.phand, address, ctypes.byref(addr), length, None)
@@ -118,12 +72,95 @@ class PvzModifier:
         for i, data in enumerate(items):
             self.write_memory(start_addr + i * item_byte_len, data, item_byte_len)
 
+    def asm_code_inject(self):
+        self.hack(self.data.block_main_loop, True)
+        time.sleep(self.get_frame_duration() * 2 / 1000)
+        self.asm.asm_code_inject(self.phand)
+        self.hack(self.data.block_main_loop, False)
+
+    def is_open(self):
+        if self.hwnd == 0:
+            return False
+        if win32gui.IsWindow(self.hwnd):
+            return True
+        self.hwnd = 0
+        return False
+
+    def has_user(self):
+        if not self.is_open():
+            return
+        lawn_offset, user_data_offset = self.data.recursively_get_attrs(['lawn', 'user_data'])
+        userdata = self.read_offset((lawn_offset, user_data_offset))
+        return userdata != 0
+
+    def get_frame_duration(self):
+        if not self.is_open():
+            return 10
+        lawn_offset, frame_duration_offset = self.data.recursively_get_attrs(['lawn', 'frame_duration'])
+        return self.read_offset((lawn_offset, frame_duration_offset), 4)
+
+    def game_mode(self):
+        if not self.is_open():
+            return
+        lawn_offset, game_mode_offset = self.data.recursively_get_attrs(['lawn', 'game_mode'])
+        return self.read_offset((lawn_offset, game_mode_offset))
+
+    def game_ui(self):
+        if not self.is_open():
+            return
+        lawn_offset, game_ui_offset = self.data.recursively_get_attrs(['lawn', 'game_ui'])
+        return self.read_offset((lawn_offset, game_ui_offset))
+
+    def get_scene(self):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui == 2 or ui == 3:
+            lawn_offset, board_offset, scene_offset = self.data.recursively_get_attrs(['lawn', 'board', 'scene'])
+            scene = self.read_offset((lawn_offset, board_offset, scene_offset), 4)
+        else:
+            scene = -1
+        return scene
+
+    def get_row_count(self):
+        if not self.is_open():
+            return
+        scene = self.get_scene()
+        if scene == 2 or scene == 3:
+            return 6
+        elif scene == 0 or scene == 1 or scene == 4 or scene == 5:
+            return 5
+        return -1
+
+    def _refresh_main_page(self):
+        lawn_offset, game_selector_offset = self.data.recursively_get_attrs(['lawn', 'game_selector'])
+        self.asm.asm_init()
+        self.asm.asm_push_byte(1)
+        self.asm.asm_mov_exx_dword_ptr(Reg.ECX, lawn_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ECX, game_selector_offset)
+        self.asm.asm_mov_exx_exx(Reg.ESI, Reg.ECX)
+        self.asm.asm_call(self.data.call_sync_profile)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+
+    def hack(self, hacks: List[Hack], status):
+        for hack in hacks:
+            address = hack.address
+            if status:
+                self.write_memory(address, hack.hack_value, hack.length)
+            else:
+                self.write_memory(address, hack.reset_value, hack.length)
+
     def sun_shine(self, number):
+        if not self.is_open():
+            return
         if isinstance(number, int):
             lawn_offset, board_offset, sun_offset = self.data.recursively_get_attrs(['lawn', 'board', 'sun'])
             self.write_offset((lawn_offset, board_offset, sun_offset), number, 4)
 
     def money(self, number):
+        if not self.is_open():
+            return
         if not self.has_user():
             return
         if isinstance(number, int):
@@ -131,6 +168,8 @@ class PvzModifier:
             self.write_offset((lawn_offset, user_data_offset, money_offset), number // 10, 4)
 
     def adventure(self, number):
+        if not self.is_open():
+            return
         if not self.has_user():
             return
         if isinstance(number, int):
@@ -139,8 +178,11 @@ class PvzModifier:
             board_offset, adventure_level_offset = lawn_offset.recursively_get_attrs(['board', 'adventure_level'])
             self.write_offset((lawn_offset, user_data_offset, level_offset), number, 4)
             self.write_offset((lawn_offset, board_offset, adventure_level_offset), number, 4)
+            self._refresh_main_page()
 
     def tree_height(self, number):
+        if not self.is_open():
+            return
         if not self.has_user():
             return
         if isinstance(number, int):
@@ -148,6 +190,8 @@ class PvzModifier:
             self.write_offset((lawn_offset, user_data_offset, tree_height_offset), number, 4)
 
     def fertilizer(self, number):
+        if not self.is_open():
+            return
         if not self.has_user():
             return
         if isinstance(number, int):
@@ -155,6 +199,8 @@ class PvzModifier:
             self.write_offset((lawn_offset, user_data_offset, fertilizer_offset), number + 1000, 4)
 
     def bug_spray(self, number):
+        if not self.is_open():
+            return
         if not self.has_user():
             return
         if isinstance(number, int):
@@ -162,6 +208,8 @@ class PvzModifier:
             self.write_offset((lawn_offset, user_data_offset, bug_spray_offset), number + 1000, 4)
 
     def chocolate(self, number):
+        if not self.is_open():
+            return
         if not self.has_user():
             return
         if isinstance(number, int):
@@ -169,6 +217,8 @@ class PvzModifier:
             self.write_offset((lawn_offset, user_data_offset, chocolate_offset), number + 1000, 4)
 
     def tree_food(self, number):
+        if not self.is_open():
+            return
         if not self.has_user():
             return
         if isinstance(number, int):
@@ -176,33 +226,53 @@ class PvzModifier:
             self.write_offset((lawn_offset, user_data_offset, tree_food_offset), number + 1000, 4)
 
     def vase_transparent(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.vase_transparent, status)
 
     def no_cool_down(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.no_cool_down, status)
 
     def auto_collect(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.auto_collect, status)
 
     def money_not_dec(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.money_not_dec, status)
 
     def sun_not_dec(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.sun_not_dec, status)
 
     def chocolate_not_dec(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.chocolate_not_dec, status)
 
     def fertilizer_not_dec(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.fertilizer_not_dec, status)
 
     def bug_spray_not_dec(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.bug_spray_not_dec, status)
 
     def tree_food_not_dec(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.tree_food_not_dec, status)
 
     def lock_shovel(self, status=True):
+        if not self.is_open():
+            return
         lawn_offset, board_offset, cursor_offset, cursor_grab_offset = self.data.recursively_get_attrs(['lawn', 'board', 'cursor', 'cursor_grab'])
         if status:
             self.write_offset((lawn_offset, board_offset, cursor_offset, cursor_grab_offset), 6, 4)
@@ -211,17 +281,25 @@ class PvzModifier:
         self.hack(self.data.lock_shovel, status)
 
     def unlock_limbo_page(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.unlock_limbo_page, status)
 
     def background_running(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.background_running, status)
 
     def set_speed_rate(self, rate):
+        if not self.is_open():
+            return
         new_duration = int(10 // rate)
         lawn_offset, frame_duration_offset = self.data.recursively_get_attrs(['lawn', 'frame_duration'])
         self.write_offset((lawn_offset, frame_duration_offset), new_duration, 4)
 
     def unlock_game(self):
+        if not self.is_open():
+            return
         if not self.has_user():
             return
         lawn_offset, user_data_offset, playthrough_offset = self.data.recursively_get_attrs(['lawn', 'user_data', 'playthrough'])
@@ -265,17 +343,11 @@ class PvzModifier:
         self.chocolate(999)
 
         if playthrough == 0 and self.game_ui() == 1:
-            game_selector_offset = lawn_offset.game_selector
-            self.asm.asm_init()
-            self.asm.asm_push_byte(1)
-            self.asm.asm_mov_exx_dword_ptr(Reg.ECX, lawn_offset)
-            self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ECX, game_selector_offset)
-            self.asm.asm_mov_exx_exx(Reg.ESI, Reg.ECX)
-            self.asm.asm_call(self.data.call_sync_profile)
-            self.asm.asm_ret()
-            self.asm.asm_code_inject(self.phand)
+            self._refresh_main_page()
 
     def unlock_achievements(self):
+        if not self.is_open():
+            return
         if not self.has_user():
             return
         lawn_offset, user_data_offset, achievement_offset = self.data.recursively_get_attrs(['lawn', 'user_data', 'achievement'])
@@ -283,6 +355,8 @@ class PvzModifier:
         self.loop_write_memory(achievement_addr, [1] * 20, 1)
 
     def plant_invincible(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.plant_immune_eat, status)
         self.hack(self.data.plant_immune_radius, status)
         self.hack(self.data.plant_immune_projectile, status)
@@ -294,27 +368,39 @@ class PvzModifier:
         self.hack(self.data.plant_immune_row_area, status)
 
     def plant_weak(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.plant_eat_weak, status)
         self.hack(self.data.plant_projectile_weak, status)
         self.hack(self.data.plant_lob_motion_weak, status)
 
     def no_crater(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.doom_shroom_no_crater, status)
 
     def no_ice_trail(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.no_ice_trail, status)
 
     def overlapping_plant(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.overlapping_plant, status)
         self.hack(self.data.overlapping_plant_preview, status)
         self.hack(self.data.overlapping_plant_iz, status)
 
     def mushroom_awake(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.mushrooms_awake, status)
         if status:
             self.set_mushroom_awake()
 
     def zombie_invincible(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.zombie_immune_body_damage, status)
         self.hack(self.data.zombie_immune_helm_damage, status)
         self.hack(self.data.zombie_immune_shield_damage, status)
@@ -328,6 +414,8 @@ class PvzModifier:
         self.hack(self.data.zombie_immune_lawn_mower, status)
 
     def zombie_weak(self, status=True):
+        if not self.is_open():
+            return
         self.hack(self.data.zombie_body_weak, status)
         self.hack(self.data.zombie_helm_weak, status)
         self.hack(self.data.zombie_shield_weak, status)
@@ -349,6 +437,8 @@ class PvzModifier:
         self.asm.asm_call(self.data.call_put_plant)
 
     def put_plant(self, plant_type, row, col, imitator):
+        if not self.is_open():
+            return
         ui = self.game_ui()
         if ui != 2 and ui != 3:
             return
@@ -371,9 +461,11 @@ class PvzModifier:
         else:
             self._asm_put_plant(plant_type, row, col, imitator)
         self.asm.asm_ret()
-        self.asm.asm_code_inject(self.phand)
+        self.asm_code_inject()
 
     def set_mushroom_awake(self):
+        if not self.is_open():
+            return
         ui = self.game_ui()
         if ui != 2 and ui != 3:
             return
@@ -397,9 +489,11 @@ class PvzModifier:
             self.asm.asm_push_byte(0)
             self.asm.asm_call(self.data.call_set_plant_sleeping)
         self.asm.asm_ret()
-        self.asm.asm_code_inject(self.phand)
+        self.asm_code_inject()
 
     def set_lawn_mower(self, status):
+        if not self.is_open():
+            return
         ui = self.game_ui()
         if ui != 3:
             return
@@ -429,7 +523,7 @@ class PvzModifier:
             self.asm.asm_push_exx(Reg.EAX)
             self.asm.asm_call(self.data.call_restore_lawn_mower)
         self.asm.asm_ret()
-        self.asm.asm_code_inject(self.phand)
+        self.asm_code_inject()
         if status == 2:
             self.hack(self.data.init_lawn_mowers, False)
 
@@ -444,6 +538,8 @@ class PvzModifier:
         self.asm.asm_call(self.data.call_put_zombie)
 
     def put_zombie(self, zombie_type, row, col):
+        if not self.is_open():
+            return
         ui = self.game_ui()
         if ui != 2 and ui != 3:
             return
@@ -466,7 +562,7 @@ class PvzModifier:
             self.asm.asm_push_dword(25)
             self.asm.asm_call(self.data.call_put_zombie_in_row)
             self.asm.asm_ret()
-            self.asm.asm_code_inject(self.phand)
+            self.asm_code_inject()
             return
         row_count = self.get_row_count()
         if row >= row_count:
@@ -486,7 +582,7 @@ class PvzModifier:
         else:
             self._asm_put_zombie(zombie_type, row, col)
         self.asm.asm_ret()
-        self.asm.asm_code_inject(self.phand)
+        self.asm_code_inject()
 
 
 if __name__ == '__main__':

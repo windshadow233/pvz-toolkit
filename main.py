@@ -35,7 +35,7 @@ class PvzTool(QMainWindow, Ui_MainWindow):
                     self.label_9.setText("未检测到游戏进程")
                     self.game.wait_for_game()
                     status = True
-                    # self.set_status()
+                    self.set_status()
                 else:
                     if status:
                         self.label_9.setStyleSheet("color:green")
@@ -72,112 +72,72 @@ class PvzTool(QMainWindow, Ui_MainWindow):
         QDesktopServices.openUrl(QUrl("https://pan.baidu.com/s/14OCAGDsNGcgynJXGK4NPfQ?pwd=fnpq"))
 
     def sun_shine(self):
-        if not self.game.is_open():
-            return
         text = self.lineEdit.text()
         self.game.sun_shine(int(text))
 
     def money(self):
-        if not self.game.is_open():
-            return
         text = self.lineEdit_2.text()
         self.game.money(int(text))
 
     def tree_height(self):
-        if not self.game.is_open():
-            return
         text = self.lineEdit_3.text()
         self.game.tree_height(int(text))
 
     def fertilizer(self):
-        if not self.game.is_open():
-            return
         text = self.lineEdit_4.text()
         self.game.fertilizer(int(text))
 
     def chocolate(self):
-        if not self.game.is_open():
-            return
         text = self.lineEdit_5.text()
         self.game.chocolate(int(text))
 
     def bug_spray(self):
-        if not self.game.is_open():
-            return
         text = self.lineEdit_6.text()
         self.game.bug_spray(int(text))
 
     def tree_food(self):
-        if not self.game.is_open():
-            return
         text = self.lineEdit_7.text()
         self.game.tree_food(int(text))
 
     def auto_collect(self):
-        if not self.game.is_open():
-            return
         self.game.auto_collect(self.checkBox.isChecked())
 
     def no_cool_down(self):
-        if not self.game.is_open():
-            return
         self.game.no_cool_down(self.checkBox_2.isChecked())
 
     def vase_transparent(self):
-        if not self.game.is_open():
-            return
         self.game.vase_transparent(self.checkBox_3.isChecked())
 
     def money_not_dec(self):
-        if not self.game.is_open():
-            return
         self.game.money_not_dec(self.checkBox_4.isChecked())
 
     def sun_not_dec(self):
-        if not self.game.is_open():
-            return
         self.game.sun_not_dec(self.checkBox_5.isChecked())
 
     def chocolate_not_dec(self):
-        if not self.game.is_open():
-            return
         self.game.chocolate_not_dec(self.checkBox_6.isChecked())
 
     def fertilizer_not_dec(self):
-        if not self.game.is_open():
-            return
         self.game.fertilizer_not_dec(self.checkBox_7.isChecked())
 
     def bug_spray_not_dec(self):
-        if not self.game.is_open():
-            return
         self.game.bug_spray_not_dec(self.checkBox_8.isChecked())
 
     def tree_food_not_dec(self):
-        if not self.game.is_open():
-            return
         self.game.tree_food_not_dec(self.checkBox_9.isChecked())
 
     def lock_shovel(self):
-        if not self.game.is_open():
-            return
         self.game.lock_shovel(self.checkBox_10.isChecked())
 
     def adventure(self):
-        if not self.game.is_open():
-            return
         a = int(self.spinBox.value()) - 1
         b = int(self.spinBox_2.value())
         self.game.adventure(a * 10 + b)
 
     def unlock_limbo_page(self):
-        if not self.game.is_open():
-            return
         self.game.unlock_limbo_page(self.checkBox_11.isChecked())
 
     def background_running(self):
-        if not self.game.is_open():
-            return
         self.game.background_running(self.checkBox_12.isChecked())
 
     def open_user_file_folder(self):
@@ -190,70 +150,48 @@ class PvzTool(QMainWindow, Ui_MainWindow):
         self.game.set_speed_rate(rate)
 
     def unlock_game(self):
-        if not self.game.is_open():
-            return
         self.game.unlock_game()
 
     def unlock_achievements(self):
-        if not self.game.is_open():
-            return
         self.game.unlock_achievements()
 
     def plant_invincible(self):
-        if not self.game.is_open():
-            return
         if self.checkBox_16.isChecked():
             self.checkBox_16.setChecked(False)
             self.game.plant_weak(False)
         self.game.plant_invincible(self.checkBox_13.isChecked())
 
     def no_crater(self):
-        if not self.game.is_open():
-            return
         self.game.no_crater(self.checkBox_14.isChecked())
 
     def no_ice_trail(self):
-        if not self.game.is_open():
-            return
         self.game.no_ice_trail(self.checkBox_15.isChecked())
 
     def plant_weak(self):
-        if not self.game.is_open():
-            return
         if self.checkBox_13.isChecked():
             self.checkBox_13.setChecked(False)
             self.game.plant_invincible(False)
         self.game.plant_weak(self.checkBox_16.isChecked())
 
     def overlapping_plant(self):
-        if not self.game.is_open():
-            return
         self.game.overlapping_plant(self.checkBox_17.isChecked())
 
     def mushroom_awake(self):
-        if not self.game.is_open():
-            return
         self.game.mushroom_awake(self.checkBox_18.isChecked())
 
     def zombie_invincible(self):
-        if not self.game.is_open():
-            return
         if self.checkBox_20.isChecked():
             self.checkBox_20.setChecked(False)
             self.game.zombie_weak(False)
         self.game.zombie_invincible(self.checkBox_19.isChecked())
 
     def zombie_weak(self):
-        if not self.game.is_open():
-            return
         if self.checkBox_19.isChecked():
             self.checkBox_19.setChecked(False)
             self.game.zombie_invincible(False)
         self.game.zombie_weak(self.checkBox_20.isChecked())
 
     def put_plant(self):
-        if not self.game.is_open():
-            return
         row = self.comboBox_2.currentIndex() - 1
         col = self.comboBox_3.currentIndex() - 1
         plant_type = self.comboBox_4.currentIndex()
@@ -264,15 +202,10 @@ class PvzTool(QMainWindow, Ui_MainWindow):
         index = self.comboBox_5.currentIndex()
         if index == 0:
             return
-        if not self.game.is_open():
-            self.comboBox_5.setCurrentIndex(0)
-            return
         self.game.set_lawn_mower(self.comboBox_5.currentIndex() - 1)
         self.comboBox_5.setCurrentIndex(0)
 
     def put_zombie(self):
-        if not self.game.is_open():
-            return
         row = self.comboBox_2.currentIndex() - 1
         col = self.comboBox_3.currentIndex() - 1
         zombie_type = self.comboBox_6.currentIndex()
