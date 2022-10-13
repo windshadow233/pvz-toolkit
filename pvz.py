@@ -6,7 +6,7 @@ import win32process
 import ctypes
 import threading
 
-from data import Data, Hack, SceneMap
+from data import Data, Hack
 from asm_inject import RunAsm, Reg
 
 
@@ -121,6 +121,8 @@ class PvzModifier:
         return scene
 
     def set_scene(self, scene):
+        if scene > 5 or scene < 0:
+            return
         if not self.is_open():
             return
         ui = self.game_ui()
@@ -129,6 +131,9 @@ class PvzModifier:
         mode = self.game_mode()
         if mode > 15:  # 非冒险、生存不可改
             return
+        pre_scene = self.get_scene()
+        self.delete_all_plants()
+        self.delete_grid_items({1, 2, 3, 11})
         lawn_offset, board_offset, block_type_offset = self.data.recursively_get_attrs(['lawn', 'board', 'block_type'])
         row_type_offset = board_offset.row_type
         board_addr = self.read_offset((lawn_offset, board_offset), 4)
@@ -148,14 +153,47 @@ class PvzModifier:
         self.asm.asm_ret()
         self.asm_code_inject()
         if scene in {0, 1, 4, 5}:
-            block_types, row_types = SceneMap[0]
+            block_types, row_types = [1, 1, 1, 1, 1, 2] * 9, [1, 1, 1, 1, 1, 0]
         else:
-            block_types, row_types = SceneMap[1]
+            block_types, row_types = [1, 1, 3, 3, 1, 1] * 9, [1, 1, 2, 2, 1, 1]
         self.loop_write_memory(block_type_addr, block_types, 4)
         self.loop_write_memory(row_type_addr, row_types, 4)
 
         if lawn_mower_count > 0:
             self.set_lawn_mower(2)
+        if ui == 3:
+            if pre_scene != scene:
+                music_id = scene + 1
+                if music_id == 6:
+                    music_id = 2
+                self.set_music(music_id)
+
+        if pre_scene != 2 and pre_scene != 3:
+            return
+        if scene == 2 or scene == 3:
+            return
+        particle_system_struct_size = 0x2c
+        lawn_offset, animations_offset, unnamed_offset, particle_system_offset = self.data.recursively_get_attrs(['lawn', 'animations', 'unnamed', 'particle_system'])
+        particle_system_addr = self.read_offset((lawn_offset, animations_offset, unnamed_offset, particle_system_offset))
+        particle_system_count_max_offset = unnamed_offset.particle_system_count_max
+        particle_system_count_max = self.read_offset((lawn_offset, animations_offset, unnamed_offset, particle_system_count_max_offset))
+        particle_type = particle_system_offset.type
+        particle_dead = particle_system_offset.dead
+        self.asm.asm_init()
+        for i in range(particle_system_count_max):
+            addr = particle_system_addr + i * particle_system_struct_size
+            type_ = self.read_memory(addr + particle_type, 4)
+            is_dead = self.read_memory(addr + particle_dead, 1)
+            if not is_dead and type_ == 34:
+                self.asm.asm_push_dword(addr)
+                self.asm.asm_call(self.data.call_delete_particle_system)
+        self.asm.asm_mov_exx_dword_ptr(Reg.EAX, lawn_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, board_offset)
+        self.asm.asm_add_list([0xc7, 0x80])
+        self.asm.asm_add_dword(board_offset.particle_systems)
+        self.asm.asm_add_dword(0)
+        self.asm.asm_ret()
+        self.asm_code_inject()
 
     def get_row_count(self):
         if not self.is_open():
@@ -211,10 +249,13 @@ class PvzModifier:
             lawn_offset = self.data.lawn
             user_data_offset, level_offset = lawn_offset.recursively_get_attrs(['user_data', 'level'])
             board_offset, adventure_level_offset = lawn_offset.recursively_get_attrs(['board', 'adventure_level'])
-            self.write_offset((lawn_offset, user_data_offset, level_offset), number, 4)
-            self.write_offset((lawn_offset, board_offset, adventure_level_offset), number, 4)
-            if self.game_ui() == 1:
-                self._refresh_main_page()
+            current_level = self.read_offset((lawn_offset, user_data_offset, level_offset), 4)
+            if current_level != number:
+                self.write_offset((lawn_offset, user_data_offset, level_offset), number, 4)
+                self.write_offset((lawn_offset, board_offset, adventure_level_offset), number, 4)
+                ui = self.game_ui()
+                if ui == 1:
+                    self._refresh_main_page()
 
     def tree_height(self, number):
         if not self.is_open():
@@ -457,6 +498,51 @@ class PvzModifier:
         self.hack(self.data.zombie_shield_weak, status)
         self.hack(self.data.zombie_can_burn_crumble, status)
 
+    def _get_plant_addresses(self):
+        lawn_offset, board_offset, plant_count_max_offset = self.data.recursively_get_attrs(['lawn', 'board', 'plant_count_max'])
+        plants_offset = board_offset.plants
+        plants_addr = self.read_offset((lawn_offset, board_offset, plants_offset))
+        plant_struct_size = 0x14c
+        plant_dead = plants_offset.dead
+        plant_squished = plants_offset.squished
+        plant_count_max = self.read_offset((lawn_offset, board_offset, plant_count_max_offset), 4)
+        for i in range(plant_count_max):
+            addr = plants_addr + plant_struct_size * i
+            is_dead = self.read_memory(addr + plant_dead, 1)
+            is_squished = self.read_memory(addr + plant_squished, 1)
+            if is_dead or is_squished:
+                continue
+            yield addr
+
+    def _get_zombie_addresses(self):
+        lawn_offset, board_offset, zombie_count_max_offset = self.data.recursively_get_attrs(['lawn', 'board', 'zombie_count_max'])
+        zombies_offset = board_offset.zombies
+        zombie_dead = zombies_offset.dead
+        board = self.read_offset([lawn_offset, board_offset])
+        zombies_addr = self.read_memory(board + zombies_offset, 4)
+        zombie_struct_size = 0x168
+        zombie_count_max = self.read_memory(board + zombie_count_max_offset, 4)
+        for i in range(zombie_count_max):
+            addr = zombies_addr + i * zombie_struct_size
+            is_dead = self.read_memory(addr + zombie_dead, 1)
+            if not is_dead:
+                yield addr
+
+    def _get_grid_items(self, types):
+        lawn_offset, board_offset, grid_item_max_offset = self.data.recursively_get_attrs(['lawn', 'board', 'grid_item_count_max'])
+        grid_items_offset = board_offset.grid_items
+        grid_items_addr = self.read_offset((lawn_offset, board_offset, grid_items_offset))
+        grid_item_struct_size = 0xec
+        grid_item_type = grid_items_offset.type
+        grid_item_dead = grid_items_offset.dead
+        grid_item_count_max = self.read_offset((lawn_offset, board_offset, grid_item_max_offset), 4)
+        for i in range(grid_item_count_max):
+            addr = grid_items_addr + grid_item_struct_size * i
+            item_type = self.read_memory(addr + grid_item_type, 4)
+            is_dead = self.read_memory(addr + grid_item_dead, 1)
+            if item_type in types and not is_dead:
+                yield addr
+
     def _asm_put_plant(self, plant_type, row, col, imitator):
         lawn_offset, board_offset = self.data.recursively_get_attrs(['lawn', 'board'])
         if imitator:
@@ -505,25 +591,15 @@ class PvzModifier:
         ui = self.game_ui()
         if ui != 2 and ui != 3:
             return
-        lawn_offset, board_offset, plant_count_max_offset = self.data.recursively_get_attrs(['lawn', 'board', 'plant_count_max'])
-        plants_offset = board_offset.plants
-        plants_addr = self.read_offset((lawn_offset, board_offset, plants_offset))
-        plant_struct_size = 0x14c
-        plant_dead = plants_offset.dead
-        plant_squished = plants_offset.squished
-        plant_asleep = plants_offset.asleep
-        plant_count_max = self.read_offset((lawn_offset, board_offset, plant_count_max_offset), 4)
+        plant_asleep = self.data.lawn.board.plants.asleep
+        addrs = self._get_plant_addresses()
         self.asm.asm_init()
-        for i in range(plant_count_max):
-            addr = plants_addr + plant_struct_size * i
-            is_dead = self.read_memory(addr + plant_dead, 1)
-            is_squished = self.read_memory(addr + plant_squished, 1)
+        for addr in addrs:
             is_asleep = self.read_memory(addr + plant_asleep, 1)
-            if is_dead or is_squished or not is_asleep:
-                continue
-            self.asm.asm_mov_exx(Reg.EDI, addr)
-            self.asm.asm_push_byte(0)
-            self.asm.asm_call(self.data.call_set_plant_sleeping)
+            if is_asleep:
+                self.asm.asm_mov_exx(Reg.EDI, addr)
+                self.asm.asm_push_byte(0)
+                self.asm.asm_call(self.data.call_set_plant_sleeping)
         self.asm.asm_ret()
         self.asm_code_inject()
 
@@ -580,25 +656,21 @@ class PvzModifier:
         if ui != 2 and ui != 3:
             return
         if zombie_type == 25:
-            lawn_offset, board_offset = self.data.recursively_get_attrs(['lawn', 'board'])
-            zombie_count_max = board_offset.zombie_count_max
-            board = self.read_offset((lawn_offset, board_offset), 4)
-            zombie_count_max = self.read_memory(board + zombie_count_max, 4)
-            zombies_offset, type_offset = board_offset.recursively_get_attrs(['zombies', 'type'])
-            zombie_struct_size = 0x168
-            zombies_addr = self.read_memory(board + zombies_offset, 4)
-            for i in range(zombie_count_max):
-                type_ = self.read_memory(zombies_addr + i * zombie_struct_size + type_offset, 4)
+            type_offset = self.data.lawn.board.zombies.type
+            addrs = self._get_zombie_addresses()
+            for addr in addrs:
+                type_ = self.read_memory(addr + type_offset, 4)
                 if type_ == 25:  # 多个僵王会出bug
                     return
             self.asm.asm_init()
-            self.asm.asm_mov_exx_dword_ptr(Reg.EAX, lawn_offset)
-            self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, board_offset)
+            self.asm.asm_mov_exx_dword_ptr(Reg.EAX, self.data.lawn)
+            self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, self.data.lawn.board)
             self.asm.asm_push_dword(0)
             self.asm.asm_push_dword(25)
             self.asm.asm_call(self.data.call_put_zombie_in_row)
             self.asm.asm_ret()
             self.asm_code_inject()
+            self.set_music(12)
             return
         row_count = self.get_row_count()
         if row >= row_count:
@@ -624,6 +696,135 @@ class PvzModifier:
         if not self.is_open():
             return
         self.hack(self.data.no_fog, status)
+
+    def delete_all_plants(self):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        addrs = self._get_plant_addresses()
+        self.asm.asm_init()
+        for addr in addrs:
+            self.asm.asm_push_dword(addr)
+            self.asm.asm_call(self.data.call_delete_plant)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+
+    def kill_all_zombies(self):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        addrs = self._get_zombie_addresses()
+        zombie_status = self.data.lawn.board.zombies.status
+        for addr in addrs:
+            self.write_memory(addr + zombie_status, 3, 1)
+
+    def delete_grid_items(self, types):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        addrs = self._get_grid_items(types)
+        self.asm.asm_init()
+        for addr in addrs:
+            self.asm.asm_mov_exx(Reg.ESI, addr)
+            self.asm.asm_call(self.data.call_delete_grid_item)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+
+    def put_lily(self, from_col, to_col):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        scene = self.get_scene()
+        if scene != 2 and scene != 3:
+            return
+        addrs = self._get_plant_addresses()
+        plant_row = self.data.lawn.board.plants.row
+        plant_col = self.data.lawn.board.plants.col
+        occupied = set()
+        for addr in addrs:
+            row = self.read_memory(addr + plant_row, 4)
+            col = self.read_memory(addr + plant_col, 4)
+            occupied.add((row, col))
+        self.asm.asm_init()
+        if from_col < 0:
+            from_col = 0
+        if to_col > 8:
+            to_col = 8
+        if to_col < from_col:
+            to_col = from_col
+        for col in range(from_col, to_col + 1):
+            if (2, col) not in occupied:
+                self._asm_put_plant(16, 2, col, False)
+            if (3, col) not in occupied:
+                self._asm_put_plant(16, 3, col, False)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+
+    def put_flowerpot(self, from_col, to_col):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        scene = self.get_scene()
+        if scene != 4 and scene != 5:
+            return
+        addrs = self._get_plant_addresses()
+        plant_row = self.data.lawn.board.plants.row
+        plant_col = self.data.lawn.board.plants.col
+        occupied = set()
+        for addr in addrs:
+            row = self.read_memory(addr + plant_row, 4)
+            col = self.read_memory(addr + plant_col, 4)
+            occupied.add((row, col))
+        self.asm.asm_init()
+        if from_col < 0:
+            from_col = 0
+        if to_col > 8:
+            to_col = 8
+        if to_col < from_col:
+            to_col = from_col
+        for col in range(from_col, to_col + 1):
+            for i in range(5):
+                if (i, col) not in occupied:
+                    self._asm_put_plant(33, i, col, False)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+
+    def set_music(self, music_id):
+        if not self.is_open():
+            return
+        lawn_offset, music_offset = self.data.recursively_get_attrs(['lawn', 'music'])
+        self.asm.asm_init()
+        self.asm.asm_mov_exx(Reg.EDI, music_id)
+        self.asm.asm_mov_exx_dword_ptr(Reg.EAX, lawn_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, music_offset)
+        self.asm.asm_call(self.data.call_play_music)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+
+    def chomper_no_cool_down(self, status):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        self.hack(self.data.chomper_no_cool_down, status)
+        if status:
+            type_offset = self.data.lawn.board.plants.type
+            addrs = self._get_plant_addresses()
+            for addr in addrs:
+                type_ = self.read_memory(addr + type_offset, 4)
+                if type_ == 6:
+                    self.write_memory(addr + 0x54, 0, 4)
 
 
 if __name__ == '__main__':

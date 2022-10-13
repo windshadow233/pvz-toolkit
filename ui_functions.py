@@ -30,14 +30,14 @@ class PvzTool(QMainWindow, Ui_MainWindow):
             while 1:
                 if not self.game.is_open():
                     self.label_9.setStyleSheet("color:red")
-                    self.label_9.setText("未检测到游戏进程")
+                    self.label_9.setText("❌未检测到游戏进程")
                     self.game.wait_for_game()
                     status = True
                     self.set_status()
                 else:
                     if status:
                         self.label_9.setStyleSheet("color:green")
-                        self.label_9.setText("已检测到游戏进程")
+                        self.label_9.setText("✅已检测到游戏进程")
                         status = False
                 time.sleep(0.1)
         self._check_game_status_thread = threading.Thread(target=check_game_status)
@@ -66,6 +66,7 @@ class PvzTool(QMainWindow, Ui_MainWindow):
         self.zombie_invincible()
         self.zombie_weak()
         self.no_fog()
+        self.chomper_no_cool_down()
 
     def open_download_url(self):
         QDesktopServices.openUrl(QUrl("https://pan.baidu.com/s/14OCAGDsNGcgynJXGK4NPfQ?pwd=fnpq"))
@@ -212,3 +213,44 @@ class PvzTool(QMainWindow, Ui_MainWindow):
 
     def no_fog(self):
         self.game.no_fog(self.checkBox_22.isChecked())
+
+    def delete_items(self):
+        item_index = self.comboBox_7.currentIndex()
+        if item_index == 0:
+            self.game.delete_all_plants()
+        elif item_index == 1:
+            self.game.kill_all_zombies()
+        elif item_index == 2:
+            self.game.delete_grid_items({1})
+        elif item_index == 3:
+            self.game.delete_grid_items({3})
+        elif item_index == 4:
+            self.game.delete_grid_items({11})
+
+    def put_lily(self):
+        index = self.comboBox_8.currentIndex()
+        if index == 0:
+            return
+        to_col = self.comboBox_8.currentIndex() - 1
+        self.game.put_lily(0, to_col)
+        self.comboBox_8.setCurrentIndex(0)
+
+    def put_flowerpot(self):
+        index = self.comboBox_9.currentIndex()
+        if index == 0:
+            return
+        to_col = self.comboBox_9.currentIndex() - 1
+        self.game.put_flowerpot(0, to_col)
+        self.comboBox_9.setCurrentIndex(0)
+
+    def play_music(self):
+        music_id = self.comboBox_10.currentIndex() + 1
+        self.game.set_music(music_id)
+
+    def set_scene(self):
+        scene_id = self.comboBox_11.currentIndex()
+        self.game.set_scene(scene_id)
+
+    def chomper_no_cool_down(self):
+        self.game.chomper_no_cool_down(self.checkBox_23.isChecked())
+
