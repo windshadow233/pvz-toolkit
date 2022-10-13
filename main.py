@@ -6,7 +6,7 @@ from ui_functions import *
 
 
 if __name__ == '__main__':
-    mutex = win32event.CreateMutex(None, True, "PvZ Toolkit")
+    mutex = win32event.CreateMutex(None, True, "PvZ Toolkit Python")
     if win32api.GetLastError() == 0:
         app = QApplication(sys.argv)
         window = PvzTool()
