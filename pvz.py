@@ -7,15 +7,13 @@ import ctypes
 import threading
 
 from address import Data, Hack
-from run_asm import RunAsm, Reg, wt
+from asm_inject import RunAsm, Reg
 
 
 class PvzModifier:
 
     def __init__(self):
         self.OpenProcess = ctypes.windll.kernel32.OpenProcess
-        self.OpenProcess.argtypes = [wt.DWORD, wt.BOOL, wt.DWORD]
-        self.OpenProcess.restype = wt.HANDLE
 
         self.ReadProcessMemory = ctypes.windll.kernel32.ReadProcessMemory
         self.WriteProcessMemory = ctypes.windll.kernel32.WriteProcessMemory
