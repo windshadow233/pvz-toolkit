@@ -32,6 +32,8 @@ class Data:
             board=Offset(
                 0x868,
                 challenge=0x178,
+                block_type=0x180,
+                row_type=0x5f0,
                 scene=0x5564,
                 sun=0x5578,
                 adventure_level=0x5568,
@@ -148,5 +150,12 @@ class Data:
         call_restore_lawn_mower=0x4179b0,
         call_delete_lawn_mower=0x466c60,
         call_put_zombie_in_row=0x419a60,
-        call_put_zombie=0x435390
+        call_put_zombie=0x435390,
+        call_pick_background=0x415e90
     )
+
+
+SceneMap = [
+    ([1, 1, 1, 1, 1, 2] * 9, [1, 1, 1, 1, 1, 0]),
+    ([1, 1, 3, 3, 1, 1] * 9, [1, 1, 2, 2, 1, 1])
+]
