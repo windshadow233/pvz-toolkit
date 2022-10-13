@@ -6,9 +6,9 @@ from pvz import *
 from pvztool import *
 
 
-class PvzTool(QMainWindow, Ui_MainWindow):
+class PvzToolkit(QMainWindow, Ui_MainWindow):
     def __init__(self):
-        super(PvzTool, self).__init__()
+        super(PvzToolkit, self).__init__()
         self.setupUi(self)
         self.setWindowFlags(Qt.WindowCloseButtonHint | Qt.WindowMinimizeButtonHint)
         self.lineEdit.setValidator(QIntValidator(0, 9990))
