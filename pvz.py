@@ -6,7 +6,7 @@ import win32process
 import ctypes
 import threading
 
-from address import Data, Hack
+from data import Data, Hack, SceneMap
 from asm_inject import RunAsm, Reg
 
 
@@ -120,6 +120,43 @@ class PvzModifier:
             scene = -1
         return scene
 
+    def set_scene(self, scene):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        mode = self.game_mode()
+        if mode > 15:  # 非冒险、生存不可改
+            return
+        lawn_offset, board_offset, block_type_offset = self.data.recursively_get_attrs(['lawn', 'board', 'block_type'])
+        row_type_offset = board_offset.row_type
+        board_addr = self.read_offset((lawn_offset, board_offset), 4)
+        block_type_addr = board_addr + block_type_offset
+        row_type_addr = board_addr + row_type_offset
+        scene_offset = board_offset.scene
+        lawn_mower_count = self.read_memory(board_addr + board_offset.lawn_mower_count, 4)
+        if lawn_mower_count > 0:
+            self.set_lawn_mower(1)
+        self.asm.asm_init()
+        self.asm.asm_mov_exx_dword_ptr(Reg.ESI, lawn_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ESI, board_offset)
+        self.asm.asm_add_list([0xc7, 0x86])
+        self.asm.asm_add_dword(scene_offset)
+        self.asm.asm_add_dword(scene)
+        self.asm.asm_call(self.data.call_pick_background)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+        if scene in {0, 1, 4, 5}:
+            block_types, row_types = SceneMap[0]
+        else:
+            block_types, row_types = SceneMap[1]
+        self.loop_write_memory(block_type_addr, block_types, 4)
+        self.loop_write_memory(row_type_addr, row_types, 4)
+
+        if lawn_mower_count > 0:
+            self.set_lawn_mower(2)
+
     def get_row_count(self):
         if not self.is_open():
             return
@@ -176,7 +213,8 @@ class PvzModifier:
             board_offset, adventure_level_offset = lawn_offset.recursively_get_attrs(['board', 'adventure_level'])
             self.write_offset((lawn_offset, user_data_offset, level_offset), number, 4)
             self.write_offset((lawn_offset, board_offset, adventure_level_offset), number, 4)
-            self._refresh_main_page()
+            if self.game_ui() == 1:
+                self._refresh_main_page()
 
     def tree_height(self, number):
         if not self.is_open():
