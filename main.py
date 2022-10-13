@@ -9,6 +9,6 @@ if __name__ == '__main__':
     mutex = win32event.CreateMutex(None, True, "PvZ Toolkit Python")
     if win32api.GetLastError() == 0:
         app = QApplication(sys.argv)
-        window = PvzTool()
+        window = PvzToolkit()
         window.show()
         sys.exit(app.exec())
