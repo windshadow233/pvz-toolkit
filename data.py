@@ -43,7 +43,8 @@ class Data:
                     row=0x1c,
                     type=0x24,
                     status=0x28,
-                    speed=0x34
+                    speed=0x34,
+                    dead=0xec
                 ),
                 zombie_count_max=0xac,
                 zombie_count=0xb8,
@@ -66,7 +67,29 @@ class Data:
                     dead=0x30
                 ),
                 lawn_mower_count_max=0x11c,
-                lawn_mower_count=0x128
+                lawn_mower_count=0x128,
+                grid_items=Offset(
+                    0x134,
+                    type=0x08,
+                    col=0x10,
+                    row=0x14,
+                    dead=0x20
+                ),
+                grid_item_count_max=0x138,
+                grid_item_count=0x144,
+                particle_systems=0x5638
+            ),
+            animations=Offset(
+                0x944,
+                unnamed=Offset(
+                    0x00,
+                    particle_system=Offset(
+                        0x00,
+                        type=0x00,
+                        dead=0x1c
+                    ),
+                    particle_system_count_max=0x04
+                )
             ),
             user_data=Offset(
                 0x950,
@@ -83,7 +106,8 @@ class Data:
                 bug_spray=0x224,
                 chocolate=0x250,
                 tree_food=0x258
-            )
+            ),
+            music=0x960
         ),
         block_main_loop=[Hack(0x62941e, 0xc8, 0xfe, 1)],
         vase_transparent=[Hack(0x459c1a, 0x047ec085, 0x0033b866, 4)],
@@ -141,7 +165,8 @@ class Data:
         mushrooms_awake=[Hack(0x0046c1c2, 0x74, 0xeb, 1)],
         init_lawn_mowers=[Hack(0x417a57, 0x00, 0x01, 1),
                           Hack(0x465f62, 0x7a78, 0x7894, 2)],
-        no_fog=[Hack(0x0042616d, 0xf23b, 0xd231, 2)],
+        no_fog=[Hack(0x42616d, 0xf23b, 0xd231, 2)],
+        chomper_no_cool_down=[Hack(0x46f911, 0x0fa0, 0x0000, 2)],
 
         call_sync_profile=0x455420,
         call_set_plant_sleeping=0x46cb90,
@@ -151,11 +176,9 @@ class Data:
         call_delete_lawn_mower=0x466c60,
         call_put_zombie_in_row=0x419a60,
         call_put_zombie=0x435390,
-        call_pick_background=0x415e90
+        call_pick_background=0x415e90,
+        call_delete_plant=0x475e90,
+        call_delete_grid_item=0x458620,
+        call_delete_particle_system=0x52b620,
+        call_play_music=0x469a10
     )
-
-
-SceneMap = [
-    ([1, 1, 1, 1, 1, 2] * 9, [1, 1, 1, 1, 1, 0]),
-    ([1, 1, 3, 3, 1, 1] * 9, [1, 1, 2, 2, 1, 1])
-]
