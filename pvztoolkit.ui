@@ -1535,7 +1535,7 @@ QTabBar::tab{width:100}</string>
              </font>
             </property>
             <property name="text">
-             <string>大嘴花饥饿</string>
+             <string>大嘴花快速吞噬</string>
             </property>
            </widget>
           </item>
@@ -2871,7 +2871,7 @@ QTabBar::tab{width:100}</string>
      <x>0</x>
      <y>0</y>
      <width>499</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
   </widget>
