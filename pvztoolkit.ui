@@ -2788,17 +2788,20 @@ QTabBar::tab{width:100}</string>
            </widget>
           </item>
           <item>
-           <spacer name="horizontalSpacer_7">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
+           <widget class="QPushButton" name="pushButton_22">
+            <property name="minimumSize">
              <size>
-              <width>40</width>
-              <height>20</height>
+              <width>0</width>
+              <height>35</height>
              </size>
             </property>
-           </spacer>
+            <property name="toolTip">
+             <string>截图到剪切板</string>
+            </property>
+            <property name="text">
+             <string>📷截图</string>
+            </property>
+           </widget>
           </item>
          </layout>
         </item>
@@ -3634,6 +3637,22 @@ QTabBar::tab{width:100}</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>pushButton_22</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>screen_shot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>419</x>
+     <y>151</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>494</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>sun_shine()</slot>
@@ -3682,5 +3701,6 @@ QTabBar::tab{width:100}</string>
   <slot>put_grave()</slot>
   <slot>put_ladder()</slot>
   <slot>put_rake()</slot>
+  <slot>screen_shot()</slot>
  </slots>
 </ui>

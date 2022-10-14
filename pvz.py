@@ -1,8 +1,10 @@
 import time
 
 from typing import List
+import win32ui
 import win32gui
 import win32process
+import win32clipboard
 import ctypes
 import threading
 
@@ -948,6 +950,37 @@ class PvzModifier:
         self.write_memory(0x41786a, reset_dec_rake_code, 6)
         self.write_memory(0x4177d7, reset_rake_col_code, 4)
         self.hack(self.data.rake_unlimited, False)
+
+    def screen_shot(self):
+        if not self.is_open():
+            return
+        left, top, right, bottom = win32gui.GetWindowRect(self.hwnd)
+        width = right - left
+        height = bottom - top
+        hdc_window = win32gui.GetDC(self.hwnd)
+        if not hdc_window:
+            win32gui.ReleaseDC(self.hwnd, hdc_window)
+        hdc_mem = win32gui.CreateCompatibleDC(hdc_window)
+        if not hdc_mem:
+            win32gui.DeleteObject(hdc_mem)
+            win32gui.ReleaseDC(self.hwnd, hdc_window)
+        screen = win32gui.CreateCompatibleBitmap(hdc_window, width, height)
+        if not screen:
+            win32gui.DeleteObject(screen)
+            win32gui.DeleteObject(hdc_mem)
+            win32gui.ReleaseDC(self.hwnd, hdc_window)
+        win32gui.SelectObject(hdc_mem, screen)
+        if win32gui.BitBlt(hdc_mem, 0, 0, width, height, hdc_window, 0, 0, 0xCC0020):
+            win32gui.DeleteObject(screen)
+            win32gui.DeleteObject(hdc_mem)
+            win32gui.ReleaseDC(self.hwnd, hdc_window)
+        if win32clipboard.OpenClipboard() != 0:
+            win32clipboard.EmptyClipboard()
+            win32clipboard.SetClipboardData(2, screen)
+            win32clipboard.CloseClipboard()
+        win32gui.DeleteObject(screen)
+        win32gui.DeleteObject(hdc_mem)
+        win32gui.ReleaseDC(self.hwnd, hdc_window)
 
 
 if __name__ == '__main__':

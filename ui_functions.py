@@ -268,3 +268,6 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         row = self.comboBox_2.currentIndex() - 1
         col = self.comboBox_3.currentIndex() - 1
         self.game.put_rake(row, col)
+
+    def screen_shot(self):
+        self.game.screen_shot()
