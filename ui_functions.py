@@ -254,3 +254,17 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
     def chomper_no_cool_down(self):
         self.game.chomper_no_cool_down(self.checkBox_23.isChecked())
 
+    def put_grave(self):
+        row = self.comboBox_2.currentIndex() - 1
+        col = self.comboBox_3.currentIndex() - 1
+        self.game.put_grave(row, col)
+
+    def put_ladder(self):
+        row = self.comboBox_2.currentIndex() - 1
+        col = self.comboBox_3.currentIndex() - 1
+        self.game.put_ladder(row, col)
+
+    def put_rake(self):
+        row = self.comboBox_2.currentIndex() - 1
+        col = self.comboBox_3.currentIndex() - 1
+        self.game.put_rake(row, col)

@@ -34,14 +34,14 @@ class PvzModifier:
         self.phand = self.OpenProcess(0x000f0000 | 0x00100000 | 0xfff, False, pid)
         return 1
 
-    def read_memory(self, address, length):
-        addr = ctypes.c_ulong()
+    def read_memory(self, address, length=4):
+        addr = ctypes.c_ulonglong()
         self.ReadProcessMemory(self.phand, address, ctypes.byref(addr), length, None)
         return addr.value
 
     def write_memory(self, address, data, length=4):
         self.lock.acquire()
-        data = ctypes.c_ulong(data)
+        data = ctypes.c_ulonglong(data)
         self.WriteProcessMemory(self.phand, address, ctypes.byref(data), length, None)
         self.lock.release()
 
@@ -837,6 +837,117 @@ class PvzModifier:
                 type_ = self.read_memory(addr + type_offset, 4)
                 if type_ == 6:
                     self.write_memory(addr + 0x54, 0, 4)
+
+    def _asm_put_grave(self, row, col):
+        lawn_offset, board_offset, challenge_offset = self.data.recursively_get_attrs(['lawn', 'board', 'challenge'])
+        self.asm.asm_mov_exx(Reg.EDI, row)
+        self.asm.asm_mov_exx(Reg.EBX, col)
+        self.asm.asm_mov_exx_dword_ptr(Reg.ECX, lawn_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ECX, board_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ECX, challenge_offset)
+        self.asm.asm_push_exx(Reg.ECX)
+        self.asm.asm_call(self.data.call_put_grave)
+
+    def put_grave(self, row, col):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        row_count = self.get_row_count()
+        col_count = 9
+        if row >= row_count or col >= col_count:
+            return
+        self.asm.asm_init()
+        if row == -1 and col == -1:
+            for r in range(row_count):
+                for c in range(col_count):
+                    self._asm_put_grave(r, c)
+        elif row != -1 and col == -1:
+            for c in range(col_count):
+                self._asm_put_grave(row, c)
+        elif row == -1 and col != -1:
+            for r in range(row_count):
+                self._asm_put_grave(r, col)
+        else:
+            self._asm_put_grave(row, col)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+
+    def _asm_put_ladder(self, row, col):
+        lawn_offset, board_offset = self.data.recursively_get_attrs(['lawn', 'board'])
+        self.asm.asm_push_dword(col)
+        self.asm.asm_mov_exx(Reg.EDI, row)
+        self.asm.asm_mov_exx_dword_ptr(Reg.EAX, lawn_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, board_offset)
+        self.asm.asm_call(self.data.call_put_ladder)
+
+    def put_ladder(self, row, col):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        row_count = self.get_row_count()
+        col_count = 9
+        if row >= row_count or col >= col_count:
+            return
+        self.asm.asm_init()
+        if row == -1 and col == -1:
+            for r in range(row_count):
+                for c in range(col_count):
+                    self._asm_put_ladder(r, c)
+        elif row != -1 and col == -1:
+            for c in range(col_count):
+                self._asm_put_ladder(row, c)
+        elif row == -1 and col != -1:
+            for r in range(row_count):
+                self._asm_put_ladder(r, col)
+        else:
+            self._asm_put_ladder(row, col)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+
+    def _asm_put_rake(self, row, col):
+        lawn_offset, board_offset = self.data.recursively_get_attrs(['lawn', 'board'])
+        self.write_memory(0x41786b, row, 4)
+        self.write_memory(0x4177d7, col, 4)
+        self.asm.asm_init()
+        self.asm.asm_mov_exx_dword_ptr(Reg.EAX, lawn_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, board_offset)
+        self.asm.asm_call(self.data.call_put_rake)
+        self.asm.asm_ret()
+        self.asm_code_inject()
+
+    def put_rake(self, row, col):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        row_count = self.get_row_count()
+        col_count = 9
+        if row >= row_count or col >= col_count:
+            return
+        reset_dec_rake_code = self.read_memory(0x41786a, 6)
+        reset_rake_col_code = self.read_memory(0x4177d7, 4)
+        self.write_memory(0x41786a, 0x9000000000bf, 6)
+        self.hack(self.data.rake_unlimited, True)
+        if row == -1 and col == -1:
+            for r in range(row_count):
+                for c in range(col_count):
+                    self._asm_put_rake(r, c)
+        elif row != -1 and col == -1:
+            for c in range(col_count):
+                self._asm_put_rake(row, c)
+        elif row == -1 and col != -1:
+            for r in range(row_count):
+                self._asm_put_rake(r, col)
+        else:
+            self._asm_put_rake(row, col)
+        self.write_memory(0x41786a, reset_dec_rake_code, 6)
+        self.write_memory(0x4177d7, reset_rake_col_code, 4)
+        self.hack(self.data.rake_unlimited, False)
 
 
 if __name__ == '__main__':

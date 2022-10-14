@@ -6,7 +6,6 @@ class Offset(int):
     def __new__(cls, num, **kwargs):
         data = int.__new__(cls, num)
         for k, v in kwargs.items():
-            v: Offset
             data.__setattr__(k, v)
         return data
 
@@ -104,6 +103,7 @@ class Data:
                 twiddydinky=0x1e8,
                 fertilizer=0x220,
                 bug_spray=0x224,
+                remaining_rakes_count=248,
                 chocolate=0x250,
                 tree_food=0x258
             ),
@@ -167,6 +167,7 @@ class Data:
                           Hack(0x465f62, 0x7a78, 0x7894, 2)],
         no_fog=[Hack(0x42616d, 0xf23b, 0xd231, 2)],
         chomper_no_cool_down=[Hack(0x46f911, 0x0fa0, 0x0000, 2)],
+        rake_unlimited=[Hack(0x417732, 0x84, 0x80, 1)],
 
         call_sync_profile=0x455420,
         call_set_plant_sleeping=0x46cb90,
@@ -177,7 +178,10 @@ class Data:
         call_delete_lawn_mower=0x466c60,
         call_put_zombie_in_row=0x419a60,
         call_put_zombie=0x435390,
+        call_put_grave=0x431900,
         call_pick_background=0x415e90,
+        call_put_ladder=0x414d10,
+        call_put_rake=0x417710,
         call_delete_plant=0x475e90,
         call_delete_grid_item=0x458620,
         call_delete_particle_system=0x52b620,
