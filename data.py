@@ -170,6 +170,7 @@ class Data:
 
         call_sync_profile=0x455420,
         call_set_plant_sleeping=0x46cb90,
+        call_wisdom_tree=0x4385d0,
         call_put_plant=0x418d70,
         call_start_lawn_mower=0x466cf0,
         call_restore_lawn_mower=0x4179b0,
