@@ -2799,7 +2799,7 @@ QTabBar::tab{width:100}</string>
              <string>截图到剪切板</string>
             </property>
             <property name="text">
-             <string>📷截图</string>
+             <string>📷截取屏幕</string>
             </property>
            </widget>
           </item>

@@ -1453,7 +1453,7 @@ class Ui_MainWindow(object):
         self.comboBox_10.setItemText(11, _translate("MainWindow", "12 - Brainiac Maniac"))
         self.pushButton_17.setText(_translate("MainWindow", "🎵播放音乐"))
         self.pushButton_22.setToolTip(_translate("MainWindow", "截图到剪切板"))
-        self.pushButton_22.setText(_translate("MainWindow", "📷截图"))
+        self.pushButton_22.setText(_translate("MainWindow", "📷截取屏幕"))
         self.checkBox_11.setText(_translate("MainWindow", "显示隐藏页"))
         self.checkBox_12.setText(_translate("MainWindow", "允许后台运行"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "杂项"))
