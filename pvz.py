@@ -264,7 +264,18 @@ class PvzModifier:
             return
         if isinstance(number, int):
             lawn_offset, user_data_offset, tree_height_offset = self.data.recursively_get_attrs(['lawn', 'user_data', 'tree_height'])
-            self.write_offset((lawn_offset, user_data_offset, tree_height_offset), number, 4)
+            if self.game_mode() == 50:
+                self.write_offset((lawn_offset, user_data_offset, tree_height_offset), number - 1, 4)
+                board_offset, challenge_offset = lawn_offset.recursively_get_attrs(['board', 'challenge'])
+                self.asm.asm_init()
+                self.asm.asm_mov_exx_dword_ptr(Reg.EDI, lawn_offset)
+                self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EDI, board_offset)
+                self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EDI, challenge_offset)
+                self.asm.asm_call(self.data.call_wisdom_tree)
+                self.asm.asm_ret()
+                self.asm_code_inject()
+            else:
+                self.write_offset((lawn_offset, user_data_offset, tree_height_offset), number, 4)
 
     def fertilizer(self, number):
         if not self.is_open():
@@ -501,11 +512,12 @@ class PvzModifier:
     def _get_plant_addresses(self):
         lawn_offset, board_offset, plant_count_max_offset = self.data.recursively_get_attrs(['lawn', 'board', 'plant_count_max'])
         plants_offset = board_offset.plants
-        plants_addr = self.read_offset((lawn_offset, board_offset, plants_offset))
-        plant_struct_size = 0x14c
         plant_dead = plants_offset.dead
+        board = self.read_offset([lawn_offset, board_offset])
+        plants_addr = self.read_memory(board + plants_offset, 4)
+        plant_struct_size = 0x14c
         plant_squished = plants_offset.squished
-        plant_count_max = self.read_offset((lawn_offset, board_offset, plant_count_max_offset), 4)
+        plant_count_max = self.read_memory(board + plant_count_max_offset, 4)
         for i in range(plant_count_max):
             addr = plants_addr + plant_struct_size * i
             is_dead = self.read_memory(addr + plant_dead, 1)
