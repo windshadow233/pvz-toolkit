@@ -717,6 +717,8 @@ class PvzModifier:
         ui = self.game_ui()
         if ui != 2 and ui != 3:
             return
+        if self.game_mode() == 43:
+            return
         addrs = self._get_plant_addresses()
         self.asm.asm_init()
         for addr in addrs:
