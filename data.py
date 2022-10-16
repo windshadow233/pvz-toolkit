@@ -59,6 +59,7 @@ class Data:
                 ),
                 plant_count_max=0xc8,
                 plant_count=0xd4,
+                plant_next_pos=0xd0,
                 lawn_mowers=Offset(
                     0x118,
                     row=0x14,
@@ -105,7 +106,8 @@ class Data:
                 bug_spray=0x224,
                 remaining_rakes_count=248,
                 chocolate=0x250,
-                tree_food=0x258
+                tree_food=0x258,
+                garden_plant_count=0x37c
             ),
             music=0x960
         ),
@@ -168,11 +170,16 @@ class Data:
         no_fog=[Hack(0x42616d, 0xf23b, 0xd231, 2)],
         chomper_no_cool_down=[Hack(0x46f911, 0x0fa0, 0x0000, 2)],
         rake_unlimited=[Hack(0x417732, 0x84, 0x80, 1)],
+        stop_spawning=[Hack(0x41ff1c, 0x000055b48dff, 0x909090909090, 6)],
+        plants_growup=[Hack(0x471664, 0x48047ec085, 0x900470c031, 5)],
+        zombie_not_explode=[Hack(0x54257c, 0x8f, 0x81, 1),
+                            Hack(0x54305d, 0x85, 0x81, 1)],
 
         call_sync_profile=0x455420,
         call_set_plant_sleeping=0x46cb90,
         call_wisdom_tree=0x4385d0,
         call_put_plant=0x418d70,
+        call_put_imitator_plant=0x475050,
         call_start_lawn_mower=0x466cf0,
         call_restore_lawn_mower=0x4179b0,
         call_delete_lawn_mower=0x466c60,

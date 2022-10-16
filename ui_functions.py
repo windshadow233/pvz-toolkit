@@ -67,6 +67,9 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.zombie_weak()
         self.no_fog()
         self.chomper_no_cool_down()
+        self.stop_spawning()
+        self.plants_growup()
+        self.zombie_not_explode()
 
     def open_download_url(self):
         QDesktopServices.openUrl(QUrl("https://pan.baidu.com/s/14OCAGDsNGcgynJXGK4NPfQ?pwd=fnpq"))
@@ -170,7 +173,6 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
     def plant_weak(self):
         if self.checkBox_13.isChecked():
             self.checkBox_13.setChecked(False)
-            self.game.plant_invincible(False)
         self.game.plant_weak(self.checkBox_16.isChecked())
 
     def overlapping_plant(self):
@@ -182,13 +184,11 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
     def zombie_invincible(self):
         if self.checkBox_20.isChecked():
             self.checkBox_20.setChecked(False)
-            self.game.zombie_weak(False)
         self.game.zombie_invincible(self.checkBox_19.isChecked())
 
     def zombie_weak(self):
         if self.checkBox_19.isChecked():
             self.checkBox_19.setChecked(False)
-            self.game.zombie_invincible(False)
         self.game.zombie_weak(self.checkBox_20.isChecked())
 
     def put_plant(self):
@@ -215,17 +215,20 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.game.no_fog(self.checkBox_22.isChecked())
 
     def delete_items(self):
-        item_index = self.comboBox_7.currentIndex()
-        if item_index == 0:
+        index = self.comboBox_7.currentIndex()
+        if index == 0:
+            return
+        if index == 1:
             self.game.delete_all_plants()
-        elif item_index == 1:
+        elif index == 2:
             self.game.kill_all_zombies()
-        elif item_index == 2:
+        elif index == 3:
             self.game.delete_grid_items({1})
-        elif item_index == 3:
+        elif index == 4:
             self.game.delete_grid_items({3})
-        elif item_index == 4:
+        elif index == 5:
             self.game.delete_grid_items({11})
+        self.comboBox_7.setCurrentIndex(0)
 
     def put_lily(self):
         index = self.comboBox_8.currentIndex()
@@ -248,8 +251,11 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.game.set_music(music_id)
 
     def set_scene(self):
-        scene_id = self.comboBox_11.currentIndex()
-        self.game.set_scene(scene_id)
+        index = self.comboBox_11.currentIndex()
+        if index == 0:
+            return
+        self.game.set_scene(index - 1)
+        self.comboBox_11.setCurrentIndex(0)
 
     def chomper_no_cool_down(self):
         self.game.chomper_no_cool_down(self.checkBox_23.isChecked())
@@ -271,3 +277,12 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
 
     def screen_shot(self):
         self.game.screen_shot()
+
+    def stop_spawning(self):
+        self.game.stop_spawning(self.checkBox_24.isChecked())
+
+    def plants_growup(self):
+        self.game.plants_instant_growup(self.checkBox_25.isChecked())
+
+    def zombie_not_explode(self):
+        self.game.zombie_not_explode(self.checkBox_26.isChecked())
