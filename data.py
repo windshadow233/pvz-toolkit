@@ -174,6 +174,9 @@ class Data:
         plants_growup=[Hack(0x471664, 0x48047ec085, 0x900470c031, 5)],
         zombie_not_explode=[Hack(0x54257c, 0x8f, 0x81, 1),
                             Hack(0x54305d, 0x85, 0x81, 1)],
+        zombie_stop=[Hack(0x546823, 0x64, 0x54, 1),
+                     Hack(0x54682c, 0x44, 0x54, 1)],
+        lock_butter=[Hack(0x46d542, 0x75, 0x70, 1)],
 
         call_sync_profile=0x455420,
         call_set_plant_sleeping=0x46cb90,
@@ -192,5 +195,22 @@ class Data:
         call_delete_plant=0x475e90,
         call_delete_grid_item=0x458620,
         call_delete_particle_system=0x52b620,
-        call_play_music=0x469a10
+        call_play_music=0x469a10,
+        call_shot_bullet=0x4752e0,
+
+        modify_bullet_addresses={
+            0: 0x4753ab,
+            1: 0x4753b5,
+            2: 0x4753bf,
+            3: 0x4753d3,
+            4: 0x4753dd,
+            5: 0x4753ed,
+            6: None,
+            7: 0x46db5b,
+            8: 0x475390,
+            9: None,
+            10: 0x4753c9,
+            11: None,
+            12: 0x475409
+        }
     )

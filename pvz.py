@@ -95,30 +95,36 @@ class PvzModifier:
         self.hwnd = 0
         return False
 
+    def hack(self, hacks: List[Hack], status):
+        for hack in hacks:
+            address = hack.address
+            if status:
+                self.write_memory(address, hack.hack_value, hack.length)
+            else:
+                self.write_memory(address, hack.reset_value, hack.length)
+
+
+
     def has_user(self):
         if not self.is_open():
             return
-        lawn_offset, user_data_offset = self.data.recursively_get_attrs(['lawn', 'user_data'])
-        userdata = self.read_offset((lawn_offset, user_data_offset))
+        userdata = self.read_offset((self.data.lawn, self.data.lawn.user_data))
         return userdata != 0
 
     def get_frame_duration(self):
         if not self.is_open():
             return 10
-        lawn_offset, frame_duration_offset = self.data.recursively_get_attrs(['lawn', 'frame_duration'])
-        return self.read_offset((lawn_offset, frame_duration_offset), 4)
+        return self.read_offset((self.data.lawn, self.data.lawn.frame_duration), 4)
 
     def game_mode(self):
         if not self.is_open():
             return
-        lawn_offset, game_mode_offset = self.data.recursively_get_attrs(['lawn', 'game_mode'])
-        return self.read_offset((lawn_offset, game_mode_offset))
+        return self.read_offset((self.data.lawn, self.data.lawn.game_mode))
 
     def game_ui(self):
         if not self.is_open():
             return
-        lawn_offset, game_ui_offset = self.data.recursively_get_attrs(['lawn', 'game_ui'])
-        return self.read_offset((lawn_offset, game_ui_offset))
+        return self.read_offset((self.data.lawn, self.data.lawn.game_ui))
 
     def get_scene(self):
         if not self.is_open():
@@ -226,14 +232,6 @@ class PvzModifier:
         self.asm.asm_call(self.data.call_sync_profile)
         self.asm.asm_ret()
         self.asm_code_inject()
-
-    def hack(self, hacks: List[Hack], status):
-        for hack in hacks:
-            address = hack.address
-            if status:
-                self.write_memory(address, hack.hack_value, hack.length)
-            else:
-                self.write_memory(address, hack.reset_value, hack.length)
 
     def sun_shine(self, number):
         if not self.is_open():
@@ -1168,10 +1166,39 @@ class PvzModifier:
             return
         self.hack(self.data.zombie_not_explode, status)
 
-    def reset_marigold(self):
-        self.write_offset([0x755e0c, 0x950, 0x1e8 + 0x28], 8323, 4)
-        game.write_offset([0x755e0c, 0x950, 0x1ec + 0x28], 8323, 4)
-        game.write_offset([0x755e0c, 0x950, 0x1f0 + 0x28], 8323, 4)
+    def zombie_stop(self, status):
+        if not self.is_open():
+            return
+        self.hack(self.data.zombie_stop, status)
+
+    def lock_butter(self, status):
+        if not self.is_open():
+            return
+        self.hack(self.data.lock_butter, status)
+
+    def change_bullet(self, from_bullet, to_bullet):
+        addr = self.data.modify_bullet_addresses.get(from_bullet)
+        if addr and 0 <= to_bullet <= 12:
+            if from_bullet == 7:
+                self.write_memory(addr, to_bullet, 1)
+            else:
+                self.write_memory(addr, to_bullet, 4)
+
+    def change_all_bullet(self, to_bullet):
+        for bullet, addr in self.data.modify_bullet_addresses.items():
+            if addr and 0 <= to_bullet <= 12:
+                if bullet == 7:
+                    self.write_memory(addr, to_bullet, 1)
+                else:
+                    self.write_memory(addr, to_bullet, 4)
+
+    def reset_bullet(self):
+        for bullet, addr in self.data.modify_bullet_addresses.items():
+            if addr:
+                if bullet == 7:
+                    self.write_memory(addr, 7, 1)
+                else:
+                    self.write_memory(addr, bullet, 4)
 
 
 if __name__ == '__main__':
