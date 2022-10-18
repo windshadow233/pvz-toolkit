@@ -2226,7 +2226,7 @@ QTabBar::tab{width:100}</string>
             </item>
             <item>
              <property name="text">
-              <string>25 - 僵王博士</string>
+              <string>25 - 僵王博士(限5行场景)</string>
              </property>
             </item>
             <item>
@@ -3086,7 +3086,7 @@ QTabBar::tab{width:100}</string>
           <item>
            <widget class="QPushButton" name="pushButton_18">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -3095,6 +3095,12 @@ QTabBar::tab{width:100}</string>
              <size>
               <width>0</width>
               <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <property name="text">
@@ -3965,7 +3971,7 @@ QTabBar::tab{width:100}</string>
   </connection>
   <connection>
    <sender>checkBox_26</sender>
-   <signal>clicked()</signal>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
    <slot>zombie_not_explode()</slot>
    <hints>
@@ -4141,7 +4147,7 @@ QTabBar::tab{width:100}</string>
   </connection>
   <connection>
    <sender>checkBox_20</sender>
-   <signal>clicked()</signal>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
    <slot>zombie_weak()</slot>
    <hints>
@@ -4157,7 +4163,7 @@ QTabBar::tab{width:100}</string>
   </connection>
   <connection>
    <sender>checkBox_19</sender>
-   <signal>clicked()</signal>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
    <slot>zombie_invincible()</slot>
    <hints>
@@ -4173,7 +4179,7 @@ QTabBar::tab{width:100}</string>
   </connection>
   <connection>
    <sender>checkBox_16</sender>
-   <signal>clicked()</signal>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
    <slot>plant_weak()</slot>
    <hints>
@@ -4189,7 +4195,7 @@ QTabBar::tab{width:100}</string>
   </connection>
   <connection>
    <sender>checkBox_13</sender>
-   <signal>clicked()</signal>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
    <slot>plant_invincible()</slot>
    <hints>
