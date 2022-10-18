@@ -70,6 +70,8 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.stop_spawning()
         self.plants_growup()
         self.zombie_not_explode()
+        self.zombie_stop()
+        self.lock_butter()
 
     def open_download_url(self):
         QDesktopServices.openUrl(QUrl("https://pan.baidu.com/s/14OCAGDsNGcgynJXGK4NPfQ?pwd=fnpq"))
@@ -173,6 +175,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
     def plant_weak(self):
         if self.checkBox_13.isChecked():
             self.checkBox_13.setChecked(False)
+            self.game.plant_invincible(False)
         self.game.plant_weak(self.checkBox_16.isChecked())
 
     def overlapping_plant(self):
@@ -184,18 +187,23 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
     def zombie_invincible(self):
         if self.checkBox_20.isChecked():
             self.checkBox_20.setChecked(False)
+            self.game.zombie_weak(False)
         self.game.zombie_invincible(self.checkBox_19.isChecked())
 
     def zombie_weak(self):
         if self.checkBox_19.isChecked():
             self.checkBox_19.setChecked(False)
+            self.game.zombie_invincible(False)
         self.game.zombie_weak(self.checkBox_20.isChecked())
 
     def put_plant(self):
         row = self.comboBox_2.currentIndex() - 1
         col = self.comboBox_3.currentIndex() - 1
         plant_type = self.comboBox_4.currentIndex()
-        imitator = self.checkBox_21.isChecked()
+        if plant_type == 48:
+            imitator = 1
+        else:
+            imitator = self.checkBox_21.isChecked()
         self.game.put_plant(plant_type, row, col, imitator)
 
     def set_lawn_mower(self):
@@ -286,3 +294,23 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
 
     def zombie_not_explode(self):
         self.game.zombie_not_explode(self.checkBox_26.isChecked())
+
+    def zombie_stop(self):
+        self.game.zombie_stop(self.checkBox_27.isChecked())
+
+    def lock_butter(self):
+        self.game.lock_butter(self.checkBox_28.isChecked())
+
+    def change_bullet(self):
+        to_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12][self.comboBox_13.currentIndex()]
+        if self.checkBox_29.isChecked():
+            self.game.change_all_bullet(to_bullet)
+        else:
+            from_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 10, 12][self.comboBox_12.currentIndex()]
+            self.game.change_bullet(from_bullet, to_bullet)
+
+    def reset_bullet(self):
+        self.game.reset_bullet()
+
+
+
