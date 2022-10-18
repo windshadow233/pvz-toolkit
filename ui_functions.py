@@ -45,33 +45,9 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self._check_game_status_thread.start()
 
     def set_status(self):
-        self.money_not_dec()
-        self.sun_not_dec()
-        self.chocolate_not_dec()
-        self.fertilizer_not_dec()
-        self.bug_spray_not_dec()
-        self.tree_food_not_dec()
-        self.auto_collect()
-        self.no_cool_down()
-        self.vase_transparent()
-        self.lock_shovel()
-        self.unlock_limbo_page()
-        self.background_running()
-        self.plant_invincible()
-        self.plant_weak()
-        self.no_crater()
-        self.no_ice_trail()
-        self.overlapping_plant()
-        self.mushroom_awake()
-        self.zombie_invincible()
-        self.zombie_weak()
-        self.no_fog()
-        self.chomper_no_cool_down()
-        self.stop_spawning()
-        self.plants_growup()
-        self.zombie_not_explode()
-        self.zombie_stop()
-        self.lock_butter()
+        for _, checkbox in filter(lambda x: 'checkBox' in x[0], self.__dict__.items()):
+            if checkbox.isChecked():
+                checkbox.toggled.emit(True)
 
     def open_download_url(self):
         QDesktopServices.openUrl(QUrl("https://pan.baidu.com/s/14OCAGDsNGcgynJXGK4NPfQ?pwd=fnpq"))
@@ -160,23 +136,23 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
     def unlock_achievements(self):
         self.game.unlock_achievements()
 
-    def plant_invincible(self):
-        if self.checkBox_16.isChecked():
-            self.checkBox_16.setChecked(False)
-            self.game.plant_weak(False)
-        self.game.plant_invincible(self.checkBox_13.isChecked())
-
     def no_crater(self):
         self.game.no_crater(self.checkBox_14.isChecked())
 
     def no_ice_trail(self):
         self.game.no_ice_trail(self.checkBox_15.isChecked())
 
+    def plant_invincible(self):
+        is_checked = self.checkBox_13.isChecked()
+        if is_checked and self.checkBox_16.isChecked():
+            self.checkBox_16.setChecked(False)
+        self.game.plant_invincible(is_checked)
+
     def plant_weak(self):
-        if self.checkBox_13.isChecked():
+        is_checked = self.checkBox_16.isChecked()
+        if is_checked and self.checkBox_13.isChecked():
             self.checkBox_13.setChecked(False)
-            self.game.plant_invincible(False)
-        self.game.plant_weak(self.checkBox_16.isChecked())
+        self.game.plant_weak(is_checked)
 
     def overlapping_plant(self):
         self.game.overlapping_plant(self.checkBox_17.isChecked())
@@ -185,16 +161,16 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.game.mushroom_awake(self.checkBox_18.isChecked())
 
     def zombie_invincible(self):
-        if self.checkBox_20.isChecked():
+        is_checked = self.checkBox_19.isChecked()
+        if is_checked and self.checkBox_20.isChecked():
             self.checkBox_20.setChecked(False)
-            self.game.zombie_weak(False)
-        self.game.zombie_invincible(self.checkBox_19.isChecked())
+        self.game.zombie_invincible(is_checked)
 
     def zombie_weak(self):
-        if self.checkBox_19.isChecked():
+        is_checked = self.checkBox_20.isChecked()
+        if is_checked and self.checkBox_19.isChecked():
             self.checkBox_19.setChecked(False)
-            self.game.zombie_invincible(False)
-        self.game.zombie_weak(self.checkBox_20.isChecked())
+        self.game.zombie_weak(is_checked)
 
     def put_plant(self):
         row = self.comboBox_2.currentIndex() - 1
