@@ -177,6 +177,8 @@ class Data:
         zombie_stop=[Hack(0x546823, 0x64, 0x54, 1),
                      Hack(0x54682c, 0x44, 0x54, 1)],
         lock_butter=[Hack(0x46d542, 0x75, 0x70, 1)],
+        change_bullet=[Hack(0x47bb65, 0x24448b, 0x5c45c7, 3),
+                       Hack(0x47bb68, 0x5c458924, 0, 4)],
 
         call_sync_profile=0x455420,
         call_set_plant_sleeping=0x46cb90,
@@ -196,21 +198,21 @@ class Data:
         call_delete_grid_item=0x458620,
         call_delete_particle_system=0x52b620,
         call_play_music=0x469a10,
-        call_shot_bullet=0x4752e0,
-
-        modify_bullet_addresses={
-            0: 0x4753ab,
-            1: 0x4753b5,
-            2: 0x4753bf,
-            3: 0x4753d3,
-            4: 0x4753dd,
-            5: 0x4753ed,
-            6: None,
-            7: 0x46db5b,
-            8: 0x475390,
-            9: None,
-            10: 0x4753c9,
-            11: None,
-            12: 0x475409
-        }
+        # call_shot_bullet=0x4752e0,
+        #
+        # modify_bullet_addresses={
+        #     0: 0x4753ab,
+        #     1: 0x4753b5,
+        #     2: 0x4753bf,
+        #     3: 0x4753d3,
+        #     4: 0x4753dd,
+        #     5: 0x4753ed,
+        #     6: None,
+        #     7: 0x46db5b,
+        #     8: 0x475390,
+        #     9: None,
+        #     10: 0x4753c9,
+        #     11: None,
+        #     12: 0x475409
+        # }
     )

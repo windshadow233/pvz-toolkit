@@ -1179,29 +1179,35 @@ class PvzModifier:
             return
         self.hack(self.data.lock_butter, status)
 
-    def change_bullet(self, from_bullet, to_bullet):
-        addr = self.data.modify_bullet_addresses.get(from_bullet)
-        if addr and 0 <= to_bullet <= 12:
-            if from_bullet == 7:
-                self.write_memory(addr, to_bullet, 1)
-            else:
-                self.write_memory(addr, to_bullet, 4)
+    def change_bullet(self, to_bullet, status):
+        hacks = self.data.change_bullet
+        if status:
+            hacks[1] = hacks[1].__getattribute__('_replace')(hack_value=to_bullet)
+        self.hack(hacks, status)
 
-    def change_all_bullet(self, to_bullet):
-        for bullet, addr in self.data.modify_bullet_addresses.items():
-            if addr and 0 <= to_bullet <= 12:
-                if bullet == 7:
-                    self.write_memory(addr, to_bullet, 1)
-                else:
-                    self.write_memory(addr, to_bullet, 4)
-
-    def reset_bullet(self):
-        for bullet, addr in self.data.modify_bullet_addresses.items():
-            if addr:
-                if bullet == 7:
-                    self.write_memory(addr, 7, 1)
-                else:
-                    self.write_memory(addr, bullet, 4)
+    # def change_bullet(self, from_bullet, to_bullet):
+    #     addr = self.data.modify_bullet_addresses.get(from_bullet)
+    #     if addr and 0 <= to_bullet <= 12:
+    #         if from_bullet == 7:
+    #             self.write_memory(addr, to_bullet, 1)
+    #         else:
+    #             self.write_memory(addr, to_bullet, 4)
+    #
+    # def change_all_bullet(self, to_bullet):
+    #     for bullet, addr in self.data.modify_bullet_addresses.items():
+    #         if addr and 0 <= to_bullet <= 12:
+    #             if bullet == 7:
+    #                 self.write_memory(addr, to_bullet, 1)
+    #             else:
+    #                 self.write_memory(addr, to_bullet, 4)
+    #
+    # def reset_bullet(self):
+    #     for bullet, addr in self.data.modify_bullet_addresses.items():
+    #         if addr:
+    #             if bullet == 7:
+    #                 self.write_memory(addr, 7, 1)
+    #             else:
+    #                 self.write_memory(addr, bullet, 4)
 
 
 if __name__ == '__main__':

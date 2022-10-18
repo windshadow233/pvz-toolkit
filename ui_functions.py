@@ -193,6 +193,10 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         row = self.comboBox_2.currentIndex() - 1
         col = self.comboBox_3.currentIndex() - 1
         zombie_type = self.comboBox_6.currentIndex()
+        scene = self.game.get_scene()
+        if zombie_type == 25 and (scene == 2 or scene == 3):
+            QMessageBox.information(self, "温馨提示", "泳池与雾夜模式不支持召唤僵王", QMessageBox.Ok)
+            return
         self.game.put_zombie(zombie_type, row, col)
 
     def no_fog(self):
@@ -278,15 +282,20 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.game.lock_butter(self.checkBox_28.isChecked())
 
     def change_bullet(self):
+        is_checked = self.checkBox_29.isChecked()
         to_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12][self.comboBox_13.currentIndex()]
-        if self.checkBox_29.isChecked():
-            self.game.change_all_bullet(to_bullet)
-        else:
-            from_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 10, 12][self.comboBox_12.currentIndex()]
-            self.game.change_bullet(from_bullet, to_bullet)
-
-    def reset_bullet(self):
-        self.game.reset_bullet()
+        if is_checked and to_bullet == 9:
+            QMessageBox.warning(self, "警告", "投掷植物无法使用篮球对僵尸造成伤害", QMessageBox.Ok)
+        self.game.change_bullet(to_bullet, is_checked)
+        # if self.checkBox_29.isChecked():
+        #     if to_bullet == 9:
+        #         QMessageBox.warning(self, "警告", "投掷植物无法使用篮球对僵尸造成伤害", QMessageBox.Ok)
+        #     self.game.change_all_bullet(to_bullet)
+        # else:
+        #     from_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 10, 12][self.comboBox_12.currentIndex()]
+        #     if to_bullet == 9 and (from_bullet in {2, 3, 5, 10, 12}):
+        #         QMessageBox.warning(self, "警告", "投掷植物无法使用篮球对僵尸造成伤害", QMessageBox.Ok)
+        #     self.game.change_bullet(from_bullet, to_bullet)
 
 
 
