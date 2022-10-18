@@ -691,6 +691,9 @@ class PvzModifier:
         if ui != 2 and ui != 3:
             return
         if zombie_type == 25:
+            scene = self.get_scene()
+            if scene == 2 or scene == 3:  # 泳池模式放僵王会闪退
+                return
             type_offset = self.data.lawn.board.zombies.type
             addrs = self._get_zombie_addresses()
             for addr in addrs:
