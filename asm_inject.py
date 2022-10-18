@@ -128,9 +128,10 @@ class RunAsm:
     def asm_ret(self):
         self.asm_add_byte(0xc3)
 
-    def write_memory(self, phand, address, data, length=4):
-        data = ctypes.c_ulong(data)
-        self.WriteProcessMemory(phand, address, ctypes.byref(data), length, None)
+    def asm_mov_exx_data(self, reg: Reg):
+        self.asm_add_byte(0xb8 + reg.value)
+        self.data_pos.append(self.length)
+        self.asm_add_dword(0)
 
     def asm_code_inject(self, phand):
         addr = self.VirtualAllocEx(phand, 0, self.length, 0x00001000, 0x40)
