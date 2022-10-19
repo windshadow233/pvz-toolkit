@@ -15,7 +15,7 @@ class Reg(Enum):
     ESP = 4
 
 
-class RunAsm:
+class AsmInjector:
     def __init__(self, lock):
         self.code = bytearray()
         self.calls_pos = []
@@ -128,15 +128,7 @@ class RunAsm:
     def asm_ret(self):
         self.asm_add_byte(0xc3)
 
-    def asm_mov_exx_data(self, reg: Reg):
-        self.asm_add_byte(0xb8 + reg.value)
-        self.data_pos.append(self.length)
-        self.asm_add_dword(0)
-
-    def asm_code_inject(self, phand):
-        addr = self.VirtualAllocEx(phand, 0, self.length, 0x00001000, 0x40)
-        if not addr:
-            return
+    def asm_code_inject(self, phand, addr):
         for pos in self.calls_pos:
             call_addr = int.from_bytes(self.code[pos: pos + 4], 'little')
             call_addr -= (addr + pos + 4)
@@ -148,6 +140,17 @@ class RunAsm:
         self.lock.release()
         if ret == 0 or write_size.value != self.length:
             self.VirtualFreeEx(phand, addr, 0, 0x00008000)
+            return False
+        return True
+
+    def asm_code_free(self, phand, address):
+        self.VirtualFreeEx(phand, address, 0, 0x00008000)
+
+    def asm_code_execute(self, phand):
+        addr = self.VirtualAllocEx(phand, 0, self.length, 0x00001000, 0x40)
+        if not addr:
+            return
+        if not self.asm_code_inject(phand, addr):
             return
         thread = self.CreateRemoteThread(phand, None, 0, addr, None, 0, None)
         if not thread:
