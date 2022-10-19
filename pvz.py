@@ -1,15 +1,17 @@
+import os.path
 import time
 
 from typing import List
-import win32ui
 import win32gui
 import win32process
 import win32clipboard
 import ctypes
 import threading
+import json
+import copy
 
 from data import Data, Hack
-from asm_inject import RunAsm, Reg
+from asm_inject import AsmInjector, Reg
 from lineup import Lineup
 
 
@@ -33,7 +35,8 @@ class PvzModifier:
         self.data = Data.pvz_goty_1_1_0_1056_zh_2012_06
         self.hwnd = 0
         self.lock = threading.Lock()
-        self.asm = RunAsm(self.lock)
+        self.asm = AsmInjector(self.lock)
+        self.changed_bullets = {}
 
     def wait_for_game(self):
         while 1:
@@ -84,7 +87,7 @@ class PvzModifier:
     def asm_code_inject(self):
         self.hack(self.data.block_main_loop, True)
         time.sleep(self.get_frame_duration() * 2 / 1000)
-        self.asm.asm_code_inject(self.phand)
+        self.asm.asm_code_execute(self.phand)
         self.hack(self.data.block_main_loop, False)
 
     def is_open(self):
@@ -93,6 +96,7 @@ class PvzModifier:
         if win32gui.IsWindow(self.hwnd):
             return True
         self.hwnd = 0
+        self.changed_bullets.clear()
         return False
 
     def hack(self, hacks: List[Hack], status):
@@ -102,8 +106,6 @@ class PvzModifier:
                 self.write_memory(address, hack.hack_value, hack.length)
             else:
                 self.write_memory(address, hack.reset_value, hack.length)
-
-
 
     def has_user(self):
         if not self.is_open():
@@ -1179,35 +1181,70 @@ class PvzModifier:
             return
         self.hack(self.data.lock_butter, status)
 
-    def change_bullet(self, to_bullet, status):
-        hacks = self.data.change_bullet
-        if status:
-            hacks[1] = hacks[1].__getattribute__('_replace')(hack_value=to_bullet)
-        self.hack(hacks, status)
+    def change_bullet(self, from_bullet, to_bullet):
+        if not self.is_open():
+            return
+        items = copy.copy(self.changed_bullets.get('items', {}))
+        if from_bullet == to_bullet:
+            if from_bullet in items:
+                items.pop(from_bullet)
+            if not items:
+                self.reset_bullets()
+                return
+        else:
+            if to_bullet == items.get(from_bullet):
+                return
+            items[from_bullet] = to_bullet
+        inject_addr = self.changed_bullets.get('address') or self.asm.VirtualAllocEx(self.phand, 0, 512, 0x00001000, 0x40)
+        return_addr = 0x47bb6c
+        self.asm.asm_init()
+        pos = inject_addr
+        for f, t in items.items():
+            self.asm.asm_add_dword(0x24247c83)
+            self.asm.asm_add_byte(f)  # cmp [esp+24],f
+            self.asm.asm_add_word(0x0c75)
+            self.asm.asm_add_list([0xc7, 0x45, 0x5c])
+            self.asm.asm_add_dword(t)  # mov [ebp+5c],t
+            self.asm.asm_add_byte(0xe9)
+            pos += 0x13
+            target = return_addr - pos
+            if target < 0:
+                target += 0x100000000
+            self.asm.asm_add_dword(target)  # jmp return_addr
+        self.asm.asm_add_dword(0x2424448b)  # mov eax,[esp+24]
+        self.asm.asm_add_list([0x89, 0x45, 0x5c])  # mov [ebp+5c],eax
+        pos += 0xc
+        self.asm.asm_add_byte(0xe9)
+        target = return_addr - pos
+        if target < 0:
+            target += 0x100000000
+        self.asm.asm_add_dword(target)  # jmp return_addr
 
-    # def change_bullet(self, from_bullet, to_bullet):
-    #     addr = self.data.modify_bullet_addresses.get(from_bullet)
-    #     if addr and 0 <= to_bullet <= 12:
-    #         if from_bullet == 7:
-    #             self.write_memory(addr, to_bullet, 1)
-    #         else:
-    #             self.write_memory(addr, to_bullet, 4)
-    #
-    # def change_all_bullet(self, to_bullet):
-    #     for bullet, addr in self.data.modify_bullet_addresses.items():
-    #         if addr and 0 <= to_bullet <= 12:
-    #             if bullet == 7:
-    #                 self.write_memory(addr, to_bullet, 1)
-    #             else:
-    #                 self.write_memory(addr, to_bullet, 4)
-    #
-    # def reset_bullet(self):
-    #     for bullet, addr in self.data.modify_bullet_addresses.items():
-    #         if addr:
-    #             if bullet == 7:
-    #                 self.write_memory(addr, 7, 1)
-    #             else:
-    #                 self.write_memory(addr, bullet, 4)
+        write_size = ctypes.c_int(0)
+        data = ctypes.create_string_buffer(bytes(self.asm.code))
+
+        self.lock.acquire()
+        ret = self.asm.WriteProcessMemory(self.phand, inject_addr, ctypes.byref(data), self.asm.length, ctypes.byref(write_size))
+        self.lock.release()
+        if ret == 0 or write_size.value != self.asm.length:
+            self.asm.VirtualFreeEx(self.phand, inject_addr, 0, 0x00008000)
+            return
+        self.changed_bullets['address'] = inject_addr
+        self.changed_bullets['items'] = items
+        target = inject_addr - 0x47bb6a
+        if target < 0:
+            target += 0x100000000
+        self.write_memory(0x47bb65, target * 16 * 16 + 0xe9, 5)
+        self.write_memory(0x47bb6a, 0x9066, 2)
+
+    def reset_bullets(self):
+        if not self.is_open():
+            return
+        addr = self.changed_bullets.get('address')
+        if addr:
+            self.write_memory(0x47bb65, 0x5c45892424448b, 7)
+            self.asm.asm_code_free(self.phand, addr)
+            self.changed_bullets.clear()
 
 
 if __name__ == '__main__':

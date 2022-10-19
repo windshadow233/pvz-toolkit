@@ -31,6 +31,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
                 if not self.game.is_open():
                     self.label_9.setStyleSheet("color:red")
                     self.label_9.setText("❌未检测到游戏进程")
+                    self.listWidget.clear()
                     self.game.wait_for_game()
                     status = True
                     self.set_status()
@@ -40,9 +41,22 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
                         self.label_9.setText("✅已检测到游戏进程")
                         status = False
                 time.sleep(0.1)
+
         self._check_game_status_thread = threading.Thread(target=check_game_status)
         self._check_game_status_thread.setDaemon(True)
         self._check_game_status_thread.start()
+
+    def closeEvent(self, event: QtGui.QCloseEvent) -> None:
+        if self.game.changed_bullets:
+            reply = QMessageBox.question(self, "温馨提示", "为合理使用内存空间，此窗口关闭时，所有变换子弹效果将被重置，是否退出？",
+                                         buttons=QMessageBox.Yes | QMessageBox.No, defaultButton=QMessageBox.No)
+            if reply == QMessageBox.Yes:
+                self.reset_bullets()
+                event.accept()
+            else:
+                event.ignore()
+        else:
+            event.accept()
 
     def set_status(self):
         for _, checkbox in filter(lambda x: 'checkBox' in x[0], self.__dict__.items()):
@@ -282,20 +296,17 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.game.lock_butter(self.checkBox_28.isChecked())
 
     def change_bullet(self):
-        is_checked = self.checkBox_29.isChecked()
-        to_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12][self.comboBox_13.currentIndex()]
-        if is_checked and to_bullet == 9:
-            QMessageBox.warning(self, "警告", "投掷植物无法使用篮球对僵尸造成伤害", QMessageBox.Ok)
-        self.game.change_bullet(to_bullet, is_checked)
-        # if self.checkBox_29.isChecked():
-        #     if to_bullet == 9:
-        #         QMessageBox.warning(self, "警告", "投掷植物无法使用篮球对僵尸造成伤害", QMessageBox.Ok)
-        #     self.game.change_all_bullet(to_bullet)
-        # else:
-        #     from_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 10, 12][self.comboBox_12.currentIndex()]
-        #     if to_bullet == 9 and (from_bullet in {2, 3, 5, 10, 12}):
-        #         QMessageBox.warning(self, "警告", "投掷植物无法使用篮球对僵尸造成伤害", QMessageBox.Ok)
-        #     self.game.change_bullet(from_bullet, to_bullet)
+        from_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 10, 11, 12][self.comboBox_13.currentIndex()]
+        to_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12][self.comboBox_12.currentIndex()]
+        if to_bullet == 9 and from_bullet in {2, 3, 5, 10, 12}:
+            QMessageBox.warning(self, "警告", "投掷类植物无法使用篮球对僵尸造成伤害", QMessageBox.Ok)
+        self.game.change_bullet(from_bullet, to_bullet)
+        types = self.game.data.bullet_types
+        items = [f"{types[f]} ⇒ {types[t]}" for f, t in self.game.changed_bullets.get('items', {}).items()]
+        items = [(' ' * 5).join(items[i: i + 3]) for i in range(0, len(items), 3)]
+        self.listWidget.clear()
+        self.listWidget.addItems(items)
 
-
-
+    def reset_bullets(self):
+        self.game.reset_bullets()
+        self.listWidget.clear()

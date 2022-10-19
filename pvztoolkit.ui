@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>504</width>
-    <height>576</height>
+    <height>555</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -2901,8 +2901,112 @@ QTabBar::tab{width:100}</string>
             </property>
             <property name="minimumSize">
              <size>
-              <width>0</width>
+              <width>90</width>
               <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <item>
+             <property name="text">
+              <string>豌豆</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>冰豌豆</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>卷心菜</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>西瓜</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>孢子</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>冰瓜</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>杨桃</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>刺</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>玉米粒</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>玉米炮弹</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>黄油</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_16">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>⇒</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_12">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>90</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
              </size>
             </property>
             <item>
@@ -2968,32 +3072,35 @@ QTabBar::tab{width:100}</string>
            </widget>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox_29">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-             </font>
+           <widget class="QPushButton" name="pushButton_18">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
             </property>
             <property name="text">
-             <string>修改子弹</string>
+             <string>重置</string>
             </property>
            </widget>
           </item>
-          <item>
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
          </layout>
+        </item>
+        <item>
+         <widget class="QListWidget" name="listWidget">
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>100</height>
+           </size>
+          </property>
+         </widget>
         </item>
         <item>
          <widget class="Line" name="line_4">
@@ -3137,19 +3244,6 @@ QTabBar::tab{width:100}</string>
            </widget>
           </item>
          </layout>
-        </item>
-        <item>
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>118</height>
-           </size>
-          </property>
-         </spacer>
         </item>
        </layout>
       </widget>
@@ -4063,34 +4157,34 @@ QTabBar::tab{width:100}</string>
    </hints>
   </connection>
   <connection>
-   <sender>checkBox_29</sender>
-   <signal>toggled(bool)</signal>
+   <sender>pushButton_16</sender>
+   <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>change_bullet()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>194</x>
-     <y>193</y>
+     <x>191</x>
+     <y>181</y>
     </hint>
     <hint type="destinationlabel">
-     <x>290</x>
-     <y>511</y>
+     <x>496</x>
+     <y>40</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>comboBox_13</sender>
-   <signal>currentIndexChanged(QString)</signal>
+   <sender>pushButton_18</sender>
+   <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>change_bullet()</slot>
+   <slot>reset_bullets()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>56</x>
+     <x>442</x>
      <y>194</y>
     </hint>
     <hint type="destinationlabel">
-     <x>3</x>
-     <y>235</y>
+     <x>497</x>
+     <y>184</y>
     </hint>
    </hints>
   </connection>
@@ -4149,5 +4243,6 @@ QTabBar::tab{width:100}</string>
   <slot>zombie_stop()</slot>
   <slot>lock_butter()</slot>
   <slot>change_bullet()</slot>
+  <slot>reset_bullets()</slot>
  </slots>
 </ui>
