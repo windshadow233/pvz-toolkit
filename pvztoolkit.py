@@ -1708,5 +1708,5 @@ class Ui_MainWindow(object):
         self.checkBox_12.setText(_translate("MainWindow", "允许后台运行"))
         self.checkBox_3.setText(_translate("MainWindow", "花瓶透视"))
         self.checkBox_17.setText(_translate("MainWindow", "重叠种植"))
-        self.checkBox_10.setText(_translate("MainWindow", "连续铁铲"))
+        self.checkBox_10.setText(_translate("MainWindow", "锁定铁铲"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_4), _translate("MainWindow", "杂项"))

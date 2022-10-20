@@ -3239,7 +3239,7 @@ QTabBar::tab{width:100}</string>
              </font>
             </property>
             <property name="text">
-             <string>连续铁铲</string>
+             <string>锁定铁铲</string>
             </property>
            </widget>
           </item>
