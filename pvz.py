@@ -1,4 +1,3 @@
-import os.path
 import time
 
 from typing import List
@@ -7,7 +6,6 @@ import win32process
 import win32clipboard
 import ctypes
 import threading
-import json
 import copy
 
 from data import Data, Hack
@@ -84,7 +82,7 @@ class PvzModifier:
         for i, data in enumerate(items):
             self.write_memory(start_addr + i * item_byte_len, data, item_byte_len)
 
-    def asm_code_inject(self):
+    def asm_code_execute(self):
         self.hack(self.data.block_main_loop, True)
         time.sleep(self.get_frame_duration() * 2 / 1000)
         self.asm.asm_code_execute(self.phand)
@@ -170,7 +168,7 @@ class PvzModifier:
         self.asm.asm_add_dword(scene)
         self.asm.asm_call(self.data.call_pick_background)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
         if scene in {0, 1, 4, 5}:
             block_types, row_types = [1, 1, 1, 1, 1, 2] * 9, [1, 1, 1, 1, 1, 0]
         else:
@@ -212,7 +210,7 @@ class PvzModifier:
         self.asm.asm_add_dword(board_offset.particle_systems)
         self.asm.asm_add_dword(0)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def get_row_count(self):
         if not self.is_open():
@@ -233,7 +231,7 @@ class PvzModifier:
         self.asm.asm_mov_exx_exx(Reg.ESI, Reg.ECX)
         self.asm.asm_call(self.data.call_sync_profile)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def sun_shine(self, number):
         if not self.is_open():
@@ -284,7 +282,7 @@ class PvzModifier:
                 self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EDI, challenge_offset)
                 self.asm.asm_call(self.data.call_wisdom_tree)
                 self.asm.asm_ret()
-                self.asm_code_inject()
+                self.asm_code_execute()
             else:
                 self.write_offset((lawn_offset, user_data_offset, tree_height_offset), number, 4)
 
@@ -620,7 +618,7 @@ class PvzModifier:
         else:
             self._asm_put_plant(plant_type, row, col, imitator)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def _set_mushroom_awake(self):
         if not self.is_open():
@@ -638,7 +636,7 @@ class PvzModifier:
                 self.asm.asm_push_byte(0)
                 self.asm.asm_call(self.data.call_set_plant_sleeping)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def set_lawn_mower(self, status):
         if not self.is_open():
@@ -672,7 +670,7 @@ class PvzModifier:
             self.asm.asm_push_exx(Reg.EAX)
             self.asm.asm_call(self.data.call_restore_lawn_mower)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
         if status == 2:
             self.hack(self.data.init_lawn_mowers, False)
 
@@ -709,7 +707,7 @@ class PvzModifier:
             self.asm.asm_push_dword(25)
             self.asm.asm_call(self.data.call_put_zombie_in_row)
             self.asm.asm_ret()
-            self.asm_code_inject()
+            self.asm_code_execute()
             self.set_music(12)
             return
         row_count = self.get_row_count()
@@ -730,7 +728,7 @@ class PvzModifier:
         else:
             self._asm_put_zombie(zombie_type, row, col)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def no_fog(self, status):
         if not self.is_open():
@@ -751,7 +749,7 @@ class PvzModifier:
             self.asm.asm_push_dword(addr)
             self.asm.asm_call(self.data.call_delete_plant)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def kill_all_zombies(self):
         if not self.is_open():
@@ -776,7 +774,7 @@ class PvzModifier:
             self.asm.asm_mov_exx(Reg.ESI, addr)
             self.asm.asm_call(self.data.call_delete_grid_item)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def put_lily(self, from_col, to_col):
         if not self.is_open():
@@ -808,7 +806,7 @@ class PvzModifier:
             if (3, col) not in occupied:
                 self._asm_put_plant(16, 3, col, False)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def put_flowerpot(self, from_col, to_col):
         if not self.is_open():
@@ -839,7 +837,7 @@ class PvzModifier:
                 if (i, col) not in occupied:
                     self._asm_put_plant(33, i, col, False)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def set_music(self, music_id):
         if not self.is_open():
@@ -851,7 +849,7 @@ class PvzModifier:
         self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, music_offset)
         self.asm.asm_call(self.data.call_play_music)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def chomper_no_cool_down(self, status):
         if not self.is_open():
@@ -902,7 +900,7 @@ class PvzModifier:
         else:
             self._asm_put_grave(row, col)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def _asm_put_ladder(self, row, col):
         lawn_offset, board_offset = self.data.recursively_get_attrs(['lawn', 'board'])
@@ -936,7 +934,7 @@ class PvzModifier:
         else:
             self._asm_put_ladder(row, col)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def _asm_put_rake(self, row, col):
         lawn_offset, board_offset = self.data.recursively_get_attrs(['lawn', 'board'])
@@ -947,7 +945,7 @@ class PvzModifier:
         self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, board_offset)
         self.asm.asm_call(self.data.call_put_rake)
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
     def put_rake(self, row, col):
         if not self.is_open():
@@ -1154,7 +1152,7 @@ class PvzModifier:
                 if lineup.rakes[index]:
                     rakes.append((r, c))
         self.asm.asm_ret()
-        self.asm_code_inject()
+        self.asm_code_execute()
 
         reset_dec_rake_code = self.read_memory(0x41786a, 6)
         reset_rake_col_code = self.read_memory(0x4177d7, 4)
@@ -1181,6 +1179,13 @@ class PvzModifier:
             return
         self.hack(self.data.lock_butter, status)
 
+    def _asm_change_bullet(self, from_bullet, to_bullet):
+        self.asm.asm_add_dword(0x24247c83)
+        self.asm.asm_add_byte(from_bullet)  # cmp [esp+24],f
+        self.asm.asm_add_word(0x0c75)
+        self.asm.asm_add_list([0xc7, 0x45, 0x5c])
+        self.asm.asm_add_dword(to_bullet)  # mov [ebp+5c],t
+
     def change_bullet(self, from_bullet, to_bullet):
         if not self.is_open():
             return
@@ -1198,44 +1203,19 @@ class PvzModifier:
         inject_addr = self.changed_bullets.get('address') or self.asm.VirtualAllocEx(self.phand, 0, 512, 0x00001000, 0x40)
         return_addr = 0x47bb6c
         self.asm.asm_init()
-        pos = inject_addr
         for f, t in items.items():
-            self.asm.asm_add_dword(0x24247c83)
-            self.asm.asm_add_byte(f)  # cmp [esp+24],f
-            self.asm.asm_add_word(0x0c75)
-            self.asm.asm_add_list([0xc7, 0x45, 0x5c])
-            self.asm.asm_add_dword(t)  # mov [ebp+5c],t
-            self.asm.asm_add_byte(0xe9)
-            pos += 0x13
-            target = return_addr - pos
-            if target < 0:
-                target += 0x100000000
-            self.asm.asm_add_dword(target)  # jmp return_addr
+            self._asm_change_bullet(f, t)
+            self.asm.asm_near_jmp(return_addr)
         self.asm.asm_add_dword(0x2424448b)  # mov eax,[esp+24]
         self.asm.asm_add_list([0x89, 0x45, 0x5c])  # mov [ebp+5c],eax
-        pos += 0xc
-        self.asm.asm_add_byte(0xe9)
-        target = return_addr - pos
-        if target < 0:
-            target += 0x100000000
-        self.asm.asm_add_dword(target)  # jmp return_addr
-
-        write_size = ctypes.c_int(0)
-        data = ctypes.create_string_buffer(bytes(self.asm.code))
-
-        self.lock.acquire()
-        ret = self.asm.WriteProcessMemory(self.phand, inject_addr, ctypes.byref(data), self.asm.length, ctypes.byref(write_size))
-        self.lock.release()
-        if ret == 0 or write_size.value != self.asm.length:
-            self.asm.VirtualFreeEx(self.phand, inject_addr, 0, 0x00008000)
-            return
+        self.asm.asm_near_jmp(return_addr)  # jmp return_addr
+        self.asm.asm_code_inject(self.phand, inject_addr)
         self.changed_bullets['address'] = inject_addr
         self.changed_bullets['items'] = items
         target = inject_addr - 0x47bb6a
         if target < 0:
             target += 0x100000000
-        self.write_memory(0x47bb65, target * 16 * 16 + 0xe9, 5)
-        self.write_memory(0x47bb6a, 0x9066, 2)
+        self.write_memory(0x47bb65, 0x906600000000e9 + target * 16 * 16, 7)
 
     def reset_bullets(self):
         if not self.is_open():
