@@ -47,16 +47,13 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self._check_game_status_thread.start()
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
-        if self.game.changed_bullets:
-            reply = QMessageBox.question(self, "温馨提示", "为合理使用内存空间，此窗口关闭时，所有变换子弹效果将被重置，是否退出？",
-                                         buttons=QMessageBox.Yes | QMessageBox.No, defaultButton=QMessageBox.No)
-            if reply == QMessageBox.Yes:
-                self.reset_bullets()
-                event.accept()
-            else:
-                event.ignore()
-        else:
+        reply = QMessageBox.question(self, "温馨提示", "此窗口关闭时，为正常管理内存空间，所有子弹变换效果将被重置，而其他开启的辅助功能将正常保留，是否退出？",
+                                     buttons=QMessageBox.Yes | QMessageBox.No, defaultButton=QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            self.game.reset_bullets()
             event.accept()
+        else:
+            event.ignore()
 
     def set_status(self):
         for _, checkbox in filter(lambda x: 'checkBox' in x[0], self.__dict__.items()):
