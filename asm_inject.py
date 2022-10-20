@@ -19,6 +19,7 @@ class AsmInjector:
     def __init__(self, lock):
         self.code = bytearray()
         self.calls_pos = []
+        self.jmps_pos = []
         self.length = 0
         self.lock = lock
 
@@ -57,6 +58,7 @@ class AsmInjector:
     def asm_init(self):
         self.code.clear()
         self.calls_pos.clear()
+        self.jmps_pos.clear()
         self.length = 0
 
     def asm_add_byte(self, hex_byte: int):
@@ -128,11 +130,20 @@ class AsmInjector:
     def asm_ret(self):
         self.asm_add_byte(0xc3)
 
+    def asm_near_jmp(self, addr: int):
+        self.asm_add_byte(0xe9)
+        self.jmps_pos.append(self.length)
+        self.asm_add_dword(addr)
+
     def asm_code_inject(self, phand, addr):
         for pos in self.calls_pos:
             call_addr = int.from_bytes(self.code[pos: pos + 4], 'little')
             call_addr -= (addr + pos + 4)
             self.code[pos: pos + 4] = call_addr.to_bytes(4, 'little', signed=True)
+        for pos in self.jmps_pos:
+            jmp_addr = int.from_bytes(self.code[pos: pos + 4], 'little')
+            jmp_addr -= (addr + pos + 4)
+            self.code[pos: pos + 4] = jmp_addr.to_bytes(4, 'little', signed=True)
         write_size = ctypes.c_int(0)
         data = ctypes.create_string_buffer(bytes(self.code))
         self.lock.acquire()
