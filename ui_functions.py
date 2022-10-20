@@ -47,13 +47,18 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self._check_game_status_thread.start()
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
-        reply = QMessageBox.question(self, "温馨提示", "此窗口关闭时，为正常管理内存空间，所有子弹变换效果将被重置，而其他开启的辅助功能将正常保留，是否退出？",
-                                     buttons=QMessageBox.Yes | QMessageBox.No, defaultButton=QMessageBox.No)
-        if reply == QMessageBox.Yes:
-            self.game.reset_bullets()
-            event.accept()
-        else:
-            event.ignore()
+        if self.game.is_open():
+            reply = QMessageBox.question(
+                self,
+                "温馨提示", "此窗口关闭时，为正常管理内存空间，所有子弹变换效果将被重置，而其他开启的辅助功能将正常保留，是否退出？",
+                buttons=QMessageBox.Yes | QMessageBox.No,
+                defaultButton=QMessageBox.No
+            )
+            if reply == QMessageBox.Yes:
+                self.game.reset_bullets()
+                event.accept()
+            else:
+                event.ignore()
 
     def set_status(self):
         for _, checkbox in filter(lambda x: 'checkBox' in x[0], self.__dict__.items()):
@@ -296,7 +301,14 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         from_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 10, 11, 12][self.comboBox_13.currentIndex()]
         to_bullet = [0, 1, 2, 3, 4, 5, 7, 8, 9, 10, 11, 12][self.comboBox_12.currentIndex()]
         if to_bullet == 9 and from_bullet in {2, 3, 5, 10, 12}:
-            QMessageBox.warning(self, "警告", "投掷类植物无法使用篮球对僵尸造成伤害", QMessageBox.Ok)
+            reply = QMessageBox.question(
+                self,
+                "温馨提示", "投掷类植物无法使用篮球对僵尸造成伤害，是否继续？",
+                buttons=QMessageBox.Yes | QMessageBox.No,
+                defaultButton=QMessageBox.No
+            )
+            if reply == QMessageBox.No:
+                return
         self.game.change_bullet(from_bullet, to_bullet)
         types = self.game.data.bullet_types
         items = [f"{types[f]} ⇒ {types[t]}" for f, t in self.game.changed_bullets.get('items', {}).items()]
