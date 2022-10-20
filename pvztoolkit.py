@@ -1188,7 +1188,7 @@ class Ui_MainWindow(object):
         self.comboBox_13.addItem("")
         self.horizontalLayout_5.addWidget(self.comboBox_13)
         self.pushButton_16 = QtWidgets.QPushButton(self.tab_4)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.pushButton_16.sizePolicy().hasHeightForWidth())
