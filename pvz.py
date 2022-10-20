@@ -1200,7 +1200,7 @@ class PvzModifier:
             if to_bullet == items.get(from_bullet):
                 return
             items[from_bullet] = to_bullet
-        inject_addr = self.changed_bullets.get('address') or self.asm.VirtualAllocEx(self.phand, 0, 512, 0x00001000, 0x40)
+        inject_addr = self.changed_bullets.get('address') or self.asm.asm_alloc(self.phand, 512)
         return_addr = 0x47bb6c
         self.asm.asm_init()
         for f, t in items.items():
