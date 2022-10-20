@@ -164,11 +164,11 @@ class Data:
         overlapping_plant_preview=[Hack(0x444790, 0x74, 0xeb, 1)],
         overlapping_plant_iz=[Hack(0x435579, 0x84, 0x8d, 1)],
 
-        mushrooms_awake=[Hack(0x0046c1c2, 0x74, 0xeb, 1)],
+        mushrooms_awake=[Hack(0x46c1c2, 0x74, 0xeb, 1)],
         init_lawn_mowers=[Hack(0x417a57, 0x00, 0x01, 1),
                           Hack(0x465f62, 0x7a78, 0x7894, 2)],
         no_fog=[Hack(0x42616d, 0xf23b, 0xd231, 2)],
-        chomper_no_cool_down=[Hack(0x46f911, 0x0fa0, 0x0000, 2)],
+        chomper_no_cool_down=[Hack(0x49ce02, 0x7e, 0x70, 1)],
         rake_unlimited=[Hack(0x417732, 0x84, 0x80, 1)],
         stop_spawning=[Hack(0x41ff1c, 0x000055b48dff, 0x909090909090, 6)],
         plants_growup=[Hack(0x471664, 0x48047ec085, 0x900470c031, 5)],
