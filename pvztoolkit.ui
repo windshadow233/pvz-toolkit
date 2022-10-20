@@ -2860,6 +2860,12 @@ QTabBar::tab{width:100}</string>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_17">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -2873,6 +2879,12 @@ QTabBar::tab{width:100}</string>
           </item>
           <item>
            <widget class="QPushButton" name="pushButton_22">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -2894,14 +2906,14 @@ QTabBar::tab{width:100}</string>
           <item>
            <widget class="QComboBox" name="comboBox_13">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
-              <width>90</width>
+              <width>100</width>
               <height>35</height>
              </size>
             </property>
@@ -2971,10 +2983,16 @@ QTabBar::tab{width:100}</string>
           <item>
            <widget class="QPushButton" name="pushButton_16">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
             </property>
             <property name="font">
              <font>
@@ -2992,14 +3010,14 @@ QTabBar::tab{width:100}</string>
           <item>
            <widget class="QComboBox" name="comboBox_12">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="minimumSize">
              <size>
-              <width>90</width>
+              <width>100</width>
               <height>35</height>
              </size>
             </property>
@@ -3074,7 +3092,7 @@ QTabBar::tab{width:100}</string>
           <item>
            <widget class="QPushButton" name="pushButton_18">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
