@@ -1192,10 +1192,10 @@ class PvzModifier:
         items = copy.copy(self.changed_bullets.get('items', {}))
         if from_bullet == to_bullet:
             if from_bullet in items:
-                items.pop(from_bullet)
-            if not items:
-                self.reset_bullets()
-                return
+                self.changed_bullets['items'].pop(from_bullet)
+                if not items:
+                    self.reset_bullets()
+            return
         else:
             if to_bullet == items.get(from_bullet):
                 return
