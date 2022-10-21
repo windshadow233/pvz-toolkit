@@ -329,5 +329,5 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         if direction == -1:
             direction = random.randint(0, 1)
         ret = self.game.add_garden_plant(plant_type, direction, color)
-        if not ret:
+        if ret == 0:
             QMessageBox.information(self, '温馨提示', '您的花园过于拥挤，请先留出一些空位再继续吧~')
