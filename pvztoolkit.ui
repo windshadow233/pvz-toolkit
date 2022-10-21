@@ -3384,7 +3384,7 @@ QTabBar::tab{width:95}</string>
             </item>
             <item>
              <property name="text">
-              <string>刺</string>
+              <string>尖刺</string>
              </property>
             </item>
             <item>
@@ -3488,7 +3488,7 @@ QTabBar::tab{width:95}</string>
             </item>
             <item>
              <property name="text">
-              <string>刺</string>
+              <string>尖刺</string>
              </property>
             </item>
             <item>
