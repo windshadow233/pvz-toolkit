@@ -155,19 +155,22 @@ class AsmInjector:
         addr = self.VirtualAllocEx(phand, 0, length, 0x00001000, 0x40)
         return addr
 
-    def asm_code_free(self, phand, address):
+    def asm_free(self, phand, address):
         self.VirtualFreeEx(phand, address, 0, 0x00008000)
 
-    def asm_code_execute(self, phand):
+    def asm_execute(self, phand, address):
+        thread = self.CreateRemoteThread(phand, None, 0, address, None, 0, None)
+        if not thread:
+            self.VirtualFreeEx(phand, address, 0, 0x00008000)
+            return
+        self.WaitForSingleObject(thread, -1)
+        self.CloseHandle(thread)
+
+    def asm_alloc_execute(self, phand):
         addr = self.asm_alloc(phand, self.length)
         if not addr:
             return
         if not self.asm_code_inject(phand, addr):
             return
-        thread = self.CreateRemoteThread(phand, None, 0, addr, None, 0, None)
-        if not thread:
-            self.VirtualFreeEx(phand, addr, 0, 0x00008000)
-            return
-        self.WaitForSingleObject(thread, -1)
-        self.CloseHandle(thread)
-        self.VirtualFreeEx(phand, addr, 0, 0x00008000)
+        self.asm_execute(phand, addr)
+        self.asm_free(phand, addr)
