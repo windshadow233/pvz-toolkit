@@ -1189,16 +1189,17 @@ class PvzModifier:
     def change_bullet(self, from_bullet, to_bullet):
         if not self.is_open():
             return
-        items = copy.copy(self.changed_bullets.get('items', {}))
+        items = self.changed_bullets.get('items', {})
         if from_bullet == to_bullet:
             if from_bullet in items:
-                self.changed_bullets['items'].pop(from_bullet)
+                items.pop(from_bullet)
                 if not items:
                     self.reset_bullets()
             return
         else:
             if to_bullet == items.get(from_bullet):
                 return
+            items = copy.copy(items)
             items[from_bullet] = to_bullet
         inject_addr = self.changed_bullets.get('address') or self.asm.asm_alloc(self.phand, 512)
         return_addr = 0x47bb6c
@@ -1209,13 +1210,16 @@ class PvzModifier:
         self.asm.asm_add_dword(0x2424448b)  # mov eax,[esp+24]
         self.asm.asm_add_list([0x89, 0x45, 0x5c])  # mov [ebp+5c],eax
         self.asm.asm_near_jmp(return_addr)  # jmp return_addr
-        self.asm.asm_code_inject(self.phand, inject_addr)
-        self.changed_bullets['address'] = inject_addr
+        ret = self.asm.asm_code_inject(self.phand, inject_addr)
+        if not ret:
+            return
         self.changed_bullets['items'] = items
-        target = inject_addr - 0x47bb6a
-        if target < 0:
-            target += 0x100000000
-        self.write_memory(0x47bb65, 0x906600000000e9 + target * 16 * 16, 7)
+        if 'address' not in self.changed_bullets:
+            self.changed_bullets['address'] = inject_addr
+            target = inject_addr - 0x47bb6a
+            if target < 0:
+                target += 0x100000000
+            self.write_memory(0x47bb65, 0x906600000000e9 + target * 16 * 16, 7)
 
     def reset_bullets(self):
         if not self.is_open():
