@@ -1248,7 +1248,7 @@ class PvzModifier:
             if garden == 0:
                 zen_count += 1
         if zen_count >= 32:
-            return False
+            return 0
         data = bytearray(b'\x00' * plant_struct_size)
         data[0: 4] = int.to_bytes(plant_type, 4, 'little')
         data[0x2c: 0x30] = int.to_bytes(3, 4, 'little')
@@ -1265,7 +1265,7 @@ class PvzModifier:
         self.asm.asm_ret()
         self.asm.asm_add_list(data)
         self.asm_code_execute(addr)
-        return True
+        return 1
 
 
 if __name__ == '__main__':
