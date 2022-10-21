@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>504</width>
+    <width>514</width>
     <height>555</height>
    </rect>
   </property>
@@ -171,7 +171,7 @@
       </property>
       <property name="styleSheet">
        <string notr="true">QTabBar::tab{height:40}
-QTabBar::tab{width:100}</string>
+QTabBar::tab{width:95}</string>
       </property>
       <property name="tabPosition">
        <enum>QTabWidget::North</enum>
@@ -1587,7 +1587,7 @@ QTabBar::tab{width:100}</string>
       </widget>
       <widget class="QWidget" name="tab_3">
        <attribute name="title">
-        <string>战场布局</string>
+        <string>布局</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
@@ -2659,6 +2659,430 @@ QTabBar::tab{width:100}</string>
           </item>
          </layout>
         </item>
+        <item>
+         <widget class="Line" name="line_5">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_12">
+          <item>
+           <widget class="QComboBox" name="comboBox_14">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>170</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <item>
+             <property name="text">
+              <string>0 - 豌豆射手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>1 - 向日葵</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>2 - 樱桃炸弹</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>3 - 坚果</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>4 - 土豆雷</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>5 - 寒冰射手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>6 - 大嘴花</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>7 - 双发射手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>8 - 小喷菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>9 - 阳光菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>10 - 大喷菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>11 - 墓碑吞噬者</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>12 - 魅惑菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>13 - 胆小菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>14 - 寒冰菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>15 - 毁灭菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>16 - 睡莲</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>17 - 窝瓜</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>18 - 三线射手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>19 - 缠绕水草</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>20 - 火爆辣椒</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>21 - 地刺</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>22 - 火炬树桩</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>23 - 高坚果</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>24 - 水兵菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>25 - 路灯花</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>26 - 仙人掌</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>27 - 三叶草</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>28 - 裂荚射手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>29 - 杨桃</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>30 - 南瓜头</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>31 - 磁力菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>32 - 卷心菜投手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>33 - 花盆</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>34 - 玉米投手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>35 - 咖啡豆</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>36 - 大蒜</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>37 - 莴苣</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>38 - 金盏花</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>39 - 西瓜投手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>40 - 机枪射手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>41 - 双生向日葵</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>42 - 忧郁菇</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>43 - 香蒲</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>44 - 冰瓜投手</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>45 - 吸金磁</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>46 - 地刺王</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>47 - 玉米加农炮</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>48 - 模仿者</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>49 - 爆炸坚果</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>50 - 巨型坚果</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>51 - 幼苗</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>52 - 左向双发射手</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_15">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <item>
+             <property name="text">
+              <string>朝向随机</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>朝右</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>朝左</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_16">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>85</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="currentIndex">
+             <number>1</number>
+            </property>
+            <item>
+             <property name="text">
+              <string>模仿者</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>白(普通)</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>品红</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>橙</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>浅红</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>天青</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>红</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>蓝</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>紫</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>浅紫</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>黄</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>浅绿</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_23">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>获取花园植物</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
        </layout>
       </widget>
       <widget class="QWidget" name="tab_4">
@@ -3274,7 +3698,7 @@ QTabBar::tab{width:100}</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>504</width>
+     <width>514</width>
      <height>26</height>
     </rect>
    </property>
@@ -3343,294 +3767,6 @@ QTabBar::tab{width:100}</string>
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>sun_shine()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>318</x>
-     <y>107</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>354</x>
-     <y>28</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>money()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>318</x>
-     <y>144</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>273</x>
-     <y>24</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_4</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>fertilizer()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>318</x>
-     <y>226</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>242</x>
-     <y>30</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_5</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>chocolate()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>329</x>
-     <y>293</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>103</x>
-     <y>319</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_6</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>bug_spray()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>329</x>
-     <y>335</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>166</x>
-     <y>319</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_3</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>tree_height()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>318</x>
-     <y>181</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>384</x>
-     <y>319</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_7</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>tree_food()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>329</x>
-     <y>377</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>304</x>
-     <y>319</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_4</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>money_not_dec()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>476</x>
-     <y>130</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>399</x>
-     <y>319</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_6</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>chocolate_not_dec()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>476</x>
-     <y>274</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>290</x>
-     <y>302</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_7</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>fertilizer_not_dec()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>465</x>
-     <y>202</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>303</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_8</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>bug_spray_not_dec()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>476</x>
-     <y>322</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>366</x>
-     <y>307</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_9</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>tree_food_not_dec()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>476</x>
-     <y>370</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>34</x>
-     <y>304</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>auto_collect()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>430</x>
-     <y>187</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>30</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_2</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>no_cool_down()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>124</x>
-     <y>300</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>37</x>
-     <y>298</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_8</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>adventure()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>311</x>
-     <y>131</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>414</x>
-     <y>64</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_9</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>open_user_file_folder()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>476</x>
-     <y>124</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>5</x>
-     <y>272</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_11</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>unlock_limbo_page()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>322</x>
-     <y>277</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>398</x>
-     <y>351</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_12</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>background_running()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>476</x>
-     <y>277</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>9</x>
-     <y>333</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_10</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -3643,38 +3779,6 @@ QTabBar::tab{width:100}</string>
     <hint type="destinationlabel">
      <x>233</x>
      <y>447</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_5</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>sun_not_dec()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>476</x>
-     <y>178</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>268</x>
-     <y>389</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_11</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>set_speed_rate()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>123</x>
-     <y>123</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>295</x>
-     <y>406</y>
     </hint>
    </hints>
   </connection>
@@ -3695,130 +3799,18 @@ QTabBar::tab{width:100}</string>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_13</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>unlock_achievements()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>268</x>
-     <y>433</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>453</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_14</sender>
+   <sender>checkBox</sender>
    <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>no_crater()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>277</x>
-     <y>300</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>311</x>
-     <y>453</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_15</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>no_ice_trail()</slot>
+   <slot>auto_collect()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>430</x>
-     <y>300</y>
+     <y>187</y>
     </hint>
     <hint type="destinationlabel">
-     <x>467</x>
-     <y>31</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_18</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>mushroom_awake()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>277</x>
-     <y>357</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>117</x>
-     <y>453</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_14</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>put_plant()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>376</x>
-     <y>142</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>459</x>
-     <y>91</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>comboBox_5</sender>
-   <signal>currentIndexChanged(QString)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>set_lawn_mower()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>124</x>
-     <y>328</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>15</x>
-     <y>366</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_15</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>put_zombie()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>376</x>
-     <y>210</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>6</x>
-     <y>192</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>comboBox_8</sender>
-   <signal>currentIndexChanged(QString)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>put_lily()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>319</x>
-     <y>417</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>8</x>
-     <y>396</y>
+     <x>130</x>
+     <y>30</y>
     </hint>
    </hints>
   </connection>
@@ -3830,7 +3822,7 @@ QTabBar::tab{width:100}</string>
    <hints>
     <hint type="sourcelabel">
      <x>476</x>
-     <y>417</y>
+     <y>347</y>
     </hint>
     <hint type="destinationlabel">
      <x>451</x>
@@ -3839,50 +3831,50 @@ QTabBar::tab{width:100}</string>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_17</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>play_music()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>328</x>
-     <y>168</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>396</x>
-     <y>465</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_23</sender>
+   <sender>checkBox_22</sender>
    <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>chomper_no_cool_down()</slot>
+   <slot>no_fog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>427</x>
-     <y>413</y>
+     <x>124</x>
+     <y>382</y>
     </hint>
     <hint type="destinationlabel">
-     <x>489</x>
-     <y>367</y>
+     <x>7</x>
+     <y>438</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_19</sender>
-   <signal>clicked()</signal>
+   <sender>comboBox_5</sender>
+   <signal>currentIndexChanged(QString)</signal>
    <receiver>MainWindow</receiver>
-   <slot>put_grave()</slot>
+   <slot>set_lawn_mower()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>354</x>
-     <y>328</y>
+     <x>124</x>
+     <y>278</y>
     </hint>
     <hint type="destinationlabel">
-     <x>21</x>
-     <y>487</y>
+     <x>15</x>
+     <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_11</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>unlock_limbo_page()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>322</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>398</x>
+     <y>351</y>
     </hint>
    </hints>
   </connection>
@@ -3903,6 +3895,70 @@ QTabBar::tab{width:100}</string>
    </hints>
   </connection>
   <connection>
+   <sender>checkBox_12</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>background_running()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>476</x>
+     <y>382</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>9</x>
+     <y>333</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_23</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>chomper_no_cool_down()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>413</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>489</x>
+     <y>367</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_17</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>play_music()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>328</x>
+     <y>168</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>396</x>
+     <y>465</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>no_cool_down()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>124</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>37</x>
+     <y>298</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>pushButton_20</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -3910,7 +3966,7 @@ QTabBar::tab{width:100}</string>
    <hints>
     <hint type="sourcelabel">
      <x>476</x>
-     <y>328</y>
+     <y>278</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -3919,114 +3975,66 @@ QTabBar::tab{width:100}</string>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_22</sender>
-   <signal>clicked()</signal>
+   <sender>checkBox_19</sender>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>screen_shot()</slot>
+   <slot>zombie_invincible()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>456</x>
-     <y>168</y>
+     <x>112</x>
+     <y>248</y>
     </hint>
     <hint type="destinationlabel">
-     <x>494</x>
-     <y>149</y>
+     <x>5</x>
+     <y>210</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>checkBox_25</sender>
-   <signal>toggled(bool)</signal>
+   <sender>pushButton_2</sender>
+   <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>plants_growup()</slot>
+   <slot>money()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>51</x>
+     <x>318</x>
+     <y>144</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>273</x>
+     <y>24</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_18</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>mushroom_awake()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
      <y>357</y>
     </hint>
     <hint type="destinationlabel">
-     <x>6</x>
-     <y>471</y>
+     <x>117</x>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>checkBox_24</sender>
-   <signal>toggled(bool)</signal>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>stop_spawning()</slot>
+   <slot>sun_shine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>469</x>
-     <y>243</y>
+     <x>318</x>
+     <y>107</y>
     </hint>
     <hint type="destinationlabel">
-     <x>498</x>
-     <y>219</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_26</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>zombie_not_explode()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>190</x>
-     <y>414</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>35</x>
-     <y>517</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>comboBox_7</sender>
-   <signal>currentTextChanged(QString)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>delete_items()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>231</x>
-     <y>328</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>170</x>
-     <y>489</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>comboBox_11</sender>
-   <signal>currentIndexChanged(QString)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>set_scene()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>155</x>
-     <y>417</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>201</x>
-     <y>520</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_27</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>zombie_stop()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>365</x>
-     <y>367</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>180</x>
-     <y>526</y>
+     <x>354</x>
+     <y>28</y>
     </hint>
    </hints>
   </connection>
@@ -4047,62 +4055,14 @@ QTabBar::tab{width:100}</string>
    </hints>
   </connection>
   <connection>
-   <sender>checkBox_22</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>no_fog()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>277</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>7</x>
-     <y>438</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_3</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>vase_transparent()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>50</x>
-     <y>317</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>6</x>
-     <y>498</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>checkBox_17</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>MainWindow</receiver>
-   <slot>overlapping_plant()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>208</x>
-     <y>316</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>352</x>
-     <y>521</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>checkBox_10</sender>
    <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
    <slot>lock_shovel()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>391</x>
-     <y>319</y>
+     <x>476</x>
+     <y>433</y>
     </hint>
     <hint type="destinationlabel">
      <x>66</x>
@@ -4111,34 +4071,130 @@ QTabBar::tab{width:100}</string>
    </hints>
   </connection>
   <connection>
-   <sender>checkBox_20</sender>
+   <sender>checkBox_4</sender>
    <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>zombie_weak()</slot>
+   <slot>money_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>248</y>
+     <x>476</x>
+     <y>130</y>
     </hint>
     <hint type="destinationlabel">
-     <x>7</x>
-     <y>371</y>
+     <x>399</x>
+     <y>319</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>checkBox_19</sender>
-   <signal>toggled(bool)</signal>
+   <sender>pushButton_22</sender>
+   <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>zombie_invincible()</slot>
+   <slot>screen_shot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>112</x>
-     <y>248</y>
+     <x>456</x>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
-     <x>5</x>
-     <y>210</y>
+     <x>494</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_9</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>tree_food_not_dec()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>476</x>
+     <y>370</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>34</x>
+     <y>304</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_11</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_scene()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>162</x>
+     <y>347</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>201</x>
+     <y>520</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_24</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>stop_spawning()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>469</x>
+     <y>243</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>498</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_18</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>reset_bullets()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>442</x>
+     <y>194</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>497</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_14</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>put_plant()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>376</x>
+     <y>141</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>459</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_13</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>unlock_achievements()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>268</x>
+     <y>433</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>245</x>
+     <y>453</y>
     </hint>
    </hints>
   </connection>
@@ -4175,6 +4231,246 @@ QTabBar::tab{width:100}</string>
    </hints>
   </connection>
   <connection>
+   <sender>pushButton_6</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>bug_spray()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>329</x>
+     <y>335</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>166</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_6</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>chocolate_not_dec()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>476</x>
+     <y>274</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>290</x>
+     <y>302</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_5</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>sun_not_dec()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>476</x>
+     <y>178</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>268</x>
+     <y>389</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_19</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>put_grave()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>354</x>
+     <y>278</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>21</x>
+     <y>487</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_15</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>no_ice_trail()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>430</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>467</x>
+     <y>31</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_11</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_speed_rate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>123</x>
+     <y>123</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>406</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_14</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>no_crater()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>311</x>
+     <y>453</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_7</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fertilizer_not_dec()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>465</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>160</x>
+     <y>303</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>fertilizer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>318</x>
+     <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>242</x>
+     <y>30</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_8</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>bug_spray_not_dec()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>476</x>
+     <y>322</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>366</x>
+     <y>307</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>tree_height()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>318</x>
+     <y>181</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>384</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_3</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>vase_transparent()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>64</x>
+     <y>433</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>498</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_15</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>put_zombie()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>376</x>
+     <y>210</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>192</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_8</sender>
+   <signal>currentIndexChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>put_lily()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>319</x>
+     <y>347</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>8</x>
+     <y>396</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_5</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>chocolate()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>329</x>
+     <y>293</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>103</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>pushButton_16</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -4191,18 +4487,162 @@ QTabBar::tab{width:100}</string>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_18</sender>
-   <signal>clicked()</signal>
+   <sender>checkBox_26</sender>
+   <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>reset_bullets()</slot>
+   <slot>zombie_not_explode()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>442</x>
-     <y>194</y>
+     <x>190</x>
+     <y>414</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>35</x>
+     <y>517</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>adventure()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>311</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>414</x>
+     <y>64</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_25</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>plants_growup()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>51</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>471</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_27</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>zombie_stop()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>365</x>
+     <y>367</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>180</x>
+     <y>526</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_17</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>overlapping_plant()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>322</x>
+     <y>433</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>352</x>
+     <y>521</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_7</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>delete_items()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>231</x>
+     <y>278</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>170</x>
+     <y>489</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_9</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>open_user_file_folder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>476</x>
+     <y>124</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>272</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>tree_food()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>329</x>
+     <y>377</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>304</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>checkBox_20</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>zombie_weak()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>277</x>
+     <y>248</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>371</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_23</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>add_garden_plant()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>424</x>
+     <y>415</y>
     </hint>
     <hint type="destinationlabel">
      <x>497</x>
-     <y>184</y>
+     <y>450</y>
     </hint>
    </hints>
   </connection>
@@ -4262,5 +4702,6 @@ QTabBar::tab{width:100}</string>
   <slot>lock_butter()</slot>
   <slot>change_bullet()</slot>
   <slot>reset_bullets()</slot>
+  <slot>add_garden_plant()</slot>
  </slots>
 </ui>

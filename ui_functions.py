@@ -1,4 +1,6 @@
 import os
+import random
+
 from PyQt5.Qt import *
 from PyQt5.QtGui import QDesktopServices
 
@@ -319,3 +321,13 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
     def reset_bullets(self):
         self.game.reset_bullets()
         self.listWidget.clear()
+
+    def add_garden_plant(self):
+        plant_type = self.comboBox_14.currentIndex()
+        direction = self.comboBox_15.currentIndex() - 1
+        color = self.comboBox_16.currentIndex() + 1
+        if direction == -1:
+            direction = random.randint(0, 1)
+        ret = self.game.add_garden_plant(plant_type, direction, color)
+        if not ret:
+            QMessageBox.information(self, '温馨提示', '您的花园过于拥挤，请先留出一些空位再继续吧~')

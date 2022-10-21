@@ -82,10 +82,14 @@ class PvzModifier:
         for i, data in enumerate(items):
             self.write_memory(start_addr + i * item_byte_len, data, item_byte_len)
 
-    def asm_code_execute(self):
+    def asm_code_execute(self, addr=None):
         self.hack(self.data.block_main_loop, True)
         time.sleep(self.get_frame_duration() * 2 / 1000)
-        self.asm.asm_code_execute(self.phand)
+        addr = addr or self.asm.asm_alloc(self.phand, self.asm.length)
+        if addr:
+            if self.asm.asm_code_inject(self.phand, addr):
+                self.asm.asm_execute(self.phand, addr)
+            self.asm.asm_free(self.phand, addr)
         self.hack(self.data.block_main_loop, False)
 
     def is_open(self):
@@ -1227,8 +1231,41 @@ class PvzModifier:
         addr = self.changed_bullets.get('address')
         if addr:
             self.write_memory(0x47bb65, 0x5c45892424448b, 7)
-            self.asm.asm_code_free(self.phand, addr)
+            self.asm.asm_free(self.phand, addr)
             self.changed_bullets.clear()
+
+    def add_garden_plant(self, plant_type: int, direction: int, color: int):
+        if not self.is_open():
+            return
+        lawn_offset, user_data_offset, garden_plants_offset = self.data.recursively_get_attrs(['lawn', 'user_data', 'garden_plants'])
+        plants_addr = self.read_offset((lawn_offset, user_data_offset)) + garden_plants_offset
+        garden_offset = garden_plants_offset.garden
+        count = self.read_offset((lawn_offset, user_data_offset, user_data_offset.garden_plant_count))
+        plant_struct_size = 0x58
+        zen_count = 0
+        for i in range(count):
+            garden = self.read_memory(plants_addr + garden_offset + i * plant_struct_size)
+            if garden == 0:
+                zen_count += 1
+        if zen_count >= 32:
+            return False
+        data = bytearray(b'\x00' * plant_struct_size)
+        data[0: 4] = int.to_bytes(plant_type, 4, 'little')
+        data[0x2c: 0x30] = int.to_bytes(3, 4, 'little')
+        data[0x10: 0x14] = int.to_bytes(direction, 4, 'little')
+        data[0x20: 0x24] = int.to_bytes(color, 4, 'little')
+        addr = self.asm.asm_alloc(self.phand, 512)
+        self.asm.asm_init()
+        self.asm.asm_mov_exx_dword_ptr(Reg.ECX, lawn_offset)
+        self.asm.asm_add_word(0x818b)
+        self.asm.asm_add_dword(0x940)
+        self.asm.asm_push_exx(Reg.EAX)
+        self.asm.asm_mov_exx(Reg.EDX, addr + 0x18)
+        self.asm.asm_call(self.data.call_add_garden_plant)
+        self.asm.asm_ret()
+        self.asm.asm_add_list(data)
+        self.asm_code_execute(addr)
+        return True
 
 
 if __name__ == '__main__':

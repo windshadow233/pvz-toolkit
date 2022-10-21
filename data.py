@@ -107,6 +107,11 @@ class Data:
                 remaining_rakes_count=248,
                 chocolate=0x250,
                 tree_food=0x258,
+                garden_plants=Offset(
+                    0x388,
+                    type=0,
+                    garden=0x4
+                ),
                 garden_plant_count=0x37c
             ),
             music=0x960
@@ -196,6 +201,7 @@ class Data:
         call_delete_grid_item=0x458620,
         call_delete_particle_system=0x52b620,
         call_play_music=0x469a10,
+        call_add_garden_plant=0x533520,
 
         bullet_types={
             0: '豌豆',
