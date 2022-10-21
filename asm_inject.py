@@ -62,17 +62,14 @@ class AsmInjector:
         self.length = 0
 
     def asm_add_byte(self, hex_byte: int):
-        assert 0 <= hex_byte < 0xff
         self.code.append(hex_byte)
         self.length += 1
 
     def asm_add_word(self, hex_word: int):
-        assert 0 <= hex_word < 0xffff
         self.code.extend(hex_word.to_bytes(2, 'little'))
         self.length += 2
 
     def asm_add_dword(self, hex_dword: int):
-        assert 0 <= hex_dword <= 0xffffffff
         self.code.extend(hex_dword.to_bytes(4, 'little'))
         self.length += 4
 
