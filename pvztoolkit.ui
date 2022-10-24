@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>514</width>
+    <width>517</width>
     <height>555</height>
    </rect>
   </property>
@@ -180,7 +180,7 @@ QTabBar::tab{width:95}</string>
        <enum>QTabWidget::Rounded</enum>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
       <property name="iconSize">
        <size>
@@ -3698,7 +3698,7 @@ QTabBar::tab{width:95}</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>514</width>
+     <width>517</width>
      <height>26</height>
     </rect>
    </property>
