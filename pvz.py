@@ -41,7 +41,7 @@ class PvzModifier:
             self.hwnd = hwnd = win32gui.FindWindow(0, "Plants vs. Zombies")
             if hwnd != 0:
                 break
-            time.sleep(0.01)
+            time.sleep(0.1)
         _, pid = win32process.GetWindowThreadProcessId(hwnd)
         self.phand = self.OpenProcess(0x000f0000 | 0x00100000 | 0xfff, False, pid)
         return 1
