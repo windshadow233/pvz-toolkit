@@ -497,7 +497,7 @@ class PvzModifier:
             return
         self.hack(self.data.mushrooms_awake, status)
         if status:
-            self._set_mushroom_awake()
+            self.set_mushroom_awake()
 
     def zombie_invincible(self, status=True):
         if not self.is_open():
@@ -624,7 +624,7 @@ class PvzModifier:
         self.asm.asm_ret()
         self.asm_code_execute()
 
-    def _set_mushroom_awake(self):
+    def set_mushroom_awake(self):
         if not self.is_open():
             return
         ui = self.game_ui()
