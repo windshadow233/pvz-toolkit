@@ -211,10 +211,11 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         row = self.comboBox_2.currentIndex() - 1
         col = self.comboBox_3.currentIndex() - 1
         zombie_type = self.comboBox_6.currentIndex()
-        scene = self.game.get_scene()
-        if zombie_type == 25 and (scene == 2 or scene == 3):
-            QMessageBox.information(self, "温馨提示", "泳池与雾夜模式不支持召唤僵王", QMessageBox.Ok)
-            return
+        if zombie_type == 25:
+            scene = self.game.get_scene()
+            if scene == 2 or scene == 3:
+                QMessageBox.information(self, "温馨提示", "泳池与雾夜模式不支持召唤僵王", QMessageBox.Ok)
+                return
         self.game.put_zombie(zombie_type, row, col)
 
     def no_fog(self):
