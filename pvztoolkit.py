@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(514, 555)
+        MainWindow.resize(517, 555)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -1441,7 +1441,7 @@ class Ui_MainWindow(object):
         self.gridLayout_2.addWidget(self.tabWidget, 0, 0, 1, 1)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 514, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 517, 26))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -1610,7 +1610,7 @@ class Ui_MainWindow(object):
         self.checkBox_28.setToolTip(_translate("MainWindow", "黄油投手，你值得拥有"))
         self.checkBox_28.setText(_translate("MainWindow", "只扔黄油"))
         self.checkBox_27.setText(_translate("MainWindow", "僵尸停滞"))
-        self.checkBox_25.setToolTip(_translate("MainWindow", "使土豆雷、阳光菇快速长大；墓碑吞噬者快速吞噬；玉米加农炮快速装填"))
+        self.checkBox_25.setToolTip(_translate("MainWindow", "使土豆雷、阳光菇快速长大；玉米加农炮快速装填"))
         self.checkBox_25.setText(_translate("MainWindow", "快速成长/装填"))
         self.checkBox_20.setText(_translate("MainWindow", "僵尸虚弱"))
         self.checkBox.setText(_translate("MainWindow", "自动收集"))
