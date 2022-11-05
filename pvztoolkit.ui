@@ -1362,7 +1362,7 @@ QTabBar::tab{width:95}</string>
              </font>
             </property>
             <property name="toolTip">
-             <string>使土豆雷、阳光菇快速长大；墓碑吞噬者快速吞噬；玉米加农炮快速装填</string>
+             <string>使土豆雷、阳光菇快速长大；玉米加农炮快速装填</string>
             </property>
             <property name="text">
              <string>快速成长/装填</string>
