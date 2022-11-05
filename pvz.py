@@ -1009,27 +1009,10 @@ class PvzModifier:
     def stop_spawning(self, status):
         self.hack(self.data.stop_spawning, status)
 
-    def _set_plants_growup(self):
-        if not self.is_open():
-            return
-        ui = self.game_ui()
-        if ui != 2 and ui != 3:
-            return
-        addrs = self._get_plant_addresses()
-        growup_countdown_offset = 0x54
-        type_offset = 0x24
-        for addr in addrs:
-            plant_type = self.read_memory(addr + type_offset, 4)
-            if plant_type != 4 and plant_type != 9:
-                continue
-            self.write_memory(addr + growup_countdown_offset, 1, 4)
-
     def plants_instant_growup(self, status):
         if not self.is_open():
             return
         self.hack(self.data.plants_growup, status)
-        if status:
-            self._set_plants_growup()
 
     def get_lineup(self):
         if not self.is_open():
@@ -1110,7 +1093,6 @@ class PvzModifier:
             self.delete_all_plants()
             self.delete_grid_items({1, 2, 3, 11})
         rakes = []
-        plant_growup_countdown = 0x54
         self.asm.asm_init()
         for r in range(6):
             for c in range(9):
@@ -1138,10 +1120,6 @@ class PvzModifier:
                             self.asm.asm_push_byte(0)
                             self.asm.asm_call(self.data.call_set_plant_sleeping)
                             self.asm.asm_pop_exx(Reg.EAX)
-                    if plant_type == 4 or plant_type == 9 or plant_type == 47:
-                        # mov [eax + 54], 1
-                        self.asm.asm_add_list([0xc7, 0x40, plant_growup_countdown])
-                        self.asm.asm_add_dword(1)
 
                 if lineup.base[index] == 3:
                     self._asm_put_grave(r, c)
