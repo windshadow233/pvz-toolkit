@@ -312,6 +312,15 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
             )
             if reply == QMessageBox.No:
                 return
+        if from_bullet == 11 and to_bullet != 11:
+            reply = QMessageBox.question(
+                self,
+                "温馨提示", "建议不要变换玉米炮弹~是否继续？",
+                buttons=QMessageBox.Yes | QMessageBox.No,
+                defaultButton=QMessageBox.No
+            )
+            if reply == QMessageBox.No:
+                return
         self.game.change_bullet(from_bullet, to_bullet)
         types = self.game.data.bullet_types
         items = [f"{types[f]} ⇒ {types[t]}" for f, t in self.game.changed_bullets.get('items', {}).items()]
