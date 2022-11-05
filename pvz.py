@@ -698,12 +698,6 @@ class PvzModifier:
             scene = self.get_scene()
             if scene == 2 or scene == 3:  # 泳池模式放僵王会闪退
                 return
-            type_offset = self.data.lawn.board.zombies.type
-            addrs = self._get_zombie_addresses()
-            for addr in addrs:
-                type_ = self.read_memory(addr + type_offset, 4)
-                if type_ == 25:  # 多个僵王会出bug
-                    return
             self.asm.asm_init()
             self.asm.asm_mov_exx_dword_ptr(Reg.EAX, self.data.lawn)
             self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.EAX, self.data.lawn.board)
