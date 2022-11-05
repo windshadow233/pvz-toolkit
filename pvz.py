@@ -1165,17 +1165,16 @@ class PvzModifier:
     def change_bullet(self, from_bullet, to_bullet):
         if not self.is_open():
             return
-        items = self.changed_bullets.get('items', {})
+        items = copy.copy(self.changed_bullets.get('items', {}))
         if from_bullet == to_bullet:
             if from_bullet in items:
                 items.pop(from_bullet)
                 if not items:
                     self.reset_bullets()
-            return
+                    return
         else:
             if to_bullet == items.get(from_bullet):
                 return
-            items = copy.copy(items)
             items[from_bullet] = to_bullet
         inject_addr = self.changed_bullets.get('address') or self.asm.asm_alloc(self.phand, 512)
         return_addr = 0x47bb6c
