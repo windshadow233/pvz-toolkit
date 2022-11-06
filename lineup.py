@@ -61,7 +61,7 @@ class Lineup:
     def __str__(self):
         buffer = bytearray(b'\x00' * 164)
         buffer[:162] = self.items
-        buffer[162] = self.scene & 0b00001111
+        buffer[162] = self.scene
         compressed = zlib.compress(buffer)
         s = base64.b64encode(compressed)
         return s.decode()
@@ -70,5 +70,5 @@ class Lineup:
         compressed = base64.b64decode(s)
         buffer = zlib.decompress(compressed)
         self.items = buffer[:162]
-        self.scene = buffer[162] & 0b00001111
+        self.scene = buffer[162]
         self.decompress()
