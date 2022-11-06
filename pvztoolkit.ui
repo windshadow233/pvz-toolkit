@@ -2745,7 +2745,7 @@ QTabBar::tab{width:95}</string>
              </size>
             </property>
             <property name="text">
-             <string>生成代码</string>
+             <string>生成阵型代码</string>
             </property>
            </widget>
           </item>
@@ -2758,7 +2758,7 @@ QTabBar::tab{width:95}</string>
              </size>
             </property>
             <property name="text">
-             <string>复制代码</string>
+             <string>复制阵型代码</string>
             </property>
            </widget>
           </item>
@@ -2771,7 +2771,7 @@ QTabBar::tab{width:95}</string>
              </size>
             </property>
             <property name="text">
-             <string>粘贴代码</string>
+             <string>粘贴阵型代码</string>
             </property>
            </widget>
           </item>
