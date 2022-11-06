@@ -59,7 +59,7 @@ class Lineup:
                 self.rakes[index] = (item & 0b00000000000000001) >> 0
 
     def __str__(self):
-        buffer = bytearray(b'\x00' * 164)
+        buffer = bytearray(b'\x00' * 162)
         buffer[:162] = self.items
         buffer[162] = self.scene
         compressed = zlib.compress(buffer)
