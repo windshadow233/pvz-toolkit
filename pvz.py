@@ -138,7 +138,7 @@ class PvzModifier:
             lawn_offset, board_offset, scene_offset = self.data.recursively_get_attrs(['lawn', 'board', 'scene'])
             scene = self.read_offset((lawn_offset, board_offset, scene_offset), 4)
         else:
-            scene = -1
+            scene = 0xff
         return scene
 
     def set_scene(self, scene):
