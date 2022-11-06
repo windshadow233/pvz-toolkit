@@ -1018,11 +1018,10 @@ class PvzModifier:
         if not self.is_open():
             return
         ui = self.game_ui()
-        if ui != 2 and ui != 3:
-            return
         lineup = Lineup()
-        lineup.mode = self.game_mode()
         lineup.scene = self.get_scene()
+        if ui != 2 and ui != 3:
+            return lineup
 
         plant_addrs = self._get_plant_addresses()
         plants_offset = self.data.lawn.board.plants
@@ -1071,6 +1070,7 @@ class PvzModifier:
                 lineup.ladders[index] = 1
             else:
                 lineup.rakes[index] = 1
+        lineup.compress()
         return lineup
 
     def set_lineup(self, lineup: Lineup):
@@ -1078,8 +1078,6 @@ class PvzModifier:
             return
         ui = self.game_ui()
         if ui != 2 and ui != 3:
-            return
-        if lineup.mode is None or lineup.scene is None:
             return
         if self.get_scene() != lineup.scene:
             return

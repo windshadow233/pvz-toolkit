@@ -1,6 +1,7 @@
 import os
 import random
 
+import win32con
 from PyQt5.Qt import *
 from PyQt5.QtGui import QDesktopServices
 
@@ -259,10 +260,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
 
     def set_scene(self):
         index = self.comboBox_11.currentIndex()
-        if index == 0:
-            return
-        self.game.set_scene(index - 1)
-        self.comboBox_11.setCurrentIndex(0)
+        self.game.set_scene(index)
 
     def chomper_no_cool_down(self):
         self.game.chomper_no_cool_down(self.checkBox_23.isChecked())
@@ -341,3 +339,35 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         ret = self.game.add_garden_plant(plant_type, direction, color)
         if ret == 0:
             QMessageBox.information(self, '温馨提示', '您的花园过于拥挤，请先留出一些空位再继续吧~')
+
+    def generate_lineup_code(self):
+        lineup = self.game.get_lineup()
+        if lineup is None:
+            return
+        s = str(lineup)
+        self.textEdit.setText(s)
+
+    def copy_lineup_code(self):
+        s = self.textEdit.toPlainText()
+        win32clipboard.OpenClipboard()
+        win32clipboard.EmptyClipboard()
+        win32clipboard.SetClipboardData(win32con.CF_UNICODETEXT, s)
+        win32clipboard.CloseClipboard()
+
+    def paste_lineup_code(self):
+        win32clipboard.OpenClipboard()
+        s = win32clipboard.GetClipboardData(win32con.CF_UNICODETEXT)
+        win32clipboard.CloseClipboard()
+        self.textEdit.setText(s)
+
+    def set_lineup(self):
+        s = self.textEdit.toPlainText()
+        try:
+            lineup = Lineup()
+            lineup.from_str(s)
+            self.game.set_lineup(lineup)
+        except:
+            return
+
+    def update_lineup_list(self):
+        pass
