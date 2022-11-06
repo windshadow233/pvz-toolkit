@@ -1081,17 +1081,10 @@ class PvzModifier:
             return
         if lineup.mode is None or lineup.scene is None:
             return
-        mode = self.game_mode()
-        is_endless = 11 <= mode <= 15
-        is_iz = 61 <= mode <= 70
-        if not is_endless and not is_iz:
+        if self.get_scene() != lineup.scene:
             return
-        scene = self.get_scene()
-        if scene != lineup.scene:
-            self.set_scene(lineup.scene)
-        else:
-            self.delete_all_plants()
-            self.delete_grid_items({1, 2, 3, 11})
+        self.delete_all_plants()
+        self.delete_grid_items({1, 2, 3, 11})
         rakes = []
         self.asm.asm_init()
         for r in range(6):
