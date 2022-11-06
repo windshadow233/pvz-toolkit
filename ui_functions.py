@@ -34,7 +34,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
                 if not self.game.is_open():
                     self.label_9.setStyleSheet("color:red")
                     self.label_9.setText("❌未检测到游戏进程")
-                    self.listWidget.clear()
+                    self.textBrowser_2.clear()
                     self.game.wait_for_game()
                     status = True
                     self.set_status()
@@ -323,12 +323,12 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         types = self.game.data.bullet_types
         items = [f"{types[f]} ⇒ {types[t]}" for f, t in self.game.changed_bullets.get('items', {}).items()]
         items = [(' ' * 5).join(items[i: i + 3]) for i in range(0, len(items), 3)]
-        self.listWidget.clear()
-        self.listWidget.addItems(items)
+        self.textBrowser_2.clear()
+        self.textBrowser_2.setText('\n'.join(items))
 
     def reset_bullets(self):
         self.game.reset_bullets()
-        self.listWidget.clear()
+        self.textBrowser_2.clear()
 
     def add_garden_plant(self):
         plant_type = self.comboBox_14.currentIndex()
@@ -345,10 +345,10 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         if lineup is None:
             return
         s = str(lineup)
-        self.textEdit.setText(s)
+        self.textBrowser.setText(s)
 
     def copy_lineup_code(self):
-        s = self.textEdit.toPlainText()
+        s = self.textBrowser.toPlainText()
         win32clipboard.OpenClipboard()
         win32clipboard.EmptyClipboard()
         win32clipboard.SetClipboardData(win32con.CF_UNICODETEXT, s)
@@ -358,10 +358,10 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         win32clipboard.OpenClipboard()
         s = win32clipboard.GetClipboardData(win32con.CF_UNICODETEXT)
         win32clipboard.CloseClipboard()
-        self.textEdit.setText(s)
+        self.textBrowser.setText(s)
 
     def set_lineup(self):
-        s = self.textEdit.toPlainText()
+        s = self.textBrowser.toPlainText()
         try:
             lineup = Lineup()
             lineup.from_str(s)
