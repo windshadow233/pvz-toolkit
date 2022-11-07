@@ -1,5 +1,6 @@
 import os
 import random
+import json
 
 import win32con
 from PyQt5.Qt import *
@@ -27,6 +28,11 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
             box.setStyleSheet("QAbstractItemView::item {height: 40px;}")
             box.setView(QListView())
         self.game = PvzModifier()
+        with open('lineup.json', 'r', encoding='utf-8') as f:
+            self.lineup_codes = json.loads(f.read())
+        names = filter(lambda x: 'PE' in x, self.lineup_codes)
+        self.comboBox_17.clear()
+        self.comboBox_17.addItems(names)
 
         def check_game_status():
             status = False
@@ -370,4 +376,14 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
             return
 
     def update_lineup_list(self):
-        pass
+        scene = self.comboBox_11.currentIndex()
+        scene_str = ['DE', 'NE', 'PE', 'FE', 'RE', 'ME'][scene]
+        names = filter(lambda x: scene_str in x, self.lineup_codes)
+        self.comboBox_17.clear()
+        self.comboBox_17.addItems(names)
+
+    def set_lineup_code(self):
+        name = self.comboBox_17.currentText()
+        if name:
+            code = self.lineup_codes[name]
+            self.textBrowser.setText(code)

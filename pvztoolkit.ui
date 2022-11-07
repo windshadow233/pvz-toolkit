@@ -2707,8 +2707,8 @@ QTabBar::tab{width:95}</string>
             <property name="font">
              <font>
               <family>Arial</family>
-              <weight>75</weight>
-              <bold>true</bold>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
            </widget>
@@ -3964,8 +3964,8 @@ QTabBar::tab{width:95}</string>
    <slot>no_fog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>366</y>
+     <x>152</x>
+     <y>415</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -3997,7 +3997,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>332</x>
-     <y>366</y>
+     <y>415</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -4029,7 +4029,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>489</x>
-     <y>366</y>
+     <y>415</y>
     </hint>
     <hint type="destinationlabel">
      <x>9</x>
@@ -4189,7 +4189,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>489</x>
-     <y>400</y>
+     <y>449</y>
     </hint>
     <hint type="destinationlabel">
      <x>66</x>
@@ -4268,8 +4268,8 @@ QTabBar::tab{width:95}</string>
    <slot>reset_bullets()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>442</x>
-     <y>194</y>
+     <x>489</x>
+     <y>261</y>
     </hint>
     <hint type="destinationlabel">
      <x>497</x>
@@ -4524,8 +4524,8 @@ QTabBar::tab{width:95}</string>
    <slot>vase_transparent()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>78</x>
-     <y>400</y>
+     <x>92</x>
+     <y>449</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -4588,8 +4588,8 @@ QTabBar::tab{width:95}</string>
    <slot>change_bullet()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>191</x>
-     <y>181</y>
+     <x>241</x>
+     <y>261</y>
     </hint>
     <hint type="destinationlabel">
      <x>496</x>
@@ -4669,7 +4669,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>332</x>
-     <y>400</y>
+     <y>449</y>
     </hint>
     <hint type="destinationlabel">
      <x>352</x>
@@ -4748,8 +4748,8 @@ QTabBar::tab{width:95}</string>
    <slot>add_garden_plant()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>435</x>
-     <y>425</y>
+     <x>489</x>
+     <y>217</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -4853,6 +4853,22 @@ QTabBar::tab{width:95}</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>comboBox_17</sender>
+   <signal>currentTextChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>set_lineup_code()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>405</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>516</x>
+     <y>295</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>sun_shine()</slot>
@@ -4915,5 +4931,6 @@ QTabBar::tab{width:95}</string>
   <slot>paste_lineup_code()</slot>
   <slot>set_lineup()</slot>
   <slot>update_lineup_list()</slot>
+  <slot>set_lineup_code()</slot>
  </slots>
 </ui>

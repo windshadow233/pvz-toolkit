@@ -1036,7 +1036,7 @@ class PvzModifier:
             if plant_type == 16:
                 lineup.base[index] = 1
                 lineup.base_is_imitator[index] = imitator
-            elif plant_type == 32:
+            elif plant_type == 33:
                 lineup.base[index] = 2
                 lineup.base_is_imitator[index] = imitator
             elif plant_type == 30:
@@ -1109,6 +1109,9 @@ class PvzModifier:
                             self.asm.asm_push_byte(0)
                             self.asm.asm_call(self.data.call_set_plant_sleeping)
                             self.asm.asm_pop_exx(Reg.EAX)
+                    if plant_type == 4 or plant_type == 9 or plant_type == 47:
+                        self.asm.asm_add_list([0xc7, 0x40, 0x54])
+                        self.asm.asm_add_dword(1)
 
                 if lineup.base[index] == 3:
                     self._asm_put_grave(r, c)
