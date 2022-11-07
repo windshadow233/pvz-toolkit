@@ -373,7 +373,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
             lineup.from_str(s)
             self.game.set_lineup(lineup)
         except:
-            return
+            QMessageBox.warning(self, '温馨提示', '阵型代码有误！')
 
     def update_lineup_list(self):
         scene = self.comboBox_11.currentIndex()
