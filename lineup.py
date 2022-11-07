@@ -5,7 +5,7 @@ import base64
 class Lineup:
     def __init__(self, lineup_code: str = None):
         self.scene = 0
-        self.plants = bytearray(b'\x00' * 54 * 3)
+        self.plants = bytearray(b'\x00' * 54)
         self.plants_is_imitator = bytearray(b'\x00' * 54)
         self.plants_is_asleep = bytearray(b'\x00' * 54)
 
