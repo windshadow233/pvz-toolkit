@@ -3,7 +3,7 @@ import base64
 
 
 class Lineup:
-    def __init__(self, lineup_code: str = None, lineup_name: str = ''):
+    def __init__(self, lineup_code: str = None):
         self.scene = 0
         self.plants = bytearray(b'\x00' * 54 * 3)
         self.plants_is_imitator = bytearray(b'\x00' * 54)
@@ -25,8 +25,6 @@ class Lineup:
 
         if lineup_code:
             self.from_str(lineup_code)
-
-        self.name = lineup_name
 
     def compress(self):
         for r in range(6):
