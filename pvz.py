@@ -149,9 +149,6 @@ class PvzModifier:
         ui = self.game_ui()
         if ui != 2 and ui != 3:
             return
-        mode = self.game_mode()
-        if mode > 15:  # 非冒险、生存不可改
-            return
         pre_scene = self.get_scene()
         self.delete_all_plants()
         self.delete_grid_items({1, 2, 3, 11})
@@ -1080,9 +1077,10 @@ class PvzModifier:
         if ui != 2 and ui != 3:
             return
         if self.get_scene() != lineup.scene:
-            return
-        self.delete_all_plants()
-        self.delete_grid_items({1, 2, 3, 11})
+            self.set_scene(lineup.scene)
+        else:
+            self.delete_all_plants()
+            self.delete_grid_items({1, 2, 3, 11})
         rakes = []
         self.asm.asm_init()
         for r in range(6):
