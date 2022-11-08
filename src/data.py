@@ -173,7 +173,7 @@ class Data:
         init_lawn_mowers=[Hack(0x417a57, 0x00, 0x01, 1),
                           Hack(0x465f62, 0x7a78, 0x7894, 2)],
         no_fog=[Hack(0x42616d, 0xf23b, 0xd231, 2)],
-        chomper_no_cool_down=[Hack(0x46f911, 0x0fa0, 0x0, 2)],
+        chomper_no_cool_down=[Hack(0x46f925, 0x75, 0x70, 1)],
         rake_unlimited=[Hack(0x417732, 0x84, 0x80, 1)],
         stop_spawning=[Hack(0x41ff1c, 0x000055b48dff, 0x909090909090, 6)],
         plants_growup=[Hack(0x46df73, 0x75, 0x70, 1),
