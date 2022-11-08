@@ -2833,8 +2833,8 @@ QTabBar::tab{width:95}</string>
              <font>
               <family>Arial</family>
               <pointsize>10</pointsize>
-              <weight>75</weight>
-              <bold>true</bold>
+              <weight>50</weight>
+              <bold>false</bold>
              </font>
             </property>
             <property name="text">
@@ -3672,7 +3672,7 @@ QTabBar::tab{width:95}</string>
          </layout>
         </item>
         <item row="4" column="0">
-         <widget class="QTextBrowser" name="textBrowser_2">
+         <widget class="QTableView" name="tableView">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -3682,6 +3682,36 @@ QTabBar::tab{width:95}</string>
             <height>100</height>
            </size>
           </property>
+          <property name="autoScroll">
+           <bool>false</bool>
+          </property>
+          <property name="autoScrollMargin">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>25</number>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>156</number>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>15</number>
+          </attribute>
+          <attribute name="verticalHeaderDefaultSectionSize">
+           <number>15</number>
+          </attribute>
+          <attribute name="verticalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
          </widget>
         </item>
         <item row="5" column="0">

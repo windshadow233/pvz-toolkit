@@ -27,6 +27,10 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         for _, box in comboboxes:
             box.setStyleSheet("QAbstractItemView::item {height: 40px;}")
             box.setView(QListView())
+        self.tableView.setModel(QStandardItemModel(4, 3))
+        self.tableView.setHorizontalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+        self.tableView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
+
         self.game = PvzModifier()
         with open('lineup.json', 'r', encoding='utf-8') as f:
             self.lineup_codes = json.loads(f.read())
@@ -40,8 +44,8 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
                 if not self.game.is_open():
                     self.label_9.setStyleSheet("color:red")
                     self.label_9.setText("❌未检测到游戏进程")
-                    self.textBrowser_2.clear()
                     self.game.wait_for_game()
+                    self.tableView.setModel(QStandardItemModel(4, 3))
                     status = True
                     self.set_status()
                 else:
@@ -329,13 +333,16 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.game.change_bullet(from_bullet, to_bullet)
         types = self.game.data.bullet_types
         items = [f"{types[f]} ⇒ {types[t]}" for f, t in self.game.changed_bullets.get('items', {}).items()]
-        items = [(' ' * 5).join(items[i: i + 3]) for i in range(0, len(items), 3)]
-        self.textBrowser_2.clear()
-        self.textBrowser_2.setText('\n'.join(items))
+        model = QStandardItemModel(4, 3)
+        for index, item in enumerate(items):
+            row = index // 3
+            col = index % 3
+            model.setItem(row, col, QStandardItem(item))
+        self.tableView.setModel(model)
 
     def reset_bullets(self):
         self.game.reset_bullets()
-        self.textBrowser_2.clear()
+        self.tableView.setModel(QStandardItemModel(4, 3))
 
     def add_garden_plant(self):
         plant_type = self.comboBox_14.currentIndex()
