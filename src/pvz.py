@@ -853,13 +853,6 @@ class PvzModifier:
         if ui != 2 and ui != 3:
             return
         self.hack(self.data.chomper_no_cool_down, status)
-        if status:
-            type_offset = self.data.lawn.board.plants.type
-            addrs = self._get_plant_addresses()
-            for addr in addrs:
-                type_ = self.read_memory(addr + type_offset, 4)
-                if type_ == 6:
-                    self.write_memory(addr + 0x54, 0, 4)
 
     def _asm_put_grave(self, row, col):
         lawn_offset, board_offset, challenge_offset = self.data.recursively_get_attrs(['lawn', 'board', 'challenge'])
