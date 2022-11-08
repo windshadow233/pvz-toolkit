@@ -73,6 +73,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         for _, checkbox in filter(lambda x: 'checkBox' in x[0], self.__dict__.items()):
             if checkbox.isChecked():
                 checkbox.toggled.emit(True)
+        self.set_speed_rate()
 
     def open_download_url(self):
         QDesktopServices.openUrl(QUrl("https://pan.baidu.com/s/14OCAGDsNGcgynJXGK4NPfQ?pwd=fnpq"))
