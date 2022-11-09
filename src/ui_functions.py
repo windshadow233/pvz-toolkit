@@ -152,7 +152,10 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.game.background_running(self.checkBox_12.isChecked())
 
     def open_user_file_folder(self):
-        os.startfile("C:\\ProgramData\\PopCap Games\\PlantsVsZombies\\userdata")
+        try:
+            os.startfile("C:\\ProgramData\\PopCap Games\\PlantsVsZombies\\userdata")
+        except FileNotFoundError:
+            QMessageBox.warning(self, '温馨提示', '找不到存档目录，请检查一下~')
 
     def set_speed_rate(self):
         if not self.game.is_open():
