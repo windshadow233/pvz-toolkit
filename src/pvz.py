@@ -144,6 +144,9 @@ class PvzModifier:
     def set_scene(self, scene):
         if not self.is_open():
             return
+        pre_scene = self.get_scene()
+        if pre_scene > 5 or pre_scene < 0:
+            return 
         if scene > 5 or scene < 0:
             return
         ui = self.game_ui()
@@ -151,7 +154,6 @@ class PvzModifier:
             return
         self.delete_all_plants()
         self.delete_grid_items({1, 2, 3, 11})
-        pre_scene = self.get_scene()
         lawn_offset, board_offset, block_type_offset = self.data.recursively_get_attrs(['lawn', 'board', 'block_type'])
         row_type_offset = board_offset.row_type
         board_addr = self.read_offset((lawn_offset, board_offset), 4)
