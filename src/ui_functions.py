@@ -401,3 +401,8 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
 
     def free_planting(self):
         self.game.free_planting(self.checkBox_29.isChecked())
+
+    def change_garden_cursor(self):
+        index = self.comboBox_18.currentIndex()
+        cursor_type = [0, 9, 10, 11, 12, 13, 15, 17][index]
+        self.game.change_garden_cursor(cursor_type)

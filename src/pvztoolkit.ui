@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>517</width>
-    <height>571</height>
+    <height>589</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -2844,230 +2844,10 @@ QTabBar::tab{width:95}</string>
       </widget>
       <widget class="QWidget" name="tab_4">
        <attribute name="title">
-        <string>杂项</string>
+        <string>花园</string>
        </attribute>
-       <layout class="QGridLayout" name="gridLayout_7">
-        <item row="0" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_4">
-          <item>
-           <widget class="QLabel" name="label_12">
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>10</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>游戏速度</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="comboBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>35</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>16777215</height>
-             </size>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>11</pointsize>
-              <weight>50</weight>
-              <italic>false</italic>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="currentIndex">
-             <number>3</number>
-            </property>
-            <item>
-             <property name="text">
-              <string>0.1x</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>0.2x</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>0.5x</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>1x</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>2x</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>5x</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>10x</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_9">
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>35</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>💾存档目录</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
-        </item>
-        <item row="1" column="0">
-         <layout class="QHBoxLayout" name="horizontalLayout_9">
-          <item>
-           <widget class="QComboBox" name="comboBox_10">
-            <property name="minimumSize">
-             <size>
-              <width>150</width>
-              <height>35</height>
-             </size>
-            </property>
-            <item>
-             <property name="text">
-              <string>1 - Grass Walk</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>2 - Moongrains</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>3 - Watery Graves</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>4 - Rigor Mormist</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>5 - Graze the Roof</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>6 - Choose Your Seeds</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>7 - Crazy Dave</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>8 - Zen Garden</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>9 - Cerebrawl</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>10 - Loonboon</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>11 - Ultimate Battle</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>12 - Brainiac Maniac</string>
-             </property>
-            </item>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="pushButton_17">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>35</height>
-             </size>
-            </property>
-            <property name="text">
-             <string>🎵播放音乐</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
-        </item>
-        <item row="2" column="0">
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_12">
           <item>
            <widget class="QComboBox" name="comboBox_14">
@@ -3484,7 +3264,515 @@ QTabBar::tab{width:95}</string>
           </item>
          </layout>
         </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_15">
+          <item>
+           <widget class="QLabel" name="label_13">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>鼠标状态</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox_18">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>100</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="currentIndex">
+             <number>0</number>
+            </property>
+            <item>
+             <property name="text">
+              <string>鼠标指针</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>水壶</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>化肥</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>除虫剂</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>留声机</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>巧克力</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>出售植物</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>树肥</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_6">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>279</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_5">
+       <attribute name="title">
+        <string>杂项</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_7">
+        <item row="5" column="0">
+         <layout class="QGridLayout" name="gridLayout_4">
+          <item row="0" column="0">
+           <widget class="QCheckBox" name="checkBox_22">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>浓雾退散</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="checkBox_11">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>显示隐藏页</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="checkBox_12">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>允许后台运行</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="checkBox_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>花瓶透视</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="checkBox_17">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>重叠种植</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QCheckBox" name="checkBox_10">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>锁定铁铲</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
         <item row="3" column="0">
+         <widget class="QTableView" name="tableView">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>100</height>
+           </size>
+          </property>
+          <property name="autoScroll">
+           <bool>false</bool>
+          </property>
+          <property name="autoScrollMargin">
+           <number>0</number>
+          </property>
+          <attribute name="horizontalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="horizontalHeaderMinimumSectionSize">
+           <number>25</number>
+          </attribute>
+          <attribute name="horizontalHeaderDefaultSectionSize">
+           <number>156</number>
+          </attribute>
+          <attribute name="horizontalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+          <attribute name="verticalHeaderVisible">
+           <bool>false</bool>
+          </attribute>
+          <attribute name="verticalHeaderMinimumSectionSize">
+           <number>15</number>
+          </attribute>
+          <attribute name="verticalHeaderDefaultSectionSize">
+           <number>15</number>
+          </attribute>
+          <attribute name="verticalHeaderHighlightSections">
+           <bool>true</bool>
+          </attribute>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_9">
+          <item>
+           <widget class="QComboBox" name="comboBox_10">
+            <property name="minimumSize">
+             <size>
+              <width>150</width>
+              <height>35</height>
+             </size>
+            </property>
+            <item>
+             <property name="text">
+              <string>1 - Grass Walk</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>2 - Moongrains</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>3 - Watery Graves</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>4 - Rigor Mormist</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>5 - Graze the Roof</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>6 - Choose Your Seeds</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>7 - Crazy Dave</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>8 - Zen Garden</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>9 - Cerebrawl</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>10 - Loonboon</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>11 - Ultimate Battle</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>12 - Brainiac Maniac</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_17">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>🎵播放音乐</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+        <item row="0" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <item>
+           <widget class="QLabel" name="label_12">
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>10</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>游戏速度</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="comboBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>11</pointsize>
+              <weight>50</weight>
+              <italic>false</italic>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="currentIndex">
+             <number>3</number>
+            </property>
+            <item>
+             <property name="text">
+              <string>0.1x</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>0.2x</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>0.5x</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>1x</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>2x</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>5x</string>
+             </property>
+            </item>
+            <item>
+             <property name="text">
+              <string>10x</string>
+             </property>
+            </item>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="pushButton_9">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>35</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>💾存档目录</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="2" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_5">
           <item>
            <widget class="QComboBox" name="comboBox_13">
@@ -3694,190 +3982,11 @@ QTabBar::tab{width:95}</string>
          </layout>
         </item>
         <item row="4" column="0">
-         <widget class="QTableView" name="tableView">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>100</height>
-           </size>
-          </property>
-          <property name="autoScroll">
-           <bool>false</bool>
-          </property>
-          <property name="autoScrollMargin">
-           <number>0</number>
-          </property>
-          <attribute name="horizontalHeaderVisible">
-           <bool>false</bool>
-          </attribute>
-          <attribute name="horizontalHeaderMinimumSectionSize">
-           <number>25</number>
-          </attribute>
-          <attribute name="horizontalHeaderDefaultSectionSize">
-           <number>156</number>
-          </attribute>
-          <attribute name="horizontalHeaderHighlightSections">
-           <bool>true</bool>
-          </attribute>
-          <attribute name="verticalHeaderVisible">
-           <bool>false</bool>
-          </attribute>
-          <attribute name="verticalHeaderMinimumSectionSize">
-           <number>15</number>
-          </attribute>
-          <attribute name="verticalHeaderDefaultSectionSize">
-           <number>15</number>
-          </attribute>
-          <attribute name="verticalHeaderHighlightSections">
-           <bool>true</bool>
-          </attribute>
-         </widget>
-        </item>
-        <item row="5" column="0">
          <widget class="Line" name="line_4">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
          </widget>
-        </item>
-        <item row="6" column="0">
-         <layout class="QGridLayout" name="gridLayout_4">
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="checkBox_22">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>浓雾退散</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QCheckBox" name="checkBox_11">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>显示隐藏页</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QCheckBox" name="checkBox_12">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>允许后台运行</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="checkBox_3">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>花瓶透视</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="checkBox_17">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>重叠种植</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QCheckBox" name="checkBox_10">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>锁定铁铲</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
         </item>
        </layout>
       </widget>
@@ -4027,8 +4136,8 @@ QTabBar::tab{width:95}</string>
    <slot>no_fog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>152</x>
-     <y>415</y>
+     <x>166</x>
+     <y>344</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -4060,7 +4169,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>332</x>
-     <y>415</y>
+     <y>344</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -4092,7 +4201,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>489</x>
-     <y>415</y>
+     <y>344</y>
     </hint>
     <hint type="destinationlabel">
      <x>9</x>
@@ -4309,22 +4418,6 @@ QTabBar::tab{width:95}</string>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_18</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>reset_bullets()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>489</x>
-     <y>261</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>497</x>
-     <y>184</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_14</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -4492,7 +4585,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>465</x>
-     <y>202</y>
+     <y>211</y>
     </hint>
     <hint type="destinationlabel">
      <x>160</x>
@@ -4508,7 +4601,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>318</x>
-     <y>226</y>
+     <y>234</y>
     </hint>
     <hint type="destinationlabel">
      <x>242</x>
@@ -4540,7 +4633,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>318</x>
-     <y>181</y>
+     <y>187</y>
     </hint>
     <hint type="destinationlabel">
      <x>384</x>
@@ -4609,22 +4702,6 @@ QTabBar::tab{width:95}</string>
     <hint type="destinationlabel">
      <x>103</x>
      <y>319</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_16</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>change_bullet()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>241</x>
-     <y>261</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>496</x>
-     <y>40</y>
     </hint>
    </hints>
   </connection>
@@ -4773,22 +4850,6 @@ QTabBar::tab{width:95}</string>
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_23</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>add_garden_plant()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>489</x>
-     <y>217</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>514</x>
-     <y>450</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pushButton_24</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -4796,7 +4857,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>47</x>
-     <y>425</y>
+     <y>442</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -4844,7 +4905,7 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>461</x>
-     <y>424</y>
+     <y>441</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -4940,11 +5001,75 @@ QTabBar::tab{width:95}</string>
    <hints>
     <hint type="sourcelabel">
      <x>35</x>
-     <y>416</y>
+     <y>431</y>
     </hint>
     <hint type="destinationlabel">
      <x>102</x>
      <y>541</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_18</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>reset_bullets()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>489</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>497</x>
+     <y>184</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_16</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>change_bullet()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>241</x>
+     <y>212</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>40</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_23</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>add_garden_plant()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>448</x>
+     <y>127</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>512</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox_18</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>change_garden_cursor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>161</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>3</x>
+     <y>157</y>
     </hint>
    </hints>
   </connection>
@@ -5012,5 +5137,6 @@ QTabBar::tab{width:95}</string>
   <slot>update_lineup_list()</slot>
   <slot>set_lineup_code()</slot>
   <slot>free_planting()</slot>
+  <slot>change_garden_cursor()</slot>
  </slots>
 </ui>

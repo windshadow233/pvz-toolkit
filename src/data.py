@@ -128,7 +128,7 @@ class Data:
         fertilizer_not_dec=[Hack(0x534d7b, 0x0000022088ff, 0x909090909090, 6)],
         bug_spray_not_dec=[Hack(0x534e73, 0x0000022488ff, 0x909090909090, 6)],
         tree_food_not_dec=[Hack(0x43885d, 0x0000025888ff, 0x909090909090, 6)],
-        lock_shovel=[Hack(0x41e36e, 0x89, 0x39, 1)],
+        lock_cursor=[Hack(0x41e36e, 0x89, 0x39, 1)],
         unlock_limbo_page=[Hack(0x43935a, 0x88, 0x38, 1)],
         background_running=[Hack(0x624919, 0x4074, 0x00eb, 2)],
 
