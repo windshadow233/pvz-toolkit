@@ -1261,8 +1261,30 @@ QTabBar::tab{width:95}</string>
         </item>
         <item row="2" column="0">
          <layout class="QGridLayout" name="gridLayout">
-          <item row="2" column="1">
-           <widget class="QCheckBox" name="checkBox_14">
+          <item row="4" column="0">
+           <widget class="QCheckBox" name="checkBox_28">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>黄油投手，你值得拥有</string>
+            </property>
+            <property name="text">
+             <string>只扔黄油</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QCheckBox" name="checkBox_16">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -1278,7 +1300,194 @@ QTabBar::tab{width:95}</string>
              </font>
             </property>
             <property name="text">
-             <string>核弹无坑</string>
+             <string>植物虚弱</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="1">
+           <widget class="QCheckBox" name="checkBox_20">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>僵尸虚弱</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="2">
+           <widget class="QCheckBox" name="checkBox_23">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>大嘴花速吞</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="2">
+           <widget class="QCheckBox" name="checkBox_15">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>冰车无痕</string>
+            </property>
+           </widget>
+          </item>
+          <item row="2" column="0">
+           <widget class="QCheckBox" name="checkBox_2">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>取消冷却</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="2">
+           <widget class="QCheckBox" name="checkBox_27">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>僵尸停滞</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="2">
+           <widget class="QCheckBox" name="checkBox_24">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>暂停出怪</string>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <widget class="QCheckBox" name="checkBox_25">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>使土豆雷、阳光菇快速长大；玉米加农炮快速装填</string>
+            </property>
+            <property name="text">
+             <string>快速成长/装填</string>
+            </property>
+           </widget>
+          </item>
+          <item row="1" column="0">
+           <widget class="QCheckBox" name="checkBox_19">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>僵尸不死</string>
+            </property>
+           </widget>
+          </item>
+          <item row="4" column="1">
+           <widget class="QCheckBox" name="checkBox_26">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+             </font>
+            </property>
+            <property name="toolTip">
+             <string>小丑僵尸、火爆辣椒僵尸不爆炸</string>
+            </property>
+            <property name="text">
+             <string>丑椒不炸</string>
             </property>
            </widget>
           </item>
@@ -1306,153 +1515,6 @@ QTabBar::tab{width:95}</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="0">
-           <widget class="QCheckBox" name="checkBox_28">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="toolTip">
-             <string>黄油投手，你值得拥有</string>
-            </property>
-            <property name="text">
-             <string>只扔黄油</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <widget class="QCheckBox" name="checkBox_27">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>僵尸停滞</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="0">
-           <widget class="QCheckBox" name="checkBox_25">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="toolTip">
-             <string>使土豆雷、阳光菇快速长大；玉米加农炮快速装填</string>
-            </property>
-            <property name="text">
-             <string>快速成长/装填</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
-           <widget class="QCheckBox" name="checkBox_20">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>僵尸虚弱</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="2">
-           <widget class="QCheckBox" name="checkBox">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>自动收集</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QCheckBox" name="checkBox_16">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>植物虚弱</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QCheckBox" name="checkBox_15">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>冰车无痕</string>
-            </property>
-           </widget>
-          </item>
           <item row="3" column="1">
            <widget class="QCheckBox" name="checkBox_18">
             <property name="sizePolicy">
@@ -1477,8 +1539,8 @@ QTabBar::tab{width:95}</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
-           <widget class="QCheckBox" name="checkBox_2">
+          <item row="2" column="1">
+           <widget class="QCheckBox" name="checkBox_14">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -1494,12 +1556,33 @@ QTabBar::tab{width:95}</string>
              </font>
             </property>
             <property name="text">
-             <string>取消冷却</string>
+             <string>核弹无坑</string>
             </property>
            </widget>
           </item>
-          <item row="4" column="1">
-           <widget class="QCheckBox" name="checkBox_26">
+          <item row="0" column="2">
+           <widget class="QCheckBox" name="checkBox">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <family>Arial</family>
+              <pointsize>12</pointsize>
+              <weight>50</weight>
+              <bold>false</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>自动收集</string>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <widget class="QCheckBox" name="checkBox_29">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
               <horstretch>0</horstretch>
@@ -1513,71 +1596,10 @@ QTabBar::tab{width:95}</string>
              </font>
             </property>
             <property name="toolTip">
-             <string>小丑僵尸、火爆辣椒僵尸不爆炸</string>
+             <string>黄油投手，你值得拥有</string>
             </property>
             <property name="text">
-             <string>丑椒不炸</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="2">
-           <widget class="QCheckBox" name="checkBox_24">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>暂停出怪</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <widget class="QCheckBox" name="checkBox_19">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>僵尸不死</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QCheckBox" name="checkBox_23">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="font">
-             <font>
-              <family>Arial</family>
-              <pointsize>12</pointsize>
-              <weight>50</weight>
-              <bold>false</bold>
-             </font>
-            </property>
-            <property name="text">
-             <string>大嘴花速吞</string>
+             <string>免费种植</string>
             </property>
            </widget>
           </item>
@@ -4085,8 +4107,8 @@ QTabBar::tab{width:95}</string>
    <slot>chomper_no_cool_down()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>427</x>
-     <y>413</y>
+     <x>489</x>
+     <y>399</y>
     </hint>
     <hint type="destinationlabel">
      <x>489</x>
@@ -4101,7 +4123,7 @@ QTabBar::tab{width:95}</string>
    <slot>play_music()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>328</x>
+     <x>321</x>
      <y>168</y>
     </hint>
     <hint type="destinationlabel">
@@ -4117,8 +4139,8 @@ QTabBar::tab{width:95}</string>
    <slot>no_cool_down()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>124</x>
-     <y>300</y>
+     <x>138</x>
+     <y>299</y>
     </hint>
     <hint type="destinationlabel">
      <x>37</x>
@@ -4181,8 +4203,8 @@ QTabBar::tab{width:95}</string>
    <slot>mushroom_awake()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>357</y>
+     <x>333</x>
+     <y>349</y>
     </hint>
     <hint type="destinationlabel">
      <x>117</x>
@@ -4213,8 +4235,8 @@ QTabBar::tab{width:95}</string>
    <slot>lock_butter()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>97</x>
-     <y>417</y>
+     <x>111</x>
+     <y>399</y>
     </hint>
     <hint type="destinationlabel">
      <x>244</x>
@@ -4437,8 +4459,8 @@ QTabBar::tab{width:95}</string>
    <slot>no_ice_trail()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>430</x>
-     <y>300</y>
+     <x>489</x>
+     <y>299</y>
     </hint>
     <hint type="destinationlabel">
      <x>467</x>
@@ -4453,8 +4475,8 @@ QTabBar::tab{width:95}</string>
    <slot>no_crater()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>300</y>
+     <x>333</x>
+     <y>299</y>
     </hint>
     <hint type="destinationlabel">
      <x>311</x>
@@ -4613,8 +4635,8 @@ QTabBar::tab{width:95}</string>
    <slot>zombie_not_explode()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>190</x>
-     <y>414</y>
+     <x>333</x>
+     <y>399</y>
     </hint>
     <hint type="destinationlabel">
      <x>35</x>
@@ -4645,8 +4667,8 @@ QTabBar::tab{width:95}</string>
    <slot>plants_growup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>51</x>
-     <y>357</y>
+     <x>65</x>
+     <y>349</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -4661,8 +4683,8 @@ QTabBar::tab{width:95}</string>
    <slot>zombie_stop()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>365</x>
-     <y>367</y>
+     <x>489</x>
+     <y>349</y>
     </hint>
     <hint type="destinationlabel">
      <x>180</x>
@@ -4910,6 +4932,22 @@ QTabBar::tab{width:95}</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>checkBox_29</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>free_planting()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>35</x>
+     <y>416</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>102</x>
+     <y>541</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>sun_shine()</slot>
@@ -4973,5 +5011,6 @@ QTabBar::tab{width:95}</string>
   <slot>set_lineup()</slot>
   <slot>update_lineup_list()</slot>
   <slot>set_lineup_code()</slot>
+  <slot>free_planting()</slot>
  </slots>
 </ui>

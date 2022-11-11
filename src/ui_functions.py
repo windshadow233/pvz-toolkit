@@ -398,3 +398,6 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         if name:
             code = self.lineup_codes[name]
             self.textBrowser.setText(code)
+
+    def free_planting(self):
+        self.game.free_planting(self.checkBox_29.isChecked())

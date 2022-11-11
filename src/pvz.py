@@ -146,7 +146,7 @@ class PvzModifier:
             return
         pre_scene = self.get_scene()
         if pre_scene > 5 or pre_scene < 0:
-            return 
+            return
         if scene > 5 or scene < 0:
             return
         ui = self.game_ui()
@@ -1227,6 +1227,14 @@ class PvzModifier:
         self.asm.asm_add_list(data)
         self.asm_code_execute(addr)
         return 1
+
+    def free_planting(self, status):
+        if not self.is_open():
+            return
+        lawn_offset, free_planting_offset = self.data.recursively_get_attrs(['lawn', 'free_planting'])
+        free_planting_addr = self.read_memory(lawn_offset) + free_planting_offset
+        hack = Hack(free_planting_addr, 0, 1, 1)
+        self.hack([hack], status)
 
 
 if __name__ == '__main__':

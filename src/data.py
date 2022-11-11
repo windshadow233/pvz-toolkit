@@ -79,6 +79,7 @@ class Data:
                 grid_item_count=0x144,
                 particle_systems=0x5638
             ),
+            free_planting=0x938,
             animations=Offset(
                 0x944,
                 unnamed=Offset(
