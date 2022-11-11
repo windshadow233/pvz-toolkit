@@ -370,17 +370,19 @@ class PvzModifier:
             return
         self.hack(self.data.tree_food_not_dec, status)
 
+    def set_cursor(self, cursor_type):
+        lawn_offset, board_offset, cursor_offset, cursor_grab_offset = self.data.recursively_get_attrs(
+            ['lawn', 'board', 'cursor', 'cursor_grab'])
+        self.write_offset((lawn_offset, board_offset, cursor_offset, cursor_grab_offset), cursor_type, 4)
+
     def lock_shovel(self, status=True):
         if not self.is_open():
             return
         scene = self.get_scene()
         if scene < 0 or scene > 5:
             return
-        lawn_offset, board_offset, cursor_offset, cursor_grab_offset = self.data.recursively_get_attrs(['lawn', 'board', 'cursor', 'cursor_grab'])
-        if status:
-            self.write_offset((lawn_offset, board_offset, cursor_offset, cursor_grab_offset), 6, 4)
-        else:
-            self.write_offset((lawn_offset, board_offset, cursor_offset, cursor_grab_offset), 0, 4)
+        cursor_type = 6 if status else 0
+        self.set_cursor(cursor_type)
         self.hack(self.data.lock_cursor, status)
 
     def unlock_limbo_page(self, status=True):
@@ -1246,8 +1248,7 @@ class PvzModifier:
         if scene < 6 or scene > 9:
             return
         status = cursor_type != 0
-        lawn_offset, board_offset, cursor_offset, cursor_grab_offset = self.data.recursively_get_attrs(['lawn', 'board', 'cursor', 'cursor_grab'])
-        self.write_offset((lawn_offset, board_offset, cursor_offset, cursor_grab_offset), cursor_type, 4)
+        self.set_cursor(cursor_type)
         self.hack(self.data.lock_cursor, status)
 
 
