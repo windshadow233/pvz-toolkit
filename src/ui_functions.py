@@ -406,3 +406,10 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         index = self.comboBox_18.currentIndex()
         cursor_type = [0, 9, 10, 11, 12, 13, 15, 17][index]
         self.game.change_garden_cursor(cursor_type)
+
+    def set_slot_plant(self):
+        slot_id = self.comboBox_19.currentIndex()
+        plant_type = self.comboBox_20.currentIndex()
+        is_imitator = self.checkBox_30.isChecked()
+        self.game.set_slot_plant(plant_type, slot_id, is_imitator)
+

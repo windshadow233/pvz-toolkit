@@ -37,6 +37,14 @@ class Data:
                 sun=0x5578,
                 adventure_level=0x5568,
                 cursor=Offset(0x150, cursor_grab=0x30),
+                slots=Offset(
+                    0x15c,
+                    count=0x24,
+                    cd_past=0x4c,
+                    cd_total=0x50,
+                    plant_type=0x5c,
+                    plant_type_imitator=0x60
+                ),
                 zombies=Offset(
                     0xa8,
                     row=0x1c,
@@ -205,6 +213,7 @@ class Data:
         call_delete_particle_system=0x52b620,
         call_play_music=0x469a10,
         call_add_garden_plant=0x533520,
+        call_set_slot_plant=0x49f5b0,
 
         bullet_types={
             0: '豌豆',
