@@ -3606,7 +3606,7 @@ QTabBar::tab{width:95}</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>35</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -3681,7 +3681,7 @@ QTabBar::tab{width:95}</string>
             <property name="minimumSize">
              <size>
               <width>170</width>
-              <height>40</height>
+              <height>35</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -3971,7 +3971,7 @@ QTabBar::tab{width:95}</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>35</height>
              </size>
             </property>
             <property name="maximumSize">
@@ -3996,7 +3996,7 @@ QTabBar::tab{width:95}</string>
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>40</height>
+              <height>35</height>
              </size>
             </property>
             <property name="maximumSize">
