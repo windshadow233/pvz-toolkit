@@ -1303,8 +1303,8 @@ class PvzModifier:
     def put_vase(self, row, col, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count):
         if not self.is_open():
             return
-        ui = self.game_ui()
-        if ui != 2 and ui != 3:
+        mode = self.game_mode()
+        if mode < 51 or mode > 60:
             return
         if vase_content_type == 1:
             zombie_type = 0xffffffff
