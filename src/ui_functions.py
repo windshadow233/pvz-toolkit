@@ -372,10 +372,13 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         win32clipboard.CloseClipboard()
 
     def paste_lineup_code(self):
-        win32clipboard.OpenClipboard()
-        s = win32clipboard.GetClipboardData(win32con.CF_UNICODETEXT)
-        win32clipboard.CloseClipboard()
-        self.textBrowser.setText(s)
+        try:
+            win32clipboard.OpenClipboard()
+            s = win32clipboard.GetClipboardData(win32con.CF_UNICODETEXT)
+            win32clipboard.CloseClipboard()
+            self.textBrowser.setText(s)
+        except:
+            QMessageBox.warning(self, '温馨提示', '剪切板内容有误')
 
     def set_lineup(self):
         s = self.textBrowser.toPlainText()
@@ -408,7 +411,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.game.change_garden_cursor(cursor_type)
 
     def set_slot_plant(self):
-        slot_id = self.comboBox_19.currentIndex()
+        slot_id = self.comboBox_19.currentIndex() - 1
         plant_type = self.comboBox_20.currentIndex()
         is_imitator = self.checkBox_30.isChecked()
         self.game.set_slot_plant(plant_type, slot_id, is_imitator)
