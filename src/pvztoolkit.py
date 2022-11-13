@@ -2510,7 +2510,7 @@ class Ui_MainWindow(object):
         self.comboBox_25.setItemText(0, _translate("MainWindow", "随机罐"))
         self.comboBox_25.setItemText(1, _translate("MainWindow", "植物罐"))
         self.comboBox_25.setItemText(2, _translate("MainWindow", "僵尸罐"))
-        self.comboBox_26.setItemText(0, _translate("MainWindow", "无"))
+        self.comboBox_26.setItemText(0, _translate("MainWindow", "放置空罐"))
         self.comboBox_26.setItemText(1, _translate("MainWindow", "放置植物"))
         self.comboBox_26.setItemText(2, _translate("MainWindow", "放置僵尸"))
         self.comboBox_26.setItemText(3, _translate("MainWindow", "放置阳光"))

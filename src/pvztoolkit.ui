@@ -4170,7 +4170,7 @@ QTabBar::tab{width:90}</string>
             </property>
             <item>
              <property name="text">
-              <string>无</string>
+              <string>放置空罐</string>
              </property>
             </item>
             <item>
