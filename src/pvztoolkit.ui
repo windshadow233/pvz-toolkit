@@ -3616,8 +3616,13 @@ QTabBar::tab{width:95}</string>
              </size>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
+            <item>
+             <property name="text">
+              <string>所有格</string>
+             </property>
+            </item>
             <item>
              <property name="text">
               <string>第1格</string>
