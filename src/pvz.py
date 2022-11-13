@@ -1251,6 +1251,12 @@ class PvzModifier:
         self.set_cursor(cursor_type)
         self.hack(self.data.lock_cursor, status)
 
+    def _asm_set_slot_plant(self, plant_type, slot_addr, plant_type_imitator):
+        self.asm.asm_mov_exx(Reg.ESI, slot_addr)
+        self.asm.asm_mov_exx(Reg.EDI, plant_type)
+        self.asm.asm_mov_exx(Reg.EDX, plant_type_imitator)
+        self.asm.asm_call(self.data.call_set_slot_plant)
+
     def set_slot_plant(self, plant_type, slot_id, imitator):
         if not self.is_open():
             return
@@ -1260,17 +1266,19 @@ class PvzModifier:
         slot_struct_size = 0x50
         lawn_offset, board_offset, slots_offset = self.data.recursively_get_attrs(['lawn', 'board', 'slots'])
         slots_addr = self.read_offset((lawn_offset, board_offset, slots_offset))
-        slot_addr = slots_addr + slot_id * slot_struct_size + 0x28
         if imitator or plant_type == 0x30:
             plant_type_imitator = plant_type
             plant_type = 0x30
         else:
             plant_type_imitator = 0xffffffff
         self.asm.asm_init()
-        self.asm.asm_mov_exx(Reg.ESI, slot_addr)
-        self.asm.asm_mov_exx(Reg.EDI, plant_type)
-        self.asm.asm_mov_exx(Reg.EDX, plant_type_imitator)
-        self.asm.asm_call(self.data.call_set_slot_plant)
+        if slot_id == -1:
+            for slot_id in range(10):
+                slot_addr = slots_addr + slot_id * slot_struct_size + 0x28
+                self._asm_set_slot_plant(plant_type, slot_addr, plant_type_imitator)
+        else:
+            slot_addr = slots_addr + slot_id * slot_struct_size + 0x28
+            self._asm_set_slot_plant(plant_type, slot_addr, plant_type_imitator)
         self.asm.asm_ret()
         self.asm_code_execute()
 
