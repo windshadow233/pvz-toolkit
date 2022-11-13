@@ -153,7 +153,7 @@ class PvzModifier:
         if ui != 2 and ui != 3:
             return
         self.delete_all_plants()
-        self.delete_grid_items({1, 2, 3, 11})
+        self.delete_grid_items({1, 2, 3, 7, 11})
         lawn_offset, board_offset, block_type_offset = self.data.recursively_get_attrs(['lawn', 'board', 'block_type'])
         row_type_offset = board_offset.row_type
         board_addr = self.read_offset((lawn_offset, board_offset), 4)
@@ -1279,6 +1279,56 @@ class PvzModifier:
         else:
             slot_addr = slots_addr + slot_id * slot_struct_size + 0x28
             self._asm_set_slot_plant(plant_type, slot_addr, plant_type_imitator)
+        self.asm.asm_ret()
+        self.asm_code_execute()
+
+    def _asm_put_vase(self, row, col, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count):
+        lawn_offset, board_offset, grid_items_offset = self.data.recursively_get_attrs(['lawn', 'board', 'grid_items'])
+        self.asm.asm_mov_exx_dword_ptr(Reg.ESI, lawn_offset)
+        self.asm.asm_mov_exx_dword_ptr_exx_add(Reg.ESI, board_offset)
+        self.asm.asm_exx_add_dword_ptr(Reg.ESI, grid_items_offset)
+        self.asm.asm_call(self.data.call_new_grid_item)
+        self.asm.asm_mov_exx_exx(Reg.ESI, Reg.EAX)
+        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.ESI, grid_items_offset.type, 7)
+        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.ESI, grid_items_offset.vase_type, vase_type)
+        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.ESI, grid_items_offset.col, col)
+        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.ESI, grid_items_offset.row, row)
+        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.ESI, grid_items_offset.layer, 10000 * row + 302000)
+        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.ESI, grid_items_offset.zombie_in_vase, zombie_type)
+        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.ESI, grid_items_offset.plant_in_vase, plant_type)
+        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.ESI, grid_items_offset.vase_content_type, vase_content_type)
+        if vase_content_type == 3:
+            self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.ESI, grid_items_offset.sun_shine_in_vase, sun_shine_count)
+
+    def put_vase(self, row, col, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count):
+        if not self.is_open():
+            return
+        ui = self.game_ui()
+        if ui != 2 and ui != 3:
+            return
+        if vase_content_type == 1:
+            zombie_type = 0xffffffff
+        elif vase_content_type == 2:
+            plant_type = 0xffffffff
+        else:
+            plant_type = zombie_type = 0xffffffff
+        row_count = self.get_row_count()
+        if row >= row_count:
+            return
+        col_count = 9
+        self.asm.asm_init()
+        if row == -1 and col == -1:
+            for r in range(row_count):
+                for c in range(col_count):
+                    self._asm_put_vase(r, c, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count)
+        elif row == -1 and col != -1:
+            for r in range(row_count):
+                self._asm_put_vase(r, col, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count)
+        elif row != -1 and col == -1:
+            for c in range(col_count):
+                self._asm_put_vase(row, c, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count)
+        else:
+            self._asm_put_vase(row, col, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count)
         self.asm.asm_ret()
         self.asm_code_execute()
 

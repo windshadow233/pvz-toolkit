@@ -378,7 +378,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
             win32clipboard.CloseClipboard()
             self.textBrowser.setText(s)
         except:
-            QMessageBox.warning(self, '温馨提示', '剪切板内容有误')
+            QMessageBox.warning(self, '温馨提示', '请复制一个字符串再进行导入')
 
     def set_lineup(self):
         s = self.textBrowser.toPlainText()
@@ -416,3 +416,22 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         is_imitator = self.checkBox_30.isChecked()
         self.game.set_slot_plant(plant_type, slot_id, is_imitator)
 
+    def put_vase(self):
+        plant_type = self.comboBox_22.currentIndex()
+        zombie_type = self.comboBox_24.currentIndex()
+        vase_content_type = self.comboBox_26.currentIndex()
+        if vase_content_type == 1 and plant_type == 0x30:
+            reply = QMessageBox.warning(
+                self,
+                '温馨提示',
+                '不建议在罐子中放置模仿者（种植会闪退），是否继续？',
+                buttons=QMessageBox.Yes | QMessageBox.No,
+                defaultButton=QMessageBox.No
+            )
+            if reply == QMessageBox.No:
+                return
+        row = self.comboBox_21.currentIndex() - 1
+        col = self.comboBox_23.currentIndex() - 1
+        vase_type = self.comboBox_25.currentIndex() + 3
+        sun_shine_count = self.spinBox_3.value()
+        self.game.put_vase(row, col, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count)

@@ -79,9 +79,15 @@ class Data:
                 grid_items=Offset(
                     0x134,
                     type=0x08,
+                    vase_type=0xc,  # 3: 随机罐  4: 植物罐  5: 僵尸罐
                     col=0x10,
                     row=0x14,
-                    dead=0x20
+                    layer=0x1c,
+                    dead=0x20,
+                    zombie_in_vase=0x3c,
+                    plant_in_vase=0x40,
+                    vase_content_type=0x44,  # 0: 空罐  1: 植物  2: 僵尸  3: 阳光
+                    sun_shine_in_vase=0x50
                 ),
                 grid_item_count_max=0x138,
                 grid_item_count=0x144,
@@ -214,6 +220,7 @@ class Data:
         call_play_music=0x469a10,
         call_add_garden_plant=0x533520,
         call_set_slot_plant=0x49f5b0,
+        call_new_grid_item=0x429d20,
 
         bullet_types={
             0: '豌豆',

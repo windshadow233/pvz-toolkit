@@ -87,6 +87,27 @@ class AsmInjector:
         self.asm_add_byte(0x68)
         self.asm_add_dword(hex_dword)
 
+    def asm_exx_add_dword_ptr(self, reg: Reg, value: int):
+        self.asm_add_byte(0x81)
+        self.asm_add_byte(0xc0 + reg.value)
+        self.asm_add_dword(value)
+
+    def asm_exx_sub_dword_ptr(self, reg: Reg, value: int):
+        self.asm_add_byte(0x81)
+        self.asm_add_byte(0xe8 + reg.value)
+        self.asm_add_dword(value)
+
+    def asm_mov_dword_ptr_exx_add_offset(self, reg: Reg, offset: int, value: int):
+        """mov [exx+offset], xxxxxxxx"""
+        self.asm_add_byte(0xc7)
+        if offset < 0x80:
+            self.asm_add_byte(0x40 + reg.value)
+            self.asm_add_byte(offset)
+        else:
+            self.asm_add_byte(0x80 + reg.value)
+            self.asm_add_dword(offset)
+        self.asm_add_dword(value)
+
     def asm_mov_exx(self, reg: Reg, value: int):
         """mov exx, xxxxxxxx"""
         self.asm_add_byte(0xb8 + reg.value)
