@@ -4239,6 +4239,31 @@ QTabBar::tab{width:90}</string>
            </spacer>
           </item>
           <item>
+           <widget class="QPushButton" name="pushButton_31">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>16777215</width>
+              <height>40</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>清空罐子</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QPushButton" name="pushButton_30">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -5498,8 +5523,8 @@ QTabBar::tab{width:90}</string>
    <slot>open_download_url()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>464</x>
-     <y>512</y>
+     <x>477</x>
+     <y>576</y>
     </hint>
     <hint type="destinationlabel">
      <x>233</x>
@@ -5562,8 +5587,8 @@ QTabBar::tab{width:90}</string>
    <slot>zombie_invincible()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>112</x>
-     <y>248</y>
+     <x>45</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -5578,8 +5603,8 @@ QTabBar::tab{width:90}</string>
    <slot>no_cool_down()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>299</y>
+     <x>45</x>
+     <y>104</y>
     </hint>
     <hint type="destinationlabel">
      <x>37</x>
@@ -5594,8 +5619,8 @@ QTabBar::tab{width:90}</string>
    <slot>copy_lineup_code()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>140</x>
-     <y>444</y>
+     <x>229</x>
+     <y>492</y>
     </hint>
     <hint type="destinationlabel">
      <x>161</x>
@@ -5610,8 +5635,8 @@ QTabBar::tab{width:90}</string>
    <slot>plant_invincible()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>79</x>
-     <y>187</y>
+     <x>45</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
      <x>44</x>
@@ -5626,8 +5651,8 @@ QTabBar::tab{width:90}</string>
    <slot>unlock_limbo_page()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>409</y>
+     <x>332</x>
+     <y>461</y>
     </hint>
     <hint type="destinationlabel">
      <x>398</x>
@@ -5642,8 +5667,8 @@ QTabBar::tab{width:90}</string>
    <slot>tree_food_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>476</x>
-     <y>370</y>
+     <x>489</x>
+     <y>424</y>
     </hint>
     <hint type="destinationlabel">
      <x>34</x>
@@ -5658,8 +5683,8 @@ QTabBar::tab{width:90}</string>
    <slot>paste_lineup_code()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>298</x>
-     <y>444</y>
+     <x>387</x>
+     <y>492</y>
     </hint>
     <hint type="destinationlabel">
      <x>357</x>
@@ -5706,8 +5731,8 @@ QTabBar::tab{width:90}</string>
    <slot>set_lineup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>403</x>
-     <y>444</y>
+     <x>489</x>
+     <y>492</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -5722,8 +5747,8 @@ QTabBar::tab{width:90}</string>
    <slot>plants_growup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>65</x>
-     <y>349</y>
+     <x>45</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -5738,8 +5763,8 @@ QTabBar::tab{width:90}</string>
    <slot>fertilizer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>318</x>
-     <y>234</y>
+     <x>342</x>
+     <y>283</y>
     </hint>
     <hint type="destinationlabel">
      <x>242</x>
@@ -5754,8 +5779,8 @@ QTabBar::tab{width:90}</string>
    <slot>background_running()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>419</x>
-     <y>409</y>
+     <x>489</x>
+     <y>461</y>
     </hint>
     <hint type="destinationlabel">
      <x>9</x>
@@ -5770,8 +5795,8 @@ QTabBar::tab{width:90}</string>
    <slot>stop_spawning()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>469</x>
-     <y>243</y>
+     <x>100</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
      <x>498</x>
@@ -5786,8 +5811,8 @@ QTabBar::tab{width:90}</string>
    <slot>unlock_game()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>433</y>
+     <x>142</x>
+     <y>497</y>
     </hint>
     <hint type="destinationlabel">
      <x>70</x>
@@ -5818,8 +5843,8 @@ QTabBar::tab{width:90}</string>
    <slot>fertilizer_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>465</x>
-     <y>211</y>
+     <x>489</x>
+     <y>253</y>
     </hint>
     <hint type="destinationlabel">
      <x>160</x>
@@ -5834,8 +5859,8 @@ QTabBar::tab{width:90}</string>
    <slot>zombie_weak()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>248</y>
+     <x>73</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -5882,8 +5907,8 @@ QTabBar::tab{width:90}</string>
    <slot>no_ice_trail()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>489</x>
-     <y>299</y>
+     <x>100</x>
+     <y>104</y>
     </hint>
     <hint type="destinationlabel">
      <x>467</x>
@@ -5914,8 +5939,8 @@ QTabBar::tab{width:90}</string>
    <slot>zombie_not_explode()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>333</x>
-     <y>441</y>
+     <x>73</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
      <x>35</x>
@@ -5946,8 +5971,8 @@ QTabBar::tab{width:90}</string>
    <slot>money()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>318</x>
-     <y>144</y>
+     <x>342</x>
+     <y>183</y>
     </hint>
     <hint type="destinationlabel">
      <x>273</x>
@@ -5962,8 +5987,8 @@ QTabBar::tab{width:90}</string>
    <slot>bug_spray_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>476</x>
-     <y>322</y>
+     <x>489</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
      <x>366</x>
@@ -5978,8 +6003,8 @@ QTabBar::tab{width:90}</string>
    <slot>generate_lineup_code()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>34</x>
-     <y>444</y>
+     <x>48</x>
+     <y>492</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -5994,8 +6019,8 @@ QTabBar::tab{width:90}</string>
    <slot>plant_weak()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>277</x>
-     <y>187</y>
+     <x>73</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
      <x>20</x>
@@ -6010,8 +6035,8 @@ QTabBar::tab{width:90}</string>
    <slot>tree_food()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>329</x>
-     <y>377</y>
+     <x>342</x>
+     <y>433</y>
     </hint>
     <hint type="destinationlabel">
      <x>304</x>
@@ -6026,8 +6051,8 @@ QTabBar::tab{width:90}</string>
    <slot>no_crater()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>333</x>
-     <y>299</y>
+     <x>73</x>
+     <y>104</y>
     </hint>
     <hint type="destinationlabel">
      <x>311</x>
@@ -6074,8 +6099,8 @@ QTabBar::tab{width:90}</string>
    <slot>tree_height()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>318</x>
-     <y>187</y>
+     <x>342</x>
+     <y>233</y>
     </hint>
     <hint type="destinationlabel">
      <x>384</x>
@@ -6090,8 +6115,8 @@ QTabBar::tab{width:90}</string>
    <slot>mushroom_awake()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>333</x>
-     <y>349</y>
+     <x>73</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>117</x>
@@ -6154,8 +6179,8 @@ QTabBar::tab{width:90}</string>
    <slot>free_planting()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>351</x>
-     <y>168</y>
+     <x>100</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
      <x>102</x>
@@ -6170,8 +6195,8 @@ QTabBar::tab{width:90}</string>
    <slot>chocolate_not_dec()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>476</x>
-     <y>274</y>
+     <x>489</x>
+     <y>310</y>
     </hint>
     <hint type="destinationlabel">
      <x>290</x>
@@ -6186,8 +6211,8 @@ QTabBar::tab{width:90}</string>
    <slot>bug_spray()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>329</x>
-     <y>335</y>
+     <x>342</x>
+     <y>383</y>
     </hint>
     <hint type="destinationlabel">
      <x>166</x>
@@ -6203,7 +6228,7 @@ QTabBar::tab{width:90}</string>
    <hints>
     <hint type="sourcelabel">
      <x>251</x>
-     <y>327</y>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
      <x>511</x>
@@ -6218,8 +6243,8 @@ QTabBar::tab{width:90}</string>
    <slot>chocolate()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>329</x>
-     <y>293</y>
+     <x>342</x>
+     <y>333</y>
     </hint>
     <hint type="destinationlabel">
      <x>103</x>
@@ -6234,8 +6259,8 @@ QTabBar::tab{width:90}</string>
    <slot>set_lineup_code()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>358</x>
-     <y>327</y>
+     <x>489</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -6250,8 +6275,8 @@ QTabBar::tab{width:90}</string>
    <slot>change_bullet()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>224</x>
-     <y>256</y>
+     <x>241</x>
+     <y>305</y>
     </hint>
     <hint type="destinationlabel">
      <x>496</x>
@@ -6266,8 +6291,8 @@ QTabBar::tab{width:90}</string>
    <slot>no_fog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>409</y>
+     <x>145</x>
+     <y>461</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -6282,8 +6307,8 @@ QTabBar::tab{width:90}</string>
    <slot>zombie_stop()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>489</x>
-     <y>349</y>
+     <x>100</x>
+     <y>106</y>
     </hint>
     <hint type="destinationlabel">
      <x>180</x>
@@ -6298,8 +6323,8 @@ QTabBar::tab{width:90}</string>
    <slot>lock_butter()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>441</y>
+     <x>45</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
      <x>244</x>
@@ -6314,8 +6339,8 @@ QTabBar::tab{width:90}</string>
    <slot>lock_shovel()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>419</x>
-     <y>443</y>
+     <x>489</x>
+     <y>497</y>
     </hint>
     <hint type="destinationlabel">
      <x>66</x>
@@ -6330,8 +6355,8 @@ QTabBar::tab{width:90}</string>
    <slot>auto_collect()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>34</x>
-     <y>433</y>
+     <x>48</x>
+     <y>497</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -6346,8 +6371,8 @@ QTabBar::tab{width:90}</string>
    <slot>overlapping_plant()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>265</x>
-     <y>443</y>
+     <x>332</x>
+     <y>497</y>
     </hint>
     <hint type="destinationlabel">
      <x>352</x>
@@ -6363,7 +6388,7 @@ QTabBar::tab{width:90}</string>
    <hints>
     <hint type="sourcelabel">
      <x>268</x>
-     <y>433</y>
+     <y>497</y>
     </hint>
     <hint type="destinationlabel">
      <x>245</x>
@@ -6394,8 +6419,8 @@ QTabBar::tab{width:90}</string>
    <slot>chomper_no_cool_down()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>489</x>
-     <y>441</y>
+     <x>100</x>
+     <y>108</y>
     </hint>
     <hint type="destinationlabel">
      <x>489</x>
@@ -6410,8 +6435,8 @@ QTabBar::tab{width:90}</string>
    <slot>update_lineup_list()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>70</x>
-     <y>327</y>
+     <x>84</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -6426,8 +6451,8 @@ QTabBar::tab{width:90}</string>
    <slot>screen_shot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>245</x>
-     <y>444</y>
+     <x>281</x>
+     <y>492</y>
     </hint>
     <hint type="destinationlabel">
      <x>507</x>
@@ -6458,8 +6483,8 @@ QTabBar::tab{width:90}</string>
    <slot>reset_bullets()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>431</x>
-     <y>256</y>
+     <x>489</x>
+     <y>305</y>
     </hint>
     <hint type="destinationlabel">
      <x>497</x>
@@ -6474,8 +6499,8 @@ QTabBar::tab{width:90}</string>
    <slot>adventure()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>311</x>
-     <y>131</y>
+     <x>93</x>
+     <y>124</y>
     </hint>
     <hint type="destinationlabel">
      <x>414</x>
@@ -6528,6 +6553,22 @@ QTabBar::tab{width:90}</string>
     <hint type="destinationlabel">
      <x>6</x>
      <y>503</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_31</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>delete_vases()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>354</x>
+     <y>405</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>509</x>
+     <y>454</y>
     </hint>
    </hints>
   </connection>
@@ -6598,5 +6639,6 @@ QTabBar::tab{width:90}</string>
   <slot>change_garden_cursor()</slot>
   <slot>set_slot_plant()</slot>
   <slot>put_vase()</slot>
+  <slot>delete_vases()</slot>
  </slots>
 </ui>

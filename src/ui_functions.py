@@ -435,3 +435,6 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         vase_type = self.comboBox_25.currentIndex() + 3
         sun_shine_count = self.spinBox_3.value()
         self.game.put_vase(row, col, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count)
+
+    def delete_vases(self):
+        self.game.delete_grid_items({7})
