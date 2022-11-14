@@ -1019,7 +1019,6 @@ class PvzModifier:
         lineup.scene = self.get_scene()
         if ui != 2 and ui != 3:
             return lineup
-
         plant_addrs = self._get_plant_addresses()
         plants_offset = self.data.lawn.board.plants
         plant_row_offset = plants_offset.row
@@ -1083,7 +1082,7 @@ class PvzModifier:
             self.set_scene(lineup.scene)
         else:
             self.delete_all_plants()
-            self.delete_grid_items({1, 2, 3, 11})
+            self.delete_grid_items({1, 2, 3, 7, 11})
         rakes = []
         self.asm.asm_init()
         for r in range(6):
