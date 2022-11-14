@@ -85,7 +85,7 @@ class PvzModifier:
     def asm_code_execute(self, addr=None):
         self.hack(self.data.block_main_loop, True)
         time.sleep(self.get_frame_duration() * 2 / 1000)
-        addr = addr or self.asm.asm_alloc(self.phand, self.asm.length)
+        addr = addr or self.asm.asm_alloc(self.phand)
         if addr:
             if self.asm.asm_code_inject(self.phand, addr):
                 self.asm.asm_execute(self.phand, addr)
