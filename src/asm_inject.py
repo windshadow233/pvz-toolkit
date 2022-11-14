@@ -17,65 +17,65 @@ class Reg(Enum):
 
 class AsmInjector:
     def __init__(self, lock):
-        self.code = bytearray()
-        self.calls_pos = []
-        self.jmps_pos = []
-        self.length = 0
-        self.lock = lock
+        self._code = bytearray()
+        self._calls_pos = []
+        self._jmps_pos = []
+        self._length = 0
+        self._lock = lock
 
-        self.VirtualAllocEx = ctypes.windll.kernel32.VirtualAllocEx
-        self.VirtualAllocEx.argtypes = [
+        self._VirtualAllocEx = ctypes.windll.kernel32.VirtualAllocEx
+        self._VirtualAllocEx.argtypes = [
             wt.HANDLE, wt.LPVOID, ctypes.c_size_t,
             wt.DWORD, wt.DWORD
         ]
-        self.VirtualAllocEx.restype = wt.LPVOID
+        self._VirtualAllocEx.restype = wt.LPVOID
 
-        self.VirtualFreeEx = ctypes.windll.kernel32.VirtualFreeEx
+        self._VirtualFreeEx = ctypes.windll.kernel32.VirtualFreeEx
 
-        self.WriteProcessMemory = ctypes.windll.kernel32.WriteProcessMemory
+        self._WriteProcessMemory = ctypes.windll.kernel32.WriteProcessMemory
 
-        self.CreateRemoteThread = ctypes.windll.kernel32.CreateRemoteThread
-        self.CreateRemoteThread.argtypes = [
+        self._CreateRemoteThread = ctypes.windll.kernel32.CreateRemoteThread
+        self._CreateRemoteThread.argtypes = [
             wt.HANDLE, wt.LPVOID, ctypes.c_size_t,
             wt.LPVOID, wt.LPVOID, wt.DWORD, wt.LPVOID
         ]
-        self.CreateRemoteThread.restype = wt.HANDLE
+        self._CreateRemoteThread.restype = wt.HANDLE
 
-        self.WaitForSingleObject = ctypes.windll.kernel32.WaitForSingleObject
-        self.WaitForSingleObject.argtypes = [wt.HANDLE, wt.DWORD]
-        self.WaitForSingleObject.restype = wt.DWORD
+        self._WaitForSingleObject = ctypes.windll.kernel32.WaitForSingleObject
+        self._WaitForSingleObject.argtypes = [wt.HANDLE, wt.DWORD]
+        self._WaitForSingleObject.restype = wt.DWORD
 
-        self.CloseHandle = ctypes.windll.kernel32.CloseHandle
-        self.CloseHandle.argtypes = [wt.HANDLE]
-        self.CloseHandle.restype = wt.BOOL
+        self._CloseHandle = ctypes.windll.kernel32.CloseHandle
+        self._CloseHandle.argtypes = [wt.HANDLE]
+        self._CloseHandle.restype = wt.BOOL
 
     def hex(self):
-        return binascii.hexlify(self.code).decode()
+        return binascii.hexlify(self._code).decode()
 
     def __len__(self):
-        return self.length
+        return self._length
 
     def asm_init(self):
-        self.code.clear()
-        self.calls_pos.clear()
-        self.jmps_pos.clear()
-        self.length = 0
+        self._code.clear()
+        self._calls_pos.clear()
+        self._jmps_pos.clear()
+        self._length = 0
 
     def asm_add_byte(self, hex_byte: int):
-        self.code.append(hex_byte)
-        self.length += 1
+        self._code.append(hex_byte)
+        self._length += 1
 
     def asm_add_word(self, hex_word: int):
-        self.code.extend(hex_word.to_bytes(2, 'little'))
-        self.length += 2
+        self._code.extend(hex_word.to_bytes(2, 'little'))
+        self._length += 2
 
     def asm_add_dword(self, hex_dword: int):
-        self.code.extend(hex_dword.to_bytes(4, 'little'))
-        self.length += 4
+        self._code.extend(hex_dword.to_bytes(4, 'little'))
+        self._length += 4
 
     def asm_add_list(self, hex_list):
-        self.code.extend(hex_list)
-        self.length += len(hex_list)
+        self._code.extend(hex_list)
+        self._length += len(hex_list)
 
     def asm_push_byte(self, hex_byte):
         """push xx"""
@@ -145,7 +145,7 @@ class AsmInjector:
     def asm_call(self, addr: int):
         """call addr"""
         self.asm_add_byte(0xe8)
-        self.calls_pos.append(self.length)
+        self._calls_pos.append(self._length)
         self.asm_add_dword(addr)
 
     def asm_ret(self):
@@ -155,42 +155,42 @@ class AsmInjector:
     def asm_near_jmp(self, addr: int):
         """jmp addr"""
         self.asm_add_byte(0xe9)
-        self.jmps_pos.append(self.length)
+        self._jmps_pos.append(self._length)
         self.asm_add_dword(addr)
 
     def asm_code_inject(self, phand, addr):
-        for pos in self.calls_pos:
-            call_addr = int.from_bytes(self.code[pos: pos + 4], 'little')
+        for pos in self._calls_pos:
+            call_addr = int.from_bytes(self._code[pos: pos + 4], 'little')
             call_addr -= (addr + pos + 4)
-            self.code[pos: pos + 4] = call_addr.to_bytes(4, 'little', signed=True)
-        for pos in self.jmps_pos:
-            jmp_addr = int.from_bytes(self.code[pos: pos + 4], 'little')
+            self._code[pos: pos + 4] = call_addr.to_bytes(4, 'little', signed=True)
+        for pos in self._jmps_pos:
+            jmp_addr = int.from_bytes(self._code[pos: pos + 4], 'little')
             jmp_addr -= (addr + pos + 4)
-            self.code[pos: pos + 4] = jmp_addr.to_bytes(4, 'little', signed=True)
+            self._code[pos: pos + 4] = jmp_addr.to_bytes(4, 'little', signed=True)
         write_size = ctypes.c_int(0)
-        data = ctypes.create_string_buffer(bytes(self.code))
-        self.lock.acquire()
-        ret = self.WriteProcessMemory(phand, addr, ctypes.byref(data), self.length, ctypes.byref(write_size))
-        self.lock.release()
-        if ret == 0 or write_size.value != self.length:
-            self.VirtualFreeEx(phand, addr, 0, 0x00008000)
+        data = ctypes.create_string_buffer(bytes(self._code))
+        self._lock.acquire()
+        ret = self._WriteProcessMemory(phand, addr, ctypes.byref(data), self._length, ctypes.byref(write_size))
+        self._lock.release()
+        if ret == 0 or write_size.value != self._length:
+            self._VirtualFreeEx(phand, addr, 0, 0x00008000)
             return False
         return True
 
     def asm_alloc(self, phand, length=None):
-        addr = self.VirtualAllocEx(phand, 0, length or self.length, 0x00001000, 0x40)
+        addr = self._VirtualAllocEx(phand, 0, length or self._length, 0x00001000, 0x40)
         return addr
 
     def asm_free(self, phand, address):
-        self.VirtualFreeEx(phand, address, 0, 0x00008000)
+        self._VirtualFreeEx(phand, address, 0, 0x00008000)
 
     def asm_execute(self, phand, address):
-        thread = self.CreateRemoteThread(phand, None, 0, address, None, 0, None)
+        thread = self._CreateRemoteThread(phand, None, 0, address, None, 0, None)
         if not thread:
-            self.VirtualFreeEx(phand, address, 0, 0x00008000)
+            self._VirtualFreeEx(phand, address, 0, 0x00008000)
             return
-        self.WaitForSingleObject(thread, -1)
-        self.CloseHandle(thread)
+        self._WaitForSingleObject(thread, -1)
+        self._CloseHandle(thread)
 
     def asm_alloc_execute(self, phand):
         addr = self.asm_alloc(phand)
