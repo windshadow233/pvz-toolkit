@@ -1,3 +1,4 @@
+import copy
 import ctypes
 from ctypes import wintypes as wt
 from enum import Enum
@@ -159,16 +160,17 @@ class AsmInjector:
         self.asm_add_dword(addr)
 
     def asm_code_inject(self, phand, addr):
+        code = copy.copy(self._code)
         for pos in self._calls_pos:
-            call_addr = int.from_bytes(self._code[pos: pos + 4], 'little')
+            call_addr = int.from_bytes(code[pos: pos + 4], 'little')
             call_addr -= (addr + pos + 4)
-            self._code[pos: pos + 4] = call_addr.to_bytes(4, 'little', signed=True)
+            code[pos: pos + 4] = call_addr.to_bytes(4, 'little', signed=True)
         for pos in self._jmps_pos:
-            jmp_addr = int.from_bytes(self._code[pos: pos + 4], 'little')
+            jmp_addr = int.from_bytes(code[pos: pos + 4], 'little')
             jmp_addr -= (addr + pos + 4)
-            self._code[pos: pos + 4] = jmp_addr.to_bytes(4, 'little', signed=True)
+            code[pos: pos + 4] = jmp_addr.to_bytes(4, 'little', signed=True)
         write_size = ctypes.c_int(0)
-        data = ctypes.create_string_buffer(bytes(self._code))
+        data = ctypes.create_string_buffer(bytes(code))
         self._lock.acquire()
         ret = self._WriteProcessMemory(phand, addr, ctypes.byref(data), self._length, ctypes.byref(write_size))
         self._lock.release()
