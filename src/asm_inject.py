@@ -178,9 +178,7 @@ class AsmInjector:
         return True
 
     def asm_alloc(self, phand, length=None):
-        if not length:
-            length = self.length
-        addr = self.VirtualAllocEx(phand, 0, length, 0x00001000, 0x40)
+        addr = self.VirtualAllocEx(phand, 0, length or self.length, 0x00001000, 0x40)
         return addr
 
     def asm_free(self, phand, address):
