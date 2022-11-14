@@ -383,8 +383,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
     def set_lineup(self):
         s = self.textBrowser.toPlainText()
         try:
-            lineup = Lineup()
-            lineup.from_str(s)
+            lineup = Lineup.from_str(s)
             self.game.set_lineup(lineup)
         except:
             QMessageBox.warning(self, '温馨提示', '阵型代码有误！')
