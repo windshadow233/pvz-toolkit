@@ -3,7 +3,7 @@ import base64
 
 
 class Lineup:
-    def __init__(self, lineup_code: str = None):
+    def __init__(self):
         self.scene = 0
         self.plants = bytearray(b'\x00' * 54)
         self.plants_is_imitator = bytearray(b'\x00' * 54)
@@ -22,9 +22,6 @@ class Lineup:
         self.rakes = bytearray(b'\x00' * 54)
 
         self.items = bytearray(b'\x00\x00\x00' * 54)
-
-        if lineup_code:
-            self.from_str(lineup_code)
 
     def compress(self):
         for r in range(6):
@@ -69,9 +66,12 @@ class Lineup:
         s = base64.b64encode(compressed)
         return s.decode()
 
-    def from_str(self, lineup_code: str):
+    @classmethod
+    def from_str(cls, lineup_code: str):
         compressed = base64.b64decode(lineup_code)
         buffer = zlib.decompress(compressed)
-        self.items = buffer[:162]
-        self.scene = buffer[162]
-        self.decompress()
+        lineup = Lineup()
+        lineup.items = buffer[:162]
+        lineup.scene = buffer[162]
+        lineup.decompress()
+        return lineup
