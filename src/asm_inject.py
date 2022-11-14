@@ -88,11 +88,13 @@ class AsmInjector:
         self.asm_add_dword(hex_dword)
 
     def asm_exx_add_dword_ptr(self, reg: Reg, value: int):
+        """add exx, xxxxxxxx"""
         self.asm_add_byte(0x81)
         self.asm_add_byte(0xc0 + reg.value)
         self.asm_add_dword(value)
 
     def asm_exx_sub_dword_ptr(self, reg: Reg, value: int):
+        """sub exx, xxxxxxxx"""
         self.asm_add_byte(0x81)
         self.asm_add_byte(0xe8 + reg.value)
         self.asm_add_dword(value)
@@ -141,14 +143,17 @@ class AsmInjector:
         self.asm_add_byte(0xc0 + reg_to.value * 8 + reg_from.value)
 
     def asm_call(self, addr: int):
+        """call addr"""
         self.asm_add_byte(0xe8)
         self.calls_pos.append(self.length)
         self.asm_add_dword(addr)
 
     def asm_ret(self):
+        """ret"""
         self.asm_add_byte(0xc3)
 
     def asm_near_jmp(self, addr: int):
+        """jmp addr"""
         self.asm_add_byte(0xe9)
         self.jmps_pos.append(self.length)
         self.asm_add_dword(addr)
