@@ -2398,7 +2398,7 @@ class Ui_MainWindow(object):
         self.comboBox_18.setItemText(0, _translate("MainWindow", "鼠标指针"))
         self.comboBox_18.setItemText(1, _translate("MainWindow", "水壶"))
         self.comboBox_18.setItemText(2, _translate("MainWindow", "化肥"))
-        self.comboBox_18.setItemText(3, _translate("MainWindow", "除虫剂"))
+        self.comboBox_18.setItemText(3, _translate("MainWindow", "杀虫剂"))
         self.comboBox_18.setItemText(4, _translate("MainWindow", "留声机"))
         self.comboBox_18.setItemText(5, _translate("MainWindow", "巧克力"))
         self.comboBox_18.setItemText(6, _translate("MainWindow", "出售植物"))

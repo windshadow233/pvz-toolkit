@@ -3378,7 +3378,7 @@ QTabBar::tab{width:90}</string>
             </item>
             <item>
              <property name="text">
-              <string>除虫剂</string>
+              <string>杀虫剂</string>
              </property>
             </item>
             <item>
