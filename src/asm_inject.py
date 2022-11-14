@@ -177,7 +177,9 @@ class AsmInjector:
             return False
         return True
 
-    def asm_alloc(self, phand, length):
+    def asm_alloc(self, phand, length=None):
+        if not length:
+            length = self.length
         addr = self.VirtualAllocEx(phand, 0, length, 0x00001000, 0x40)
         return addr
 
@@ -193,7 +195,7 @@ class AsmInjector:
         self.CloseHandle(thread)
 
     def asm_alloc_execute(self, phand):
-        addr = self.asm_alloc(phand, self.length)
+        addr = self.asm_alloc(phand)
         if not addr:
             return
         if not self.asm_code_inject(phand, addr):
