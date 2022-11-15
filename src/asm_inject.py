@@ -162,12 +162,10 @@ class AsmInjector:
     def asm_code_inject(self, phand, addr):
         code = copy.copy(self._code)
         for pos in self._calls_pos:
-            call_addr = int.from_bytes(code[pos: pos + 4], 'little')
-            call_addr -= (addr + pos + 4)
+            call_addr = int.from_bytes(code[pos: pos + 4], 'little') - (addr + pos + 4)
             code[pos: pos + 4] = call_addr.to_bytes(4, 'little', signed=True)
         for pos in self._jmps_pos:
-            jmp_addr = int.from_bytes(code[pos: pos + 4], 'little')
-            jmp_addr -= (addr + pos + 4)
+            jmp_addr = int.from_bytes(code[pos: pos + 4], 'little') - (addr + pos + 4)
             code[pos: pos + 4] = jmp_addr.to_bytes(4, 'little', signed=True)
         write_size = ctypes.c_int(0)
         data = ctypes.create_string_buffer(bytes(code))
