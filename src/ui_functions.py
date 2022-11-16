@@ -32,8 +32,11 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         self.tableView.setVerticalScrollBarPolicy(Qt.ScrollBarAlwaysOff)
 
         self.game = PvzModifier()
-        with open('lineup.json', 'r', encoding='utf-8') as f:
-            self.lineup_codes = json.loads(f.read())
+        self.lineup_codes = {}
+        with open('lineup/lineup.json', 'r', encoding='utf-8') as f:
+            self.lineup_codes.update(json.loads(f.read()))
+        with open('lineup/lineup-diy.json', 'r', encoding='utf-8') as f:
+            self.lineup_codes.update(json.loads(f.read()))
         names = filter(lambda x: 'PE' in x, self.lineup_codes)
         self.comboBox_17.clear()
         self.comboBox_17.addItems(names)
@@ -187,8 +190,8 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
             self.checkBox_13.setChecked(False)
         self.game.plant_weak(is_checked)
 
-    def overlapping_plant(self):
-        self.game.overlapping_plant(self.checkBox_17.isChecked())
+    def plant_anywhere(self):
+        self.game.plant_anywhere(self.checkBox_17.isChecked())
 
     def mushroom_awake(self):
         self.game.mushroom_awake(self.checkBox_18.isChecked())
