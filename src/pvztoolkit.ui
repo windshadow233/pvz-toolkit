@@ -5392,7 +5392,7 @@ QTabBar::tab{width:90}</string>
              </font>
             </property>
             <property name="text">
-             <string>重叠种植</string>
+             <string>随意种植</string>
             </property>
            </widget>
           </item>
@@ -5539,8 +5539,8 @@ QTabBar::tab{width:90}</string>
    <slot>put_ladder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>402</x>
-     <y>179</y>
+     <x>123</x>
+     <y>131</y>
     </hint>
     <hint type="destinationlabel">
      <x>499</x>
@@ -5619,8 +5619,8 @@ QTabBar::tab{width:90}</string>
    <slot>copy_lineup_code()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>229</x>
-     <y>492</y>
+     <x>123</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
      <x>161</x>
@@ -5683,8 +5683,8 @@ QTabBar::tab{width:90}</string>
    <slot>paste_lineup_code()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>387</x>
-     <y>492</y>
+     <x>123</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
      <x>357</x>
@@ -5699,8 +5699,8 @@ QTabBar::tab{width:90}</string>
    <slot>put_lily()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>174</x>
-     <y>278</y>
+     <x>173</x>
+     <y>137</y>
     </hint>
     <hint type="destinationlabel">
      <x>8</x>
@@ -5731,8 +5731,8 @@ QTabBar::tab{width:90}</string>
    <slot>set_lineup()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>489</x>
-     <y>492</y>
+     <x>123</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -5827,8 +5827,8 @@ QTabBar::tab{width:90}</string>
    <slot>set_lawn_mower()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>124</x>
-     <y>228</y>
+     <x>123</x>
+     <y>134</y>
     </hint>
     <hint type="destinationlabel">
      <x>15</x>
@@ -5923,8 +5923,8 @@ QTabBar::tab{width:90}</string>
    <slot>put_zombie()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>297</x>
-     <y>179</y>
+     <x>123</x>
+     <y>131</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -6003,8 +6003,8 @@ QTabBar::tab{width:90}</string>
    <slot>generate_lineup_code()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>48</x>
-     <y>492</y>
+     <x>61</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -6067,8 +6067,8 @@ QTabBar::tab{width:90}</string>
    <slot>delete_items()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>231</x>
-     <y>228</y>
+     <x>123</x>
+     <y>134</y>
     </hint>
     <hint type="destinationlabel">
      <x>170</x>
@@ -6131,8 +6131,8 @@ QTabBar::tab{width:90}</string>
    <slot>put_rake()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>379</x>
-     <y>228</y>
+     <x>123</x>
+     <y>134</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -6163,8 +6163,8 @@ QTabBar::tab{width:90}</string>
    <slot>put_flowerpot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>409</x>
-     <y>278</y>
+     <x>173</x>
+     <y>137</y>
     </hint>
     <hint type="destinationlabel">
      <x>451</x>
@@ -6227,8 +6227,8 @@ QTabBar::tab{width:90}</string>
    <slot>set_scene()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>251</x>
-     <y>367</y>
+     <x>143</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>511</x>
@@ -6259,8 +6259,8 @@ QTabBar::tab{width:90}</string>
    <slot>set_lineup_code()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>489</x>
-     <y>367</y>
+     <x>123</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>514</x>
@@ -6368,7 +6368,7 @@ QTabBar::tab{width:90}</string>
    <sender>checkBox_17</sender>
    <signal>toggled(bool)</signal>
    <receiver>MainWindow</receiver>
-   <slot>overlapping_plant()</slot>
+   <slot>plant_anywhere()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>332</x>
@@ -6403,8 +6403,8 @@ QTabBar::tab{width:90}</string>
    <slot>put_plant()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>297</x>
-     <y>129</y>
+     <x>123</x>
+     <y>128</y>
     </hint>
     <hint type="destinationlabel">
      <x>459</x>
@@ -6435,8 +6435,8 @@ QTabBar::tab{width:90}</string>
    <slot>update_lineup_list()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>367</y>
+     <x>97</x>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -6451,8 +6451,8 @@ QTabBar::tab{width:90}</string>
    <slot>screen_shot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>281</x>
-     <y>492</y>
+     <x>68</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
      <x>507</x>
@@ -6499,8 +6499,8 @@ QTabBar::tab{width:90}</string>
    <slot>adventure()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>93</x>
-     <y>124</y>
+     <x>106</x>
+     <y>123</y>
     </hint>
     <hint type="destinationlabel">
      <x>414</x>
@@ -6515,8 +6515,8 @@ QTabBar::tab{width:90}</string>
    <slot>put_grave()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>252</x>
-     <y>228</y>
+     <x>123</x>
+     <y>134</y>
     </hint>
     <hint type="destinationlabel">
      <x>21</x>
@@ -6603,7 +6603,7 @@ QTabBar::tab{width:90}</string>
   <slot>no_crater()</slot>
   <slot>no_ice_trail()</slot>
   <slot>plant_weak()</slot>
-  <slot>overlapping_plant()</slot>
+  <slot>plant_anywhere()</slot>
   <slot>mushroom_awake()</slot>
   <slot>zombie_invincible()</slot>
   <slot>zombie_weak()</slot>
