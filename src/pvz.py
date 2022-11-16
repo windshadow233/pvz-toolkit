@@ -18,7 +18,8 @@ may_asleep = [0, 0, 0, 0, 0, 0, 0, 0,
               0, 0, 0, 0, 0, 0, 0, 0,
               1, 0, 0, 0, 0, 0, 0, 1,
               0, 0, 0, 0, 0, 0, 0, 0,
-              0, 0, 1, 0, 0, 0, 0, 0, 1]
+              0, 0, 1, 0, 0, 0, 0, 0,
+              1, 0, 0, 0, 0]
 
 
 class PvzModifier:
@@ -1027,7 +1028,6 @@ class PvzModifier:
         plant_asleep_offset = plants_offset.asleep
         plant_imitator_offset = plants_offset.imitator
         for addr in plant_addrs:
-
             row = self.read_memory(addr + plant_row_offset, 4)
             col = self.read_memory(addr + plant_col_offset, 4)
             index = row * 9 + col
@@ -1099,7 +1099,7 @@ class PvzModifier:
                     self._asm_put_plant(35, r, c, lineup.coffee_beans_is_imitator[index])
                 if lineup.plants[index]:
                     plant_type = lineup.plants[index] - 1
-                    if plant_type < 0 or plant_type > 47\
+                    if plant_type < 0 or plant_type > 52\
                             or plant_type == 16 or plant_type == 33\
                             or plant_type == 30 or plant_type == 35:
                         continue
@@ -1113,8 +1113,7 @@ class PvzModifier:
                             self.asm.asm_call(self.data.call_set_plant_sleeping)
                             self.asm.asm_pop_exx(Reg.EAX)
                     if plant_type == 4 or plant_type == 9 or plant_type == 47:
-                        self.asm.asm_add_list([0xc7, 0x40, 0x54])
-                        self.asm.asm_add_dword(1)
+                        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.EAX, 0x54, 1)
 
                 if lineup.base[index] == 3:
                     self._asm_put_grave(r, c)
