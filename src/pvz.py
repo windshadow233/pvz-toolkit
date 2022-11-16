@@ -1,3 +1,4 @@
+import random
 import time
 
 from typing import List
@@ -13,7 +14,7 @@ from asm_inject import AsmInjector, Reg
 from lineup import Lineup
 
 
-may_asleep = [0, 0, 0, 0, 0, 0, 0, 0,
+MAY_ASLEEP = [0, 0, 0, 0, 0, 0, 0, 0,
               1, 1, 1, 0, 1, 1, 1, 1,
               0, 0, 0, 0, 0, 0, 0, 0,
               1, 0, 0, 0, 0, 0, 0, 1,
@@ -578,6 +579,9 @@ class PvzModifier:
         if imitator:
             self.asm.asm_push_dword(plant_type)
             self.asm.asm_push_dword(0x30)
+        elif plant_type == 0x30:
+            self.asm.asm_push_dword(random.randint(0, 52))
+            self.asm.asm_push_dword(0x30)
         else:
             self.asm.asm_push_dword(0xffffffff)
             self.asm.asm_push_dword(plant_type)
@@ -1106,7 +1110,7 @@ class PvzModifier:
                     is_imitator = lineup.plants_is_imitator[index]
                     self._asm_put_plant(plant_type, r, c, is_imitator)
                     if lineup.scene == 0 or lineup.scene == 2 or lineup.scene == 4:
-                        if not lineup.plants_is_asleep[index] and may_asleep[plant_type]:
+                        if not lineup.plants_is_asleep[index] and MAY_ASLEEP[plant_type]:
                             self.asm.asm_push_exx(Reg.EAX)
                             self.asm.asm_mov_exx_exx(Reg.EDI, Reg.EAX)
                             self.asm.asm_push_byte(0)
