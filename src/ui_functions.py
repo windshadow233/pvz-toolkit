@@ -212,10 +212,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
         row = self.comboBox_2.currentIndex() - 1
         col = self.comboBox_3.currentIndex() - 1
         plant_type = self.comboBox_4.currentIndex()
-        if plant_type == 48:
-            imitator = 1
-        else:
-            imitator = self.checkBox_21.isChecked()
+        imitator = self.checkBox_21.isChecked()
         self.game.put_plant(plant_type, row, col, imitator)
 
     def set_lawn_mower(self):
