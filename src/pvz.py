@@ -489,12 +489,12 @@ class PvzModifier:
             return
         self.hack(self.data.no_ice_trail, status)
 
-    def overlapping_plant(self, status=True):
+    def plant_anywhere(self, status=True):
         if not self.is_open():
             return
-        self.hack(self.data.overlapping_plant, status)
-        self.hack(self.data.overlapping_plant_preview, status)
-        self.hack(self.data.overlapping_plant_iz, status)
+        self.hack(self.data.plant_anywhere, status)
+        self.hack(self.data.plant_anywhere_preview, status)
+        self.hack(self.data.plant_anywhere_iz, status)
 
     def mushroom_awake(self, status=True):
         if not self.is_open():
@@ -1027,6 +1027,7 @@ class PvzModifier:
         plant_asleep_offset = plants_offset.asleep
         plant_imitator_offset = plants_offset.imitator
         for addr in plant_addrs:
+
             row = self.read_memory(addr + plant_row_offset, 4)
             col = self.read_memory(addr + plant_col_offset, 4)
             index = row * 9 + col
