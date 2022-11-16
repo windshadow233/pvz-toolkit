@@ -180,9 +180,9 @@ class Data:
         doom_shroom_no_crater=[Hack(0x4293cd, 0x0575, 0x9090, 2)],
         no_ice_trail=[Hack(0x420220, 0x007d89, 0x90ff31, 3)],
 
-        overlapping_plant=[Hack(0x41bd2e, 0x84, 0x81, 1)],
-        overlapping_plant_preview=[Hack(0x444790, 0x74, 0xeb, 1)],
-        overlapping_plant_iz=[Hack(0x435579, 0x84, 0x8d, 1)],
+        plant_anywhere=[Hack(0x41bd2e, 0x84, 0x81, 1)],
+        plant_anywhere_preview=[Hack(0x444790, 0x74, 0xeb, 1)],
+        plant_anywhere_iz=[Hack(0x435579, 0x84, 0x8d, 1)],
 
         mushrooms_awake=[Hack(0x46c1c2, 0x74, 0xeb, 1)],
         init_lawn_mowers=[Hack(0x417a57, 0x00, 0x01, 1),
