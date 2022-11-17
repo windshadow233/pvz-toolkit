@@ -159,6 +159,10 @@ class AsmInjector:
         self._jmps_pos.append(self._length)
         self.asm_add_dword(addr)
 
+    def asm_alloc(self, phand, length=None):
+        addr = self._VirtualAllocEx(phand, 0, length or self._length, 0x00001000, 0x40)
+        return addr
+
     def asm_code_inject(self, phand, addr):
         code = copy.copy(self._code)
         for pos in self._calls_pos:
@@ -177,13 +181,6 @@ class AsmInjector:
             return False
         return True
 
-    def asm_alloc(self, phand, length=None):
-        addr = self._VirtualAllocEx(phand, 0, length or self._length, 0x00001000, 0x40)
-        return addr
-
-    def asm_free(self, phand, address):
-        self._VirtualFreeEx(phand, address, 0, 0x00008000)
-
     def asm_execute(self, phand, address):
         thread = self._CreateRemoteThread(phand, None, 0, address, None, 0, None)
         if not thread:
@@ -191,6 +188,9 @@ class AsmInjector:
             return
         self._WaitForSingleObject(thread, -1)
         self._CloseHandle(thread)
+
+    def asm_free(self, phand, address):
+        self._VirtualFreeEx(phand, address, 0, 0x00008000)
 
     def asm_alloc_execute(self, phand):
         addr = self.asm_alloc(phand)
