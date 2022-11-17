@@ -8,7 +8,7 @@ from ui_functions import *
 if __name__ == '__main__':
     mutex = win32event.CreateMutex(None, True, "PvZ Toolkit Python")
     if win32api.GetLastError() == 0:
-        QCoreApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling)
+        QCoreApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
         app = QApplication(sys.argv)
         window = PvzToolkit()
         window.show()
