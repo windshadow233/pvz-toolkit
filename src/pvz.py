@@ -1157,8 +1157,7 @@ class PvzModifier:
         self.asm.asm_add_dword(0x24247c83)
         self.asm.asm_add_byte(from_bullet)  # cmp [esp+24],f
         self.asm.asm_add_word(0x0c75)
-        self.asm.asm_add_list([0xc7, 0x45, 0x5c])
-        self.asm.asm_add_dword(to_bullet)  # mov [ebp+5c],t
+        self.asm.asm_mov_dword_ptr_exx_add_offset(Reg.EBP, 0x5c, to_bullet)  # mov [ebp+5c],t
 
     def change_bullet(self, from_bullet, to_bullet):
         if not self.is_open():
