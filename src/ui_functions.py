@@ -423,7 +423,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
             reply = QMessageBox.warning(
                 self,
                 '温馨提示',
-                '不建议在罐子中放置模仿者（种植会闪退），是否继续？',
+                '不建议在罐子中放置模仿者（物理重启卡），是否继续？',
                 buttons=QMessageBox.Yes | QMessageBox.No,
                 defaultButton=QMessageBox.No
             )
@@ -431,7 +431,7 @@ class PvzToolkit(QMainWindow, Ui_MainWindow):
                 return
         row = self.comboBox_21.currentIndex() - 1
         col = self.comboBox_23.currentIndex() - 1
-        vase_type = self.comboBox_25.currentIndex() + 3
+        vase_type = self.comboBox_25.currentIndex() + 2
         sun_shine_count = self.spinBox_3.value()
         self.game.put_vase(row, col, vase_type, vase_content_type, plant_type, zombie_type, sun_shine_count)
 
