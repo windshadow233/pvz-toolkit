@@ -4120,8 +4120,13 @@ QTabBar::tab{width:90}</string>
              </font>
             </property>
             <property name="currentIndex">
-             <number>0</number>
+             <number>1</number>
             </property>
+            <item>
+             <property name="text">
+              <string>透明罐</string>
+             </property>
+            </item>
             <item>
              <property name="text">
               <string>随机罐</string>
